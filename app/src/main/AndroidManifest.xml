@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.xuexiang.learnvoc">
+    package="com.tdmiracle.learnvoc">
     <!-- 进程杀死 -->
     <uses-permission android:name="android.permission.KILL_BACKGROUND_PROCESSES" />
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name=".MyApp"
+        android:name="com.tdmiracle.learnvoc.MyApp"
         android:allowBackup="false"
         android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
         android:icon="@mipmap/logo_name_50x50"
@@ -19,7 +19,7 @@
         android:windowSoftInputMode="adjustPan|stateHidden"
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="n">
-        <activity android:name=".activity.TestActivity">
+        <activity android:name="com.tdmiracle.learnvoc.activity.TestActivity">
 <!--            <intent-filter>-->
 <!--                <action android:name="android.intent.action.MAIN" />-->
 
@@ -27,7 +27,7 @@
 <!--            </intent-filter>-->
         </activity>
         <activity
-            android:name=".activity.SplashActivity"
+            android:name="com.tdmiracle.learnvoc.activity.SplashActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.Launch.App"
@@ -39,18 +39,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.MainActivity"
+            android:name="com.tdmiracle.learnvoc.activity.MainActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" />
         <activity
-            android:name=".activity.LoginActivity"
+            android:name="com.tdmiracle.learnvoc.activity.LoginActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:launchMode="singleInstance"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- 通用浏览器 -->
         <activity
-            android:name=".core.webview.AgentWebActivity"
+            android:name="com.tdmiracle.learnvoc.core.webview.AgentWebActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:hardwareAccelerated="true"
             android:label="@string/app_browser_name"
@@ -99,20 +99,20 @@
             </intent-filter>
         </activity> <!-- fragment的页面容器 -->
         <activity
-            android:name=".core.BaseActivity"
+            android:name="com.tdmiracle.learnvoc.core.BaseActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- 版本更新提示 -->
         <activity
-            android:name=".utils.update.UpdateTipDialog"
+            android:name="com.tdmiracle.learnvoc.utils.update.UpdateTipDialog"
             android:screenOrientation="portrait"
             android:theme="@style/DialogTheme" /> <!-- Webview拦截提示弹窗 -->
         <activity
-            android:name=".core.webview.WebViewInterceptDialog"
+            android:name="com.tdmiracle.learnvoc.core.webview.WebViewInterceptDialog"
             android:screenOrientation="portrait"
             android:theme="@style/DialogTheme" /> <!-- applink的中转页面 -->
         <activity
-            android:name=".core.XPageTransferActivity"
+            android:name="com.tdmiracle.learnvoc.core.XPageTransferActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden" /> <!-- 屏幕自适应设计图 -->

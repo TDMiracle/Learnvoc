@@ -19,7 +19,7 @@
     android:id="@+id/refreshLayout"
     style="@style/PullDownStyle">
 
-    <com.xuexiang.learnvoc.core.webview.LollipopFixedWebView
+    <com.tdmiracle.learnvoc.core.webview.LollipopFixedWebView
         android:id="@+id/webView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
