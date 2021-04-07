@@ -50,7 +50,7 @@ import java.util.List;
  */
 public class GuideTipsDialog extends BaseDialog implements View.OnClickListener, CompoundButton.OnCheckedChangeListener {
 
-    private static final String KEY_IS_IGNORE_TIPS = "com.xuexiang.learnvoc.widget.key_is_ignore_tips_";
+    private static final String KEY_IS_IGNORE_TIPS = "com.tdmiracle.learnvoc.widget.key_is_ignore_tips_";
 
     private List<TipInfo> mTips;
     private int mIndex = -1;

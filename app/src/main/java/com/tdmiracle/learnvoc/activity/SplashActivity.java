@@ -29,11 +29,13 @@ import com.xuexiang.xutil.app.ActivityUtils;
 
 import me.jessyan.autosize.internal.CancelAdapt;
 
+
 /**
- * 启动页【无需适配屏幕大小】
- *
- * @author xuexiang
- * @since 2019-06-30 17:32
+ * 创建日期：2021/4/7 16:05
+ * @author TD.Miracle
+ * @version 1.0
+ * 文件名称： SplashActivity.java
+ * 类说明：
  */
 public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
 

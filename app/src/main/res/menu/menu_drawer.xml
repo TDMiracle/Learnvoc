@@ -23,14 +23,18 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/nav_news"
+            android:id="@+id/nav_home"
             android:icon="@drawable/ic_menu_news"
-            android:title="@string/menu_news" />
+            android:title="@string/menu_home" />
+        <item
+            android:id="@+id/nav_recite"
+            android:icon="@drawable/ic_menu_search"
+            android:title="@string/menu_recite" />
 
         <item
-            android:id="@+id/nav_trending"
+            android:id="@+id/nav_statistic"
             android:icon="@drawable/ic_menu_trending"
-            android:title="@string/menu_trending" />
+            android:title="@string/menu_statistic" />
 
         <item
             android:id="@+id/nav_profile"

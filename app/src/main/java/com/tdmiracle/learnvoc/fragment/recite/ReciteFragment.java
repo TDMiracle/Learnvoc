@@ -15,7 +15,7 @@
  *
  */
 
-package com.tdmiracle.learnvoc.fragment.trending;
+package com.tdmiracle.learnvoc.fragment.recite;
 
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.R;
@@ -23,12 +23,16 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 
+
 /**
- * @author xuexiang
- * @since 2019-10-30 00:19
+ * 创建日期：2021/4/7 19:31
+ * @author TD.Miracle
+ * @version 1.0
+ * 文件名称： ReciteFragment.java
+ * 类说明：
  */
 @Page(anim = CoreAnim.none)
-public class TrendingFragment extends BaseFragment {
+public class ReciteFragment extends BaseFragment {
 
     /**
      * @return 返回为 null意为不需要导航栏

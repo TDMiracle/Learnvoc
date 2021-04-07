@@ -19,6 +19,7 @@ package com.tdmiracle.learnvoc.utils;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.net.Uri;
 
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.adapter.entity.NewInfo;
@@ -27,8 +28,11 @@ import com.xuexiang.xui.adapter.simple.AdapterItem;
 import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.widget.banner.widget.banner.BannerItem;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.xuexiang.xutil.app.AppUtils.getPackageName;
 
 /**
  * 演示数据
@@ -39,19 +43,19 @@ import java.util.List;
 public class DemoDataProvider {
 
     public static String[] titles = new String[]{
-//            "伪装者:胡歌演绎'痞子特工'",
-//            "无心法师:生死离别!月牙遭虐杀",
-//            "花千骨:尊上沦为花千骨",
-//            "综艺饭:胖轩偷看夏天洗澡掀波澜",
-//            "碟中谍4:阿汤哥高塔命悬一线,超越不可能",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
     };
 
     public static String[] urls = new String[]{//640*360 360/640=0.5625
-//            "http://photocdn.sohu.com/tvmobilemvms/20150907/144160323071011277.jpg",//伪装者:胡歌演绎"痞子特工"
-//            "http://photocdn.sohu.com/tvmobilemvms/20150907/144158380433341332.jpg",//无心法师:生死离别!月牙遭虐杀
-//            "http://photocdn.sohu.com/tvmobilemvms/20150907/144160286644953923.jpg",//花千骨:尊上沦为花千骨
-//            "http://photocdn.sohu.com/tvmobilemvms/20150902/144115156939164801.jpg",//综艺饭:胖轩偷看夏天洗澡掀波澜
-//            "http://photocdn.sohu.com/tvmobilemvms/20150907/144159406950245847.jpg",//碟中谍4:阿汤哥高塔命悬一线,超越不可能
+            Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_1).toString(),
+            Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_2).toString(),
+            Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_3).toString(),
+            Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_4).toString(),
+            Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_5).toString(),
     };
 
     @MemoryCache
@@ -61,7 +65,6 @@ public class DemoDataProvider {
             BannerItem item = new BannerItem();
             item.imgUrl = urls[i];
             item.title = titles[i];
-
             list.add(item);
         }
         return list;
@@ -75,30 +78,30 @@ public class DemoDataProvider {
     @MemoryCache
     public static List<NewInfo> getDemoNewInfos() {
         List<NewInfo> list = new ArrayList<>();
-        list.add(new NewInfo("源码", "Android源码分析--Android系统启动")
-                .setSummary("其实Android系统的启动最主要的内容无非是init、Zygote、SystemServer这三个进程的启动，他们一起构成的铁三角是Android系统的基础。")
-                .setDetailUrl("https://juejin.im/post/5c6fc0cdf265da2dda694f05")
-                .setImageUrl("https://user-gold-cdn.xitu.io/2019/2/22/16914891cd8a950a?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"));
+        list.add(new NewInfo("四级", "大学英语四级单词攻略")
+                .setSummary("三个字，稳，准，狠！！！有人说一个月？要我说，三天就够了！！")
+                .setDetailUrl("https://www.zhihu.com/search?q=%E5%9B%9B%E7%BA%A7%E6%80%8E%E4%B9%88%E5%A4%87%E8%80%83&utm_content=search_suggestion&type=content")
+                .setImageUrl("https://pic4.zhimg.com/80/v2-b85ace44396edc6bbd6f42a6d683a543_720w.jpg"));
 
-        list.add(new NewInfo("Android UI", "XUI 一个简洁而优雅的Android原生UI框架，解放你的双手")
-                .setSummary("涵盖绝大部分的UI组件：TextView、Button、EditText、ImageView、Spinner、Picker、Dialog、PopupWindow、ProgressBar、LoadingView、StateLayout、FlowLayout、Switch、Actionbar、TabBar、Banner、GuideView、BadgeView、MarqueeView、WebView、SearchView等一系列的组件和丰富多彩的样式主题。\n")
-                .setDetailUrl("https://juejin.im/post/5c3ed1dae51d4543805ea48d")
-                .setImageUrl("https://user-gold-cdn.xitu.io/2019/1/16/1685563ae5456408?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"));
+        list.add(new NewInfo("六级", "怎么备考六级考到 600+？")
+                .setSummary("全文将近5000字，花了老学姐3天时间整理，包含多种实用的解题技巧和策略，建议先码住收藏，顺便给老学姐的呕心沥血点个小小的赞吧\n")
+                .setDetailUrl("https://www.zhihu.com/search?type=content&q=%E5%85%AD%E7%BA%A7")
+                .setImageUrl("https://pic1.zhimg.com/80/v2-f7e51ab6f5b24a5cfe6f869b9109dd6c_720w.jpg"));
 
-        list.add(new NewInfo("面试", "写给即将面试的你")
-                .setSummary("最近由于公司业务发展，需要招聘技术方面的人才，由于我在技术方面比较熟悉，技术面的任务就交给我了。今天我要分享的就和面试有关，主要包含技术面的流程、经验和建议，避免大家在今后的面试过程中走一些弯路，帮助即将需要跳槽面试的人。")
-                .setDetailUrl("https://juejin.im/post/5ca4df966fb9a05e4e58320c")
-                .setImageUrl("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554629219186&di=6cdab5cfceaae1f7e6d78dbe79104c9f&imgtype=0&src=http%3A%2F%2Fimg.qinxue365.com%2Fuploads%2Fallimg%2F1902%2F4158-1Z22FZ64E00.jpg"));
+        list.add(new NewInfo("高中", "高考英语如何提到140分？")
+                .setSummary("这篇文章将完全重塑你对英语学习的认知！ 不管你现在英语什么水平，题目里140分的目标都太低了，我觉得高中英语的目标至少应该是145分。这么说是因为如果你把英语试卷全部翻译成中文再看会发现就难度而言除了作文之外真的很难再找到其他值得扣分的地方了。")
+                .setDetailUrl("https://www.zhihu.com/question/357234340/answer/1529132253")
+                .setImageUrl("https://pic4.zhimg.com/80/v2-00f9db99be0599113c4c93c7700e81ff_720w.jpg?source=1940ef5c"));
 
-        list.add(new NewInfo("Android", "XUpdate 一个轻量级、高可用性的Android版本更新框架")
-                .setSummary("XUpdate 一个轻量级、高可用性的Android版本更新框架。本框架借鉴了AppUpdate中的部分思想和UI界面，将版本更新中的各部分环节抽离出来，形成了如下几个部分：")
-                .setDetailUrl("https://juejin.im/post/5b480b79e51d45190905ef44")
-                .setImageUrl("https://user-gold-cdn.xitu.io/2018/7/13/16492d9b7877dc21?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"));
+        list.add(new NewInfo("雅思", "雅思考试报名流程")
+                .setSummary("2021年1-6月雅思纸笔考试、1-3月用于英国签证及移民的雅思纸笔考试即日起接受报名，2021年1-3月雅思机考和用于英国签证及移民的雅思机考将于2020年10月12日开放报名 请大家登录中国教育部考试")
+                .setDetailUrl("https://zhuanlan.zhihu.com/p/66357729")
+                .setImageUrl("https://pic2.zhimg.com/v2-e6252b252d07be6029e254d417126ff2_1440w.jpg?source=172ae18b"));
 
-        list.add(new NewInfo("Android/HTTP", "XHttp2 一个功能强悍的网络请求库，使用RxJava2 + Retrofit2 + OKHttp进行组装")
+        list.add(new NewInfo("托福", "首考托福110上岸，托福考试备考全攻略分享，如何在最短时间内拿到高分。")
                 .setSummary("一个功能强悍的网络请求库，使用RxJava2 + Retrofit2 + OKHttp组合进行封装。还不赶紧点击使用说明文档，体验一下吧！")
-                .setDetailUrl("https://juejin.im/post/5b6b9b49e51d4576b828978d")
-                .setImageUrl("https://user-gold-cdn.xitu.io/2018/8/9/1651c568a7e30e02?imageView2/0/w/1280/h/960/format/webp/ignore-error/1"));
+                .setDetailUrl("https://zhuanlan.zhihu.com/p/242712346")
+                .setImageUrl("https://pic2.zhimg.com/v2-8369cdbb3a776f1fdf61c2ab53eba581_b.jpg"));
         return list;
     }
 

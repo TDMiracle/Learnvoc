@@ -56,7 +56,7 @@ public final class Utils {
     /**
      * 这里填写你的应用隐私政策网页地址
      */
-    private static final String PRIVACY_URL = "https://gitee.com/xuexiangjys/TemplateAppProject/raw/master/LICENSE";
+    private static final String PRIVACY_URL = "https://github.com/TDMiracle/Learnvoc/blob/master/LICENSE";
 
     /**
      * 显示隐私政策的提示

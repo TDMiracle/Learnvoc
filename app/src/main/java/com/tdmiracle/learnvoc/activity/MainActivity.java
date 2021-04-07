@@ -40,7 +40,8 @@ import com.tdmiracle.learnvoc.core.BaseActivity;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.fragment.news.NewsFragment;
 import com.tdmiracle.learnvoc.fragment.profile.ProfileFragment;
-import com.tdmiracle.learnvoc.fragment.trending.TrendingFragment;
+import com.tdmiracle.learnvoc.fragment.recite.ReciteFragment;
+import com.tdmiracle.learnvoc.fragment.statistic.StatisticFragment;
 import com.tdmiracle.learnvoc.utils.Utils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
 import com.xuexiang.xaop.annotation.SingleClick;
@@ -111,14 +112,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
         //主页内容填充
         BaseFragment[] fragments = new BaseFragment[]{
-                new NewsFragment(),
-                new TrendingFragment(),
-                new ProfileFragment()
+                new NewsFragment(),//主页
+                new ReciteFragment(),//背诵
+                new StatisticFragment(),//统计
+                new ProfileFragment()//我的
         };
         FragmentAdapter<BaseFragment> adapter = new FragmentAdapter<>(getSupportFragmentManager(), fragments);
         viewPager.setOffscreenPageLimit(mTitles.length - 1);
         viewPager.setAdapter(adapter);
-        //GuideTipsDialog.showTips(this);//主页对话框，关于作者
 
         /**
          * 测试
@@ -223,8 +224,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_privacy:
-                //GuideTipsDialog.showTipsForce(this);
-                //Toast.makeText(this,"您点击了查看隐私政策",Toast.LENGTH_SHORT).show();
                 XToastUtils.toast("查看隐私政策");
                 break;
             case R.id.action_about:

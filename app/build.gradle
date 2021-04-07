@@ -125,7 +125,14 @@ dependencies {
     //美团多渠道打包
     implementation 'com.meituan.android.walle:library:1.1.6'
 
-    //Viewpager2
+    //引入XUI
+    implementation 'com.github.xuexiangjys:XUI:1.1.5'
+
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
 
 }
 //自动添加X-Library依赖

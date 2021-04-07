@@ -26,11 +26,13 @@ import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.utils.StatusBarUtils;
 import com.xuexiang.xutil.display.Colors;
 
+
 /**
- * 登录页面
- *
- * @author xuexiang
- * @since 2019-11-17 22:21
+ * 创建日期：2021/4/7 16:19
+ * @author TD.Miracle
+ * @version 1.0
+ * 文件名称： LoginActivity.java
+ * 类说明：
  */
 public class LoginActivity extends BaseActivity {
 
