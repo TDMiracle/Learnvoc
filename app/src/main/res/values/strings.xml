@@ -73,7 +73,12 @@
     <string name="label_next">下一条</string>
     <string name="tip_ignore_message">以后不再提示此类信息</string>
     <string name="tip_title">欢迎</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- profile -->
+    <string name="shengciben">生词本</string>
+    <string name="xuexishezhi">学习设置</string>
+    <string name="danciben">单词本</string>
+    <string name="xuexishuju">学习数据</string>
+    <string name="xiaoxizhongxin">消息中心</string>
+    <string name="hello_blank_fragment">hello blankfragment</string>
 
 </resources>

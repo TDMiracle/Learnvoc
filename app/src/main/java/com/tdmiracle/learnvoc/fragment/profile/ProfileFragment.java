@@ -17,16 +17,30 @@
 
 package com.tdmiracle.learnvoc.fragment.profile;
 
+import android.media.Image;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.tdmiracle.learnvoc.activity.MainActivity;
+import com.tdmiracle.learnvoc.activity.SplashActivity;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.fragment.AboutFragment;
 import com.tdmiracle.learnvoc.fragment.SettingsFragment;
 import com.tdmiracle.learnvoc.R;
+import com.tdmiracle.learnvoc.utils.XToastUtils;
 import com.xuexiang.xaop.annotation.SingleClick;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xpage.enums.CoreAnim;
 import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
+import com.xuexiang.xutil.app.ActivityUtils;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import butterknife.BindView;
 
@@ -36,12 +50,16 @@ import butterknife.BindView;
  */
 @Page(anim = CoreAnim.none)
 public class ProfileFragment extends BaseFragment implements SuperTextView.OnSuperTextViewClickListener {
-    @BindView(R.id.riv_head_pic)
+    @BindView(R.id.profile_myPage_head_pic)
     RadiusImageView rivHeadPic;
     @BindView(R.id.menu_settings)
     SuperTextView menuSettings;
     @BindView(R.id.menu_about)
     SuperTextView menuAbout;
+    @BindView(R.id.tv_profile_copyright)
+    TextView textView;
+    @BindView(R.id.tv_profile_product_name)
+    TextView textView2;
 
     /**
      * @return 返回为 null意为不需要导航栏
@@ -66,13 +84,24 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
      */
     @Override
     protected void initViews() {
-
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy", Locale.CHINA);
+        String currentYear = dateFormat.format(new Date());
+        textView.setText(String.format(getResources().getString(R.string.about_copyright), currentYear));
+        textView2.setText(R.string.app_name);
     }
 
     @Override
     protected void initListeners() {
         menuSettings.setOnSuperTextViewClickListener(this);
         menuAbout.setOnSuperTextViewClickListener(this);
+        SuperTextView superTextView = (SuperTextView)findViewById(R.id.profile_myPage);
+        superTextView.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+//                ActivityUtils.startActivity(SplashActivity.class);;
+                XToastUtils.toast("点击我的主页");
+            }
+        });
 
     }
 
@@ -90,4 +119,6 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
                 break;
         }
     }
+
+
 }

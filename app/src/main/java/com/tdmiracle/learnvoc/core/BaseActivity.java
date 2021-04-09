@@ -17,9 +17,13 @@
 
 package com.tdmiracle.learnvoc.core;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.os.Bundle;
 
+import com.tdmiracle.learnvoc.utils.ActivityCollector;
+import com.tdmiracle.learnvoc.utils.ForceOfflineReceiver;
 import com.xuexiang.xpage.base.XPageActivity;
 import com.xuexiang.xpage.base.XPageFragment;
 import com.xuexiang.xpage.core.CoreSwitchBean;
@@ -42,6 +46,9 @@ public class BaseActivity extends XPageActivity {
 
     Unbinder mUnbinder;
 
+    //强制下线接收器
+    private ForceOfflineReceiver receiver;
+
     @Override
     protected void attachBaseContext(Context newBase) {
         //注入字体
@@ -60,6 +67,8 @@ public class BaseActivity extends XPageActivity {
         mUnbinder = ButterKnife.bind(this);
 
         registerSlideBack();
+        //活动统一管理
+        ActivityCollector.addActivity(this);
     }
 
     /**
@@ -150,4 +159,27 @@ public class BaseActivity extends XPageActivity {
         return page == null || page.getBundle() == null || page.getBundle().getBoolean(KEY_SUPPORT_SLIDE_BACK, true);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ActivityCollector.removeActivity(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction("com.tdmiracle.learnvoc.FORCE_OFFLINE");
+        receiver = new ForceOfflineReceiver();
+        registerReceiver(receiver,intentFilter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(receiver != null){
+            unregisterReceiver(receiver);
+            receiver = null;
+        }
+    }
 }
