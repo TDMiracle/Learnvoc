@@ -45,7 +45,7 @@
                         android:layout_height="38dp"
                         android:layout_centerVertical="true"
                         android:layout_toStartOf="@id/sRightImgId"
-                        app:srcCompat="@drawable/ic_default_head" />
+                        app:srcCompat="@drawable/leo" />
 
                 </com.xuexiang.xui.widget.textview.supertextview.SuperTextView>
 

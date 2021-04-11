@@ -17,6 +17,11 @@
                 android:paddingTop="20dp">
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/menu_account_security"
+                    style="@style/InfoItem.Account"
+                    app:sLeftTextString="账号安全" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     android:id="@+id/menu_common"
                     style="@style/InfoItem.Account"
                     app:sLeftTextString="通用" />
@@ -36,6 +41,12 @@
                     style="@style/InfoItem.Account"
                     app:sDividerLineType="none"
                     app:sLeftTextString="帮助" />
+
+                <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
+                    android:id="@+id/menu_clearCache"
+                    style="@style/InfoItem.Account"
+                    app:sDividerLineType="none"
+                    app:sLeftTextString="清空缓存" />
 
                 <com.xuexiang.xui.widget.textview.supertextview.SuperTextView
                     android:id="@+id/menu_change_account"

@@ -48,6 +48,10 @@ public class SettingsFragment extends BaseFragment implements SuperTextView.OnSu
     SuperTextView menuChangeAccount;
     @BindView(R.id.menu_logout)
     SuperTextView menuLogout;
+    @BindView(R.id.menu_clearCache)
+    SuperTextView menuClearCache;
+    @BindView(R.id.menu_account_security)
+    SuperTextView menuAccountSecurity;
 
     @Override
     protected int getLayoutId() {
@@ -62,6 +66,8 @@ public class SettingsFragment extends BaseFragment implements SuperTextView.OnSu
         menuHelper.setOnSuperTextViewClickListener(this);
         menuChangeAccount.setOnSuperTextViewClickListener(this);
         menuLogout.setOnSuperTextViewClickListener(this);
+        menuClearCache.setOnSuperTextViewClickListener(this);
+        menuAccountSecurity.setOnSuperTextViewClickListener(this);
     }
 
     @SingleClick
@@ -72,6 +78,8 @@ public class SettingsFragment extends BaseFragment implements SuperTextView.OnSu
             case R.id.menu_privacy:
             case R.id.menu_push:
             case R.id.menu_helper:
+            case R.id.menu_settings:
+            case R.id.menu_clearCache:
                 XToastUtils.toast(superTextView.getLeftString());
                 break;
             case R.id.menu_change_account:

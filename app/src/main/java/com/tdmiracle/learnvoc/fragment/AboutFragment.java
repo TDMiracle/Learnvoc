@@ -17,13 +17,17 @@
 
 package com.tdmiracle.learnvoc.fragment;
 
+import android.view.View;
 import android.widget.TextView;
 
+import com.tdmiracle.learnvoc.activity.AdviceFeedbackActivity;
 import com.tdmiracle.learnvoc.core.webview.AgentWebActivity;
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.core.BaseFragment;
+import com.tdmiracle.learnvoc.utils.XToastUtils;
 import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.grouplist.XUIGroupListView;
+import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.app.AppUtils;
 
 import java.text.SimpleDateFormat;
@@ -56,11 +60,15 @@ public class AboutFragment extends BaseFragment {
         mVersionTextView.setText(String.format("版本号：%s", AppUtils.getAppVersionName()));
 
         XUIGroupListView.newSection(getContext())
-                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_homepage)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_project_github)))
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_homepage)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_project_school)))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_author_github)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_author_github)))
                 .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_donation_link)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_donation_link)))
-                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.about_item_add_qq_group)), v -> AgentWebActivity.goWeb(getContext(), getString(R.string.url_add_qq_group)))
-                .addTo(mAboutGroupListView);
+                .addItemView(mAboutGroupListView.createItemView(getResources().getString(R.string.yijianfankui)), new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ActivityUtils.startActivity(AdviceFeedbackActivity.class);
+                    }
+                }).addTo(mAboutGroupListView);
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy", Locale.CHINA);
         String currentYear = dateFormat.format(new Date());

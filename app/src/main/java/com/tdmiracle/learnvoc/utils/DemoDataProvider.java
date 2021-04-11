@@ -54,8 +54,8 @@ public class DemoDataProvider {
             Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_1).toString(),
             Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_2).toString(),
             Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_3).toString(),
-            Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_4).toString(),
-            Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_5).toString(),
+            Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_6).toString(),
+            Uri.parse("android.resource://" + getPackageName() + "/" + R.drawable.banner_7).toString(),
     };
 
     @MemoryCache

@@ -53,4 +53,15 @@
         <item name="android:backgroundDimEnabled">true</item>
     </style>
 
+    <!-- view分割线样式 -->
+    <style name="bg_line">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">#ccc</item>
+    </style>
+
+    <style name="SpinnerStyle2">
+        <item name="colorAccent">#888888</item>
+        <item name="colorControlNormal">#ddffffff</item> <!--改变了spinner的颜色  -->
+    </style>
 </resources>

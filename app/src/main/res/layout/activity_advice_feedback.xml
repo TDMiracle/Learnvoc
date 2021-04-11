@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 TD.Miracle(584290367@qq.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activity.AdviceFeedbackActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dip"
+        android:background="#FFFFFF">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="意见反馈"
+            android:textSize="18sp"
+            android:textColor="#000000"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:padding="8dp"
+            android:gravity="left|top"
+            android:hint="说点什么吧~我们会做得更好~"
+            android:textSize="15sp"
+            android:maxLength="200"
+            android:background="@drawable/shape_et_bg"/>
+
+        <TextView
+            android:id="@+id/text_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="right"
+            android:text="0/200"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="提交"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        style="button"
+        android:background="@drawable/shape_btn_bg"/>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="20dp"
+            >
+            <TextView
+                android:text="常见问题汇总"
+                android:id="@+id/help_allseequestions"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_width="fill_parent"
+                android:layout_marginTop="10px"
+                android:textColor="@color/xui_btn_gray_normal_color"
+                android:textSize="15sp"
+                android:layout_marginLeft="20dp"
+                android:layout_height="wrap_content"></TextView>
+
+            <TextView
+                android:layout_marginTop="10px"
+                android:paddingLeft="15px"
+                android:layout_height="wrap_content"
+                android:textColor="@color/xui_btn_gray_normal_color"
+                android:textSize="15sp"
+                android:text="Q:【操作问题】相关疑问.\n A:可参考设置中《用户使用说明》，如果没有涉及的话可以留言反馈，我们看到后会加上的奥~"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/help_1"></TextView>
+
+
+
+            <TextView
+                android:layout_marginTop="10px"
+                android:layout_height="wrap_content"
+                android:textColor="@color/xui_btn_gray_normal_color"
+                android:textSize="15sp"
+                android:paddingLeft="15px"
+                android:text="Q:【通知提醒】并未提醒和显示? \n A:去管理开启手机通知提醒"
+                android:layout_width="fill_parent"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:id="@+id/help_2"
+                ></TextView>
+
+
+
+            <TextView
+                android:layout_marginTop="10px"
+                android:layout_height="wrap_content"
+                android:textColor="@color/xui_btn_gray_normal_color"
+                android:textSize="15sp"
+                android:paddingLeft="15px"
+                android:text="Q【用户密码】丢失后如何找回呢？ \n A:可以点击忘记密码自助找回~也可以联系18888888888帮您找回~"
+                android:layout_width="fill_parent"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:id="@+id/help_3"
+                ></TextView>
+
+        <Button
+            android:id="@+id/btn_connectKeFu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:text="联系客服"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/xui_btn_blue_normal_color"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+
+</LinearLayout>

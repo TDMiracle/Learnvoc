@@ -34,7 +34,7 @@
                 android:paddingBottom="25dp">
 
                 <!--   请修改为自己的应用图标   -->
-                <androidx.appcompat.widget.AppCompatImageView
+                <com.xuexiang.xui.widget.imageview.photoview.PhotoView
                     android:layout_width="100dp"
                     android:layout_height="100dp"
                     android:contentDescription="Logo"
@@ -52,9 +52,9 @@
                     android:id="@+id/tv_version"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="15dp"
+                    android:layout_marginTop="5dp"
                     android:textColor="@color/xui_config_color_gray_3"
-                    android:textSize="16sp" />
+                    android:textSize="14sp" />
 
                 <com.xuexiang.xui.widget.grouplist.XUIGroupListView
                     android:id="@+id/about_list"

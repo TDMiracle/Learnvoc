@@ -132,7 +132,8 @@ dependencies {
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'com.google.android.material:material:1.1.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
-
+    implementation 'com.contrarywind:Android-PickerView:3.2.7'
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 
 }
 //自动添加X-Library依赖

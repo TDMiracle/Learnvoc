@@ -22,13 +22,14 @@
     <string name="about_item_author_github">联系作者</string>
     <string name="about_item_donation_link">关于作者</string>
     <string name="about_item_add_qq_group">QQ交流</string>
-    <string name="url_project_github">https://github.com/TD_Miracle</string>
+    <string name="url_project_school">https://www.hebut.edu.cn/</string>
     <string name="url_author_github">https://github.com/TD_Miracle</string>
     <string name="url_donation_link">https://gitee.com/TDMiracle</string>
     <string name="url_add_qq_group">584290367</string>
 
     <string name="lab_yes">是</string>
     <string name="lab_no">否</string>
+    <string name="lab_ok">好的</string>
     <string name="lab_open_third_app">是否允许页面打开第三方应用?</string>
 
     <!-- 隐私政策弹窗   -->
@@ -80,5 +81,9 @@
     <string name="xuexishuju">学习数据</string>
     <string name="xiaoxizhongxin">消息中心</string>
     <string name="hello_blank_fragment">hello blankfragment</string>
+    <string name="changeImg">修改头像</string>
+    <string name="save">保存</string>
+    <string name="yijianfankui">意见反馈</string>
+    <string name="connect_keFu">管理员联系微信：Miracle-zjh</string>
 
 </resources>

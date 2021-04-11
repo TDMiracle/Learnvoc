@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tdmiracle.learnvoc.activity.EditPersonalInfoActivity;
 import com.tdmiracle.learnvoc.activity.MainActivity;
 import com.tdmiracle.learnvoc.activity.SplashActivity;
 import com.tdmiracle.learnvoc.core.BaseFragment;
@@ -98,8 +99,7 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
         superTextView.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-//                ActivityUtils.startActivity(SplashActivity.class);;
-                XToastUtils.toast("点击我的主页");
+                ActivityUtils.startActivity(EditPersonalInfoActivity.class);
             }
         });
 
