@@ -25,6 +25,7 @@ import android.widget.Toast;
 
 import com.tdmiracle.learnvoc.activity.EditPersonalInfoActivity;
 import com.tdmiracle.learnvoc.activity.MainActivity;
+import com.tdmiracle.learnvoc.activity.NotificatonActivity;
 import com.tdmiracle.learnvoc.activity.SplashActivity;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.fragment.AboutFragment;
@@ -95,11 +96,18 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
     protected void initListeners() {
         menuSettings.setOnSuperTextViewClickListener(this);
         menuAbout.setOnSuperTextViewClickListener(this);
-        SuperTextView superTextView = (SuperTextView)findViewById(R.id.profile_myPage);
-        superTextView.setOnClickListener(new View.OnClickListener(){
+        SuperTextView stv_myPage = (SuperTextView)findViewById(R.id.profile_myPage);
+        stv_myPage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 ActivityUtils.startActivity(EditPersonalInfoActivity.class);
+            }
+        });
+        SuperTextView stv_infoCenter = (SuperTextView)findViewById(R.id.profile_infoCenter);
+        stv_infoCenter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startActivity(NotificatonActivity.class);
             }
         });
 

@@ -87,7 +87,7 @@ public class EditPersonalInfoActivity extends BaseActivity implements View.OnCli
         imgChange = (Button)findViewById(R.id.button_changeimg);
         imgChange.setOnClickListener(this);
         headImg = (ImageView) findViewById(R.id.head_icon);
-        headImg.setImageResource(R.drawable.leo);
+        headImg.setImageResource(R.drawable.mna);
     }
 
     //初始化时间选择器

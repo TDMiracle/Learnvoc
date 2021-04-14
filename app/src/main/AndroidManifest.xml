@@ -23,7 +23,8 @@
         android:windowSoftInputMode="adjustPan|stateHidden"
         tools:ignore="LockedOrientationActivity"
         tools:targetApi="n">
-        <activity android:name=".activity.SelectPhotoActivity"></activity>
+        <activity android:name=".activity.NotificatonActivity"></activity>
+        <activity android:name=".activity.SelectPhotoActivity" />
         <activity android:name=".activity.AdviceFeedbackActivity" />
         <activity android:name=".activity.testRetrofitActivity">
 

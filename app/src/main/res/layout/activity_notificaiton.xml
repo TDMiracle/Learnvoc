@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.NotificatonActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#5BC0DE">
+
+
+        <androidx.appcompat.widget.Toolbar
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            android:id="@+id/toolbar"
+            android:background="@color/colorPrimary"
+            app:titleTextColor="@color/white"
+            app:layout_scrollFlags="scroll|enterAlways"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize">
+
+        </androidx.appcompat.widget.Toolbar>
+
+        <RelativeLayout
+            android:background="@color/white"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/config_margin_30dp">
+
+            <LinearLayout
+                android:id="@+id/line_not_compile"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="@dimen/config_margin_14dp"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_marginLeft="@dimen/config_margin_10dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="@dimen/config_margin_10dp"
+                    android:id="@+id/text_not_compile"
+                    android:textColor="@color/colorAccent"
+                    android:text="编辑"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    />
+            </LinearLayout>
+        </RelativeLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swf_not_getdata"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recy_not_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/design_default_color_background">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </LinearLayout>
+
+    <!---抽屉式布局实现下边栏隐藏和展示 -->
+    <RelativeLayout
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+        android:id="@+id/Rel_notbottom"
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <CheckBox
+            android:id="@+id/checkbox_not_checkall"
+            android:layout_marginLeft="@dimen/config_margin_20dp"
+            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/config_margin_14dp"
+            android:text="全选"
+            android:layout_toRightOf="@+id/checkbox_not_checkall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:id="@+id/text_not_delete"
+            android:layout_marginRight="@dimen/config_margin_14dp"
+            android:textColor="@color/colorAccent"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:text="删除"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            />
+    </RelativeLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

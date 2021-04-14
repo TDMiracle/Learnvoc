@@ -50,6 +50,7 @@ import com.xuexiang.xui.utils.ResUtils;
 import com.xuexiang.xui.utils.ThemeUtils;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xutil.XUtil;
+import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.common.CollectionUtils;
 import com.xuexiang.xutil.display.Colors;
@@ -150,7 +151,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         }
 
 
-        ivAvatar.setImageResource(R.drawable.ic_default_head);
+        ivAvatar.setImageResource(R.drawable.mna);
         tvAvatar.setText(R.string.app_name);
         tvSign.setText("这个家伙很懒，什么也没有留下～～");
         navHeader.setOnClickListener(this);
@@ -224,7 +225,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_privacy:
-                XToastUtils.toast("查看隐私政策");
+                ActivityUtils.startActivity(NotificatonActivity.class);
                 break;
             case R.id.action_about:
                 openNewPage(AboutFragment.class);

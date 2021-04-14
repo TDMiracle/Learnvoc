@@ -20,9 +20,9 @@
 
     <item
         android:id="@+id/action_privacy"
-        android:icon="@drawable/ic_menu_privacy"
+        android:icon="@drawable/ic_menu_notifications"
         android:orderInCategory="100"
-        android:title="隐私政策"
+        android:title="通知消息"
         app:showAsAction="always" />
 
     <item

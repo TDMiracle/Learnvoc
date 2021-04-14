@@ -117,7 +117,7 @@ public class MiddlewareWebViewClient extends MiddlewareWebClientBase {
      * @return
      */
     private static boolean hasAdUrl(String url) {
-        String[] adUrls = ResUtils.getStringArray(R.array.adBlockUrl);
+        String[] adUrls = ResUtils.getStringArray(R.array.home_titles);
         for (String adUrl : adUrls) {
             if (url.contains(adUrl)) {
                 return true;
