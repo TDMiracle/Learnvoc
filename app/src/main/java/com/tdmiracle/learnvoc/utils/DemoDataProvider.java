@@ -34,11 +34,13 @@ import java.util.List;
 
 import static com.xuexiang.xutil.app.AppUtils.getPackageName;
 
+
 /**
- * 演示数据
- *
- * @author xuexiang
- * @since 2018/11/23 下午5:52
+ * 创建日期：2021/4/5 20:14
+ * @author TD.Miracle
+ * @version 1.0
+ * 文件名称： DemoDataProvider.java
+ * 类说明：演示数据
  */
 public class DemoDataProvider {
 
