@@ -18,6 +18,13 @@
 package com.tdmiracle.learnvoc.utils;
 
 public class ConstUtils {
+    //日历选择
+    public static class CalenderSelect{
+        public static final int CALENDER_SELECT = 1;
+        public static final int CALENDER_NOT_SELECT = 0;
+    }
+
+
     //通知消息
     public static class NotificationType{
         public static final int HELP = 0;

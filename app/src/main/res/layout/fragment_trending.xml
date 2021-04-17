@@ -2,12 +2,34 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
+<!--        <TextView-->
+<!--            style="@style/TextStyle.Title"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="@string/menu_recite" />-->
+<!--        <com.xuexiang.xui.widget.layout.XUIButton-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_gravity="center"-->
+<!--            android:text="每日一句"-->
+<!--            android:id="@+id/btn_everydaySentence" />-->
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/fragment_recite_tablayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="?attr/colorPrimary"
+        app:tabMode="scrollable"
+        app:tabSelectedTextColor="?attr/colorPrimaryDark"
+        app:tabTextColor="?attr/colorPrimary"
+        />
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/fragment_recite_vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <TextView
-        style="@style/TextStyle.Title"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:text="@string/menu_recite" />
 
 </LinearLayout>

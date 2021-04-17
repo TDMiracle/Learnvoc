@@ -68,13 +68,13 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.text_notcontent_item.setText(notification.getNot_content());
         holder.text_nottitle_item.setText(notification.getNot_titel());
         holder.text_nottime_item.setText(notification.getNot_time());
-        if(notification.isIsshow()){
+        if(notification.isShow()){
             holder.check_not_itme.setVisibility(View.VISIBLE);
         }else {
             holder.check_not_itme.setVisibility(View.GONE);
         }
 
-        if(notification.isIscheck()){
+        if(notification.isCheck()){
             holder.check_not_itme.setChecked(true);
         }else {
             holder.check_not_itme.setChecked(false);
@@ -85,9 +85,9 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
             @Override
             public void onClick(View v) {
                 if(holder.check_not_itme.isChecked()){
-                    notification.setIscheck(true);
+                    notification.setCheck(true);
                 }else {
-                    notification.setIscheck(false);
+                    notification.setCheck(false);
                 }
             }
         });
@@ -97,12 +97,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(notification.isIsshow()){
+                if(notification.isShow()){
                     if(holder.check_not_itme.isChecked()){
-                        notification.setIscheck(false);
+                        notification.setCheck(false);
                         holder.check_not_itme.setChecked(false);
                     }else {
-                        notification.setIscheck(true);
+                        notification.setCheck(true);
                         holder.check_not_itme.setChecked(true);
                     }
                 }else {
@@ -123,7 +123,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         Iterator<Notification> iterator = list.iterator();
         while (iterator.hasNext()){
             Notification notificationEntity = iterator.next();
-            if(notificationEntity.isIscheck()){
+            if(notificationEntity.isCheck()){
                 iterator.remove();
             }
         }
@@ -137,12 +137,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         while (iterator.hasNext()){
             Notification notificationEntity = iterator.next();
             if(t){
-                if(!notificationEntity.isIscheck()){
-                    notificationEntity.setIscheck(true);
+                if(!notificationEntity.isCheck()){
+                    notificationEntity.setCheck(true);
                 }
             }else {
-                if (notificationEntity.isIscheck()){
-                    notificationEntity.setIscheck(false);
+                if (notificationEntity.isCheck()){
+                    notificationEntity.setCheck(false);
                 }
             }
         }
@@ -156,12 +156,12 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
         while (iterator.hasNext()){
             Notification notificationEntity = iterator.next();
             if(t){
-                if(!notificationEntity.isIsshow()){
-                    notificationEntity.setIsshow(true);
+                if(!notificationEntity.isShow()){
+                    notificationEntity.setShow(true);
                 }
             }else {
-                if (notificationEntity.isIsshow()){
-                    notificationEntity.setIsshow(false);
+                if (notificationEntity.isShow()){
+                    notificationEntity.setShow(false);
                 }
             }
         }

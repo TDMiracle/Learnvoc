@@ -10,7 +10,7 @@ android {
     buildToolsVersion build_versions.build_tools
 
     defaultConfig {
-        applicationId "com.xuexiang.learnvoc"
+        applicationId "com.tdmiracle.learnvoc"
         minSdkVersion 17
         targetSdkVersion build_versions.target_sdk
         versionCode 1
@@ -134,6 +134,13 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     implementation 'com.contrarywind:Android-PickerView:3.2.7'
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    /**网络请求封装**/
+    implementation 'com.lzy.net:okgo:3.0.4'
+    /**日历选择器**/
+    implementation 'com.prolificinteractive:material-calendarview:1.4.3'
+    implementation "com.google.android.material:material:1.0.0"
+    /**用于Android的事件发布-订阅总线**/
+    implementation 'org.greenrobot:eventbus:3.1.1'
 
 }
 //自动添加X-Library依赖

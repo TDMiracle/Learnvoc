@@ -16,17 +16,16 @@
   ~
   -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment.statistic.StatisticFragment">
+    tools:context=".activity.CalenderSelectActivity">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="@string/menu_statistic" />
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/materialCalendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
-</FrameLayout>
+</LinearLayout>

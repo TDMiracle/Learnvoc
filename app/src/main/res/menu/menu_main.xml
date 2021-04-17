@@ -19,17 +19,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_privacy"
-        android:icon="@drawable/ic_menu_notifications"
+        android:id="@+id/action_notification"
+        android:icon="@drawable/ic_menu_notification_white"
         android:orderInCategory="100"
         android:title="通知消息"
         app:showAsAction="always" />
 
     <item
-        android:id="@+id/action_about"
-        android:icon="@drawable/ic_menu_about_white"
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_menu_search_white"
         android:orderInCategory="100"
-        android:title="关于"
+        android:title="单词搜索"
         app:showAsAction="always" />
 
 </menu>

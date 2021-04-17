@@ -30,6 +30,8 @@ public class Notification {
     String not_title;
     String not_content;
     String not_time;
+    boolean isShow;
+    boolean isCheck;
 
     public boolean isShow() {
         return isShow;
@@ -46,10 +48,6 @@ public class Notification {
     public void setCheck(boolean check) {
         isCheck = check;
     }
-
-    boolean isShow;
-    boolean isCheck;
-
 
     public int getId() {
         return id;

@@ -57,12 +57,7 @@ import com.xuexiang.xutil.display.Colors;
 
 import butterknife.BindView;
 
-/**
- * 程序主页面,只是一个简单的Tab例子
- *
- * @author xuexiang
- * @since 2019-07-07 23:53
- */
+
 public class MainActivity extends BaseActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener, ClickUtils.OnClick2ExitListener, Toolbar.OnMenuItemClickListener {
 
     @BindView(R.id.toolbar)
@@ -175,6 +170,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                     case R.id.nav_about:
                         openNewPage(AboutFragment.class);
                         break;
+                    case R.id.nav_search:
+                        break;
                     default:
                         XToastUtils.toast("点击了:" + menuItem.getTitle());
                         break;
@@ -224,11 +221,11 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     @Override
     public boolean onMenuItemClick(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_privacy:
+            case R.id.action_notification:
                 ActivityUtils.startActivity(NotificatonActivity.class);
                 break;
-            case R.id.action_about:
-                openNewPage(AboutFragment.class);
+            case R.id.action_search:
+                ActivityUtils.startActivity(SearchVocActivity.class);
                 break;
             default:
                 break;

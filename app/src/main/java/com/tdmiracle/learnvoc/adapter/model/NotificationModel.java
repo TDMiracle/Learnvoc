@@ -46,9 +46,9 @@ public class NotificationModel implements NotificaitonContract.Model {
             data.setNot_titel("学习周报"+"第"+ (i + 1) +"周");
             data.setNot_content("每周很重要~快来查收你上周得学习周报O(∩_∩)O");
             data.setNot_time( (5-i) * 7 + "天前");
-            data.setIsshow(isshow);
+            data.setShow(isshow);
             data.setId(i);
-            data.setIscheck(false);
+            data.setCheck(false);
             list.add(data);
         }
         callback.onSucceed(list);
@@ -94,13 +94,13 @@ public class NotificationModel implements NotificaitonContract.Model {
             holder.text_notcontent_item.setText(notification.getNot_content());
             holder.text_nottitle_item.setText(notification.getNot_titel());
             holder.text_nottime_item.setText(notification.getNot_time());
-            if (notification.isIsshow()) {
+            if (notification.isShow()) {
                 holder.check_not_itme.setVisibility(View.VISIBLE);
             } else {
                 holder.check_not_itme.setVisibility(View.GONE);
             }
 
-            if (notification.isIscheck()) {
+            if (notification.isCheck()) {
                 holder.check_not_itme.setChecked(true);
             } else {
                 holder.check_not_itme.setChecked(false);
@@ -111,9 +111,9 @@ public class NotificationModel implements NotificaitonContract.Model {
                 @Override
                 public void onClick(View v) {
                     if (holder.check_not_itme.isChecked()) {
-                        notification.setIscheck(true);
+                        notification.setCheck(true);
                     } else {
-                        notification.setIscheck(false);
+                        notification.setCheck(false);
                     }
                 }
             });
@@ -122,12 +122,12 @@ public class NotificationModel implements NotificaitonContract.Model {
             holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (notification.isIsshow()) {
+                    if (notification.isShow()) {
                         if (holder.check_not_itme.isChecked()) {
-                            notification.setIscheck(false);
+                            notification.setCheck(false);
                             holder.check_not_itme.setChecked(false);
                         } else {
-                            notification.setIscheck(true);
+                            notification.setCheck(true);
                             holder.check_not_itme.setChecked(true);
                         }
                     } else {
@@ -151,7 +151,7 @@ public class NotificationModel implements NotificaitonContract.Model {
             Iterator<Notification> iterator = list.iterator();
             while (iterator.hasNext()) {
                 Notification notificationEntity = iterator.next();
-                if (notificationEntity.isIscheck()) {
+                if (notificationEntity.isCheck()) {
                     iterator.remove();
                 }
             }
@@ -166,12 +166,12 @@ public class NotificationModel implements NotificaitonContract.Model {
             while (iterator.hasNext()) {
                 Notification notificationEntity = iterator.next();
                 if (t) {
-                    if (!notificationEntity.isIscheck()) {
-                        notificationEntity.setIscheck(true);
+                    if (!notificationEntity.isCheck()) {
+                        notificationEntity.setCheck(true);
                     }
                 } else {
-                    if (notificationEntity.isIscheck()) {
-                        notificationEntity.setIscheck(false);
+                    if (notificationEntity.isCheck()) {
+                        notificationEntity.setCheck(false);
                     }
                 }
             }
@@ -186,12 +186,12 @@ public class NotificationModel implements NotificaitonContract.Model {
             while (iterator.hasNext()) {
                 Notification notificationEntity = iterator.next();
                 if (t) {
-                    if (!notificationEntity.isIsshow()) {
-                        notificationEntity.setIsshow(true);
+                    if (!notificationEntity.isShow()) {
+                        notificationEntity.setShow(true);
                     }
                 } else {
-                    if (notificationEntity.isIsshow()) {
-                        notificationEntity.setIsshow(false);
+                    if (notificationEntity.isShow()) {
+                        notificationEntity.setShow(false);
                     }
                 }
             }
