@@ -17,6 +17,8 @@
 
 package com.tdmiracle.learnvoc.fragment.news;
 
+import android.view.View;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,10 +27,12 @@ import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.tdmiracle.learnvoc.activity.WordsListActivity;
 import com.tdmiracle.learnvoc.adapter.base.broccoli.BroccoliSimpleDelegateAdapter;
 import com.tdmiracle.learnvoc.adapter.base.delegate.SimpleDelegateAdapter;
 import com.tdmiracle.learnvoc.adapter.base.delegate.SingleDelegateAdapter;
 import com.tdmiracle.learnvoc.core.BaseFragment;
+import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.DemoDataProvider;
 import com.tdmiracle.learnvoc.utils.Utils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
@@ -42,6 +46,7 @@ import com.xuexiang.xui.widget.actionbar.TitleBar;
 import com.xuexiang.xui.widget.banner.widget.banner.SimpleImageBanner;
 import com.xuexiang.xui.widget.imageview.ImageLoader;
 import com.xuexiang.xui.widget.imageview.RadiusImageView;
+import com.xuexiang.xutil.app.ActivityUtils;
 
 import butterknife.BindView;
 import me.samlss.broccoli.Broccoli;
@@ -110,8 +115,20 @@ public class NewsFragment extends BaseFragment {
                     ImageLoader.get().loadImage(imageView, item.getIcon());
                     holder.text(R.id.tv_title, item.getTitle().toString().substring(0, 1));
                     holder.text(R.id.tv_sub_title, item.getTitle());
-
-                    holder.click(R.id.ll_container, v -> XToastUtils.toast("点击了：" + item.getTitle()));
+                    //holder.click(R.id.ll_container, v -> XToastUtils.toast("点击了：" + item.getTitle()));
+                    holder.click(R.id.ll_container, new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            switch (item.getTitle().toString()){
+                                case "四级":
+                                    ActivityUtils.startActivity(WordsListActivity.class);
+                                    break;
+                                default:
+                                    XToastUtils.toast("default");
+                                    break;
+                            }
+                        }
+                    });
                 }
             }
         };

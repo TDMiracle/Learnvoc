@@ -101,7 +101,7 @@ public class DemoDataProvider {
                 .setImageUrl("https://pic2.zhimg.com/v2-e6252b252d07be6029e254d417126ff2_1440w.jpg?source=172ae18b"));
 
         list.add(new NewInfo("托福", "首考托福110上岸，托福考试备考全攻略分享，如何在最短时间内拿到高分。")
-                .setSummary("一个功能强悍的网络请求库，使用RxJava2 + Retrofit2 + OKHttp组合进行封装。还不赶紧点击使用说明文档，体验一下吧！")
+                .setSummary("托福是由美国教育测验服务社（ETS）举办的英语能力考试，现在咱们考的主要为ibt—internet based test 网考，满分是120分")
                 .setDetailUrl("https://zhuanlan.zhihu.com/p/242712346")
                 .setImageUrl("https://pic2.zhimg.com/v2-8369cdbb3a776f1fdf61c2ab53eba581_b.jpg"));
         return list;

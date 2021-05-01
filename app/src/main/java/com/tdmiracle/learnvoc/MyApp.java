@@ -19,6 +19,8 @@ package com.tdmiracle.learnvoc;
 
 import android.app.Application;
 import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.ColorSpace;
 
 import androidx.multidex.MultiDex;
 
@@ -26,6 +28,9 @@ import com.tdmiracle.learnvoc.utils.sdkinit.ANRWatchDogInit;
 import com.tdmiracle.learnvoc.utils.sdkinit.UMengInit;
 import com.tdmiracle.learnvoc.utils.sdkinit.XBasicLibInit;
 import com.tdmiracle.learnvoc.utils.sdkinit.XUpdateInit;
+
+import org.litepal.LitePal;
+import org.litepal.tablemanager.Connector;
 
 
 /**
@@ -65,6 +70,11 @@ public class MyApp extends Application {
 
         //ANR监控
         ANRWatchDogInit.init();
+        //litepal初始化
+        LitePal.initialize(this);
+        LitePal.getDatabase();
+        //获取sqlite数据库实例
+        SQLiteDatabase db = Connector.getDatabase();
     }
 
 

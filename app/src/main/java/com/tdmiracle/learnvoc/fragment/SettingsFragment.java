@@ -17,6 +17,8 @@
 
 package com.tdmiracle.learnvoc.fragment;
 
+import android.content.Intent;
+
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.utils.TokenUtils;
@@ -26,6 +28,7 @@ import com.xuexiang.xpage.annotation.Page;
 import com.xuexiang.xui.widget.dialog.DialogLoader;
 import com.xuexiang.xui.widget.textview.supertextview.SuperTextView;
 import com.xuexiang.xutil.XUtil;
+import com.xuexiang.xutil.app.ActivityUtils;
 
 import butterknife.BindView;
 
@@ -70,13 +73,36 @@ public class SettingsFragment extends BaseFragment implements SuperTextView.OnSu
         menuAccountSecurity.setOnSuperTextViewClickListener(this);
     }
 
+    /**
+     * 分享应用
+     */
+    private void pushApplicaiton(){
+        Intent share_intent = new Intent();
+        share_intent.setAction(Intent.ACTION_SEND);//设置分享行为
+        share_intent.setType("text/plain");//设置分享内容的类型
+        share_intent.putExtra(Intent.EXTRA_SUBJECT, "分享易拾");//添加分享内容标题
+        share_intent.putExtra(Intent.EXTRA_TEXT,   "易拾");//添加分享内容
+        //创建分享的Dialog
+        share_intent =   Intent.createChooser(share_intent, "分享");
+        startActivity(share_intent);
+    }
+
     @SingleClick
     @Override
     public void onClick(SuperTextView superTextView) {
         switch (superTextView.getId()) {
             case R.id.menu_common:
+            {
+                break;
+            }
             case R.id.menu_privacy:
+            {
+            }
             case R.id.menu_push:
+            {
+                pushApplicaiton();
+                break;
+            }
             case R.id.menu_helper:
             case R.id.menu_settings:
             case R.id.menu_clearCache:

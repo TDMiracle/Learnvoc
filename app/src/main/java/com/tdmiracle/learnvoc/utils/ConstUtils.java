@@ -44,4 +44,48 @@ public class ConstUtils {
         }
     }
 
+    //首页词库选择
+    public static class WordsType{
+        public static final int SIJI = 0;
+        public static final int LIUJI = 1;
+        public static final int gaozhong = 2;
+        public static final int chuzhong = 3;
+        public static final int yasi = 4;
+        public static final int tuofu = 5;
+        public static final int kaoyan = 6;
+        public static final int kaobo = 7;
+
+        public static String getWordsType(int code){
+            String desc = "未知种类";
+            switch (code){
+                case SIJI:
+                    desc = "四级";
+                    break;
+                case LIUJI:
+                    desc = "六级";
+                    break;
+                case gaozhong:
+                    desc = "高中";
+                    break;
+                case chuzhong:
+                    desc = "初中";
+                    break;
+                case yasi:
+                    desc = "雅思";
+                    break;
+                case tuofu:
+                    desc = "托福";
+                    break;
+                case kaoyan:
+                    desc = "考研";
+                    break;
+                case kaobo:
+                    desc = "考博";
+                    break;
+
+            }
+            return desc;
+        }
+    }
+
 }

@@ -106,10 +106,10 @@ public class EverydayFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        initViews();
         View rootView = inflater.inflate(R.layout.fragment_everyday,container,false);
         ButterKnife.bind(this,rootView);
-        initViews();
-        getEverydaySentenceEntity();
+        getEverydaySentenceEntity(calendar);
         return rootView;
     }
 
@@ -194,13 +194,12 @@ public class EverydayFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-
+        calendar = Calendar.getInstance();
     }
 
 
-    public void getEverydaySentenceEntity(){
-        calendar = Calendar.getInstance();
-        getHttpData(calendar);
+    public void getEverydaySentenceEntity(Calendar cal){
+        getHttpData(cal);
     }
 
     /**

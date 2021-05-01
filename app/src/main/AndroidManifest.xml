@@ -25,19 +25,14 @@
         tools:ignore="LockedOrientationActivity"
         tools:replace="android:icon, android:theme"
         tools:targetApi="n">
-        <activity android:name=".activity.CalenderSelectActivity"></activity>
-        <activity android:name=".activity.EverydaySentenceActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+        <activity android:name=".activity.WordDetailActivity"></activity>
+        <activity android:name=".activity.WordsListActivity" />
+        <activity android:name=".activity.CalenderSelectActivity" />
         <activity android:name=".activity.SearchVocActivity" />
         <activity android:name=".activity.NotificatonActivity" />
         <activity android:name=".activity.SelectPhotoActivity" />
         <activity android:name=".activity.AdviceFeedbackActivity" />
-        <activity android:name=".activity.testRetrofitActivity"></activity>
+        <activity android:name=".activity.testRetrofitActivity" />
         <activity android:name=".activity.EditPersonalInfoActivity" />
         <activity android:name=".activity.ForceOfflineActivity" />
         <activity

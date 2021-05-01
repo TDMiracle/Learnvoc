@@ -40,6 +40,7 @@ import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.core.BaseActivity;
 
 import java.io.File;
+import java.io.IOException;
 
 
 /**
@@ -131,14 +132,14 @@ public class SelectPhotoActivity extends BaseActivity implements View.OnClickLis
     private void pickImageFromCamera() {
         File outputImage=new File(getFilesDir(),
                 "output_image.jpg");//创建File对象，用于存储拍照后的图片，获取sd卡根目录
-//        try{
-//            if(outputImage.exists()){
-//                outputImage.delete();
-//            }
-//            outputImage.createNewFile();
-//        }catch (IOException e){
-//            e.printStackTrace();
-//        }
+        try{
+            if(outputImage.exists()){
+                outputImage.delete();
+            }
+            outputImage.createNewFile();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
         imageUri=Uri.fromFile(outputImage);//File对象转化为Uri对象
         Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         intent.putExtra(MediaStore.EXTRA_OUTPUT,imageUri);
