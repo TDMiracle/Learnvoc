@@ -47,4 +47,14 @@ public class HttpUtils {
                 .execute(callback);
 
     }
+
+    public static void getEnglishWord(Context context, String word, StringCallback callback) throws IOException {
+        String url = "http://api.tianapi.com/txapi/enwords/index";
+        OkGo.<String>get(url)
+                .tag(context)
+                .params("key", APIKEY)
+                .params("word", word)
+                .execute(callback);
+
+    }
 }

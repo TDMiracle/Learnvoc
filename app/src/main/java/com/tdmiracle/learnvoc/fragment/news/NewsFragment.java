@@ -17,6 +17,7 @@
 
 package com.tdmiracle.learnvoc.fragment.news;
 
+import android.content.Intent;
 import android.view.View;
 
 import androidx.annotation.NonNull;
@@ -119,14 +120,39 @@ public class NewsFragment extends BaseFragment {
                     holder.click(R.id.ll_container, new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
+                            int wordType = 0;
+                            Intent intent = new Intent(getContext(),WordsListActivity.class);
                             switch (item.getTitle().toString()){
                                 case "四级":
-                                    ActivityUtils.startActivity(WordsListActivity.class);
+                                    wordType = ConstUtils.WordsType.SIJI;
                                     break;
+                                case "六级":
+                                    wordType = ConstUtils.WordsType.LIUJI;
+                                    break;
+                                case "高中":
+                                    wordType = ConstUtils.WordsType.gaozhong;
+                                    break;
+                                case "初中":
+                                    wordType = ConstUtils.WordsType.chuzhong;
+                                    break;
+                                case "雅思":
+                                    wordType = ConstUtils.WordsType.yasi;
+                                    break;
+                                case "托福":
+                                    wordType = ConstUtils.WordsType.tuofu;
+                                    break;
+                                case "考研":
+                                    wordType = ConstUtils.WordsType.kaoyan;
+                                    break;
+//                                case "考博":
+//                                    //wordType = ConstUtils.WordsType.kaobo;
+//                                    break;
                                 default:
-                                    XToastUtils.toast("default");
+                                    XToastUtils.toast("单词书获取失败！");
                                     break;
                             }
+                            intent.putExtra("type",wordType);
+                            startActivity(intent);
                         }
                     });
                 }

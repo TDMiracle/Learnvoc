@@ -19,7 +19,7 @@
 <litepal>
     <dbname value="demo" />
 
-    <version value="3" />
+    <version value="4" />
 
 
     <list>
@@ -27,5 +27,7 @@
         <mapping class="com.tdmiracle.learnvoc.module.User"> </mapping>
         <mapping class="com.tdmiracle.learnvoc.module.LoginInfo"> </mapping>
         <mapping class="com.tdmiracle.learnvoc.module.Word"> </mapping>
+        <mapping class="com.tdmiracle.learnvoc.module.Image"> </mapping>
+        <mapping class="com.tdmiracle.learnvoc.module.RowWordsBook"> </mapping>
     </list>
 </litepal>

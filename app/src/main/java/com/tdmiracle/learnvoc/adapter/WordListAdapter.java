@@ -56,6 +56,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(parent.getContext(), WordDetailActivity.class);
+                intent.putExtra("word",holder.word.getText());
                 parent.getContext().startActivity(intent);
             }
         });
@@ -67,7 +68,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
      * */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.image.setImageResource(R.mipmap.leak_canary_icon);
+        //holder.image.setImageResource(R.mipmap.leak_canary_icon);
         holder.word.setText(words.get(position).getWord());
         holder.yinbiao.setText(words.get(position).getYinbiao());
         holder.translation.setText(words.get(position).getTranslation());
@@ -91,7 +92,7 @@ public class WordListAdapter extends RecyclerView.Adapter<WordListAdapter.ViewHo
 
         public ViewHolder(View itemView) {
             super(itemView);
-            image = (ImageView) itemView.findViewById(R.id.voc_image);
+            //image = (ImageView) itemView.findViewById(R.id.voc_image);
             word = (TextView) itemView.findViewById(R.id.voc_word);
             yinbiao = (TextView) itemView.findViewById(R.id.voc_yinbiao);
             translation = (TextView) itemView.findViewById(R.id.voc_translation);

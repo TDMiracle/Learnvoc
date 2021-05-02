@@ -31,17 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <ImageView
-            android:id="@+id/voc_image"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:scaleType="center"/>
         <TextView
             android:id="@+id/voc_word"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="16sp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
             android:layout_gravity="center"/>
         <TextView
             android:id="@+id/voc_yinbiao"
@@ -49,6 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textSize="16sp"
+            android:gravity="center"
             android:layout_gravity="center"/>
         <TextView
             android:id="@+id/voc_translation"
@@ -56,6 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:textSize="16sp"
+            android:gravity="center"
             android:layout_gravity="center"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

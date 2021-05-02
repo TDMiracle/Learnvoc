@@ -17,9 +17,11 @@
 
 package com.tdmiracle.learnvoc.activity;
 
+import android.util.Log;
 import android.view.KeyEvent;
 
 import com.tdmiracle.learnvoc.R;
+import com.tdmiracle.learnvoc.utils.DBManager;
 import com.tdmiracle.learnvoc.utils.SettingUtils;
 import com.tdmiracle.learnvoc.utils.TokenUtils;
 import com.tdmiracle.learnvoc.utils.Utils;
@@ -39,6 +41,9 @@ import me.jessyan.autosize.internal.CancelAdapt;
  */
 public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
 
+    private final String TAG = "SplashActivity";
+    public DBManager dbHelper;
+
     @Override
     protected long getSplashDurationMillis() {
         return 2000;
@@ -51,6 +56,10 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
     protected void onCreateActivity() {
         initSplashView(R.drawable.xui_config_bg_splash);
         startSplash(false);
+        //加载单词数据库
+        dbHelper = new DBManager(this);
+        dbHelper.openDatabase();
+        dbHelper.closeDatabase();
     }
 
 

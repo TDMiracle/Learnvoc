@@ -203,7 +203,7 @@ public class EverydayFragment extends BaseFragment {
     }
 
     /**
-     * 掉用金山词霸每日一句接口获取每日一句对象
+     * 调用天行每日一句接口获取每日一句对象
      * @param calendar
      */
     private void getHttpData(Calendar calendar) {

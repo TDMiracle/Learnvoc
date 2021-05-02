@@ -88,4 +88,48 @@ public class ConstUtils {
         }
     }
 
+    //数据表词库选择
+    public static class WordsStoreType{
+        public static final int SIJI = 0;
+        public static final int LIUJI = 1;
+        public static final int gaozhong = 2;
+        public static final int chuzhong = 3;
+        public static final int yasi = 4;
+        public static final int tuofu = 5;
+        public static final int kaoyan = 6;
+        public static final int kaobo = 7;
+
+        public static String getWordsStoreType(int code){
+            String desc = "未知种类";
+            switch (code){
+                case SIJI:
+                    desc = "cet4";
+                    break;
+                case LIUJI:
+                    desc = "cet6";
+                    break;
+                case gaozhong:
+                    desc = "gaozhong";
+                    break;
+                case chuzhong:
+                    desc = "chuzhong";
+                    break;
+                case yasi:
+                    desc = "ielts";
+                    break;
+                case tuofu:
+                    desc = "toefl";
+                    break;
+                case kaoyan:
+                    desc = "kaoyan";
+                    break;
+                case kaobo:
+                    desc = "kaobo";
+                    break;
+
+            }
+            return desc;
+        }
+    }
+
 }
