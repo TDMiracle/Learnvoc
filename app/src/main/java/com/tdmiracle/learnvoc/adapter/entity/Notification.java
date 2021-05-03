@@ -18,6 +18,10 @@
 package com.tdmiracle.learnvoc.adapter.entity;
 
 
+import org.litepal.crud.LitePalSupport;
+
+import java.util.Date;
+
 /**
  * 创建日期：2021/4/14 10:38
  * @author TD.Miracle
@@ -25,13 +29,45 @@ package com.tdmiracle.learnvoc.adapter.entity;
  * 文件名称： Notification.java
  * 类说明：系统通知实体类
  */
-public class Notification {
+public class Notification extends LitePalSupport {
     int id;
     String not_title;
     String not_content;
-    String not_time;
+    String not_time;//查看间隔时间
     boolean isShow;
     boolean isCheck;
+    Date create_time;//创建时间
+
+    public Notification(){
+
+    }
+
+    public Notification(int id, String not_title, String not_content, String not_time, boolean isShow, boolean isCheck, Date create_time) {
+        this.id = id;
+        this.not_title = not_title;
+        this.not_content = not_content;
+        this.not_time = not_time;
+        this.isShow = isShow;
+        this.isCheck = isCheck;
+        this.create_time = create_time;
+    }
+
+
+    public String getNot_title() {
+        return not_title;
+    }
+
+    public void setNot_title(String not_title) {
+        this.not_title = not_title;
+    }
+
+    public Date getCreate_time() {
+        return create_time;
+    }
+
+    public void setCreate_time(Date create_time) {
+        this.create_time = create_time;
+    }
 
     public boolean isShow() {
         return isShow;
@@ -57,13 +93,6 @@ public class Notification {
         this.id = id;
     }
 
-    public String getNot_titel() {
-        return not_title;
-    }
-
-    public void setNot_titel(String not_titel) {
-        this.not_title = not_title;
-    }
 
     public String getNot_content() {
         return not_content;

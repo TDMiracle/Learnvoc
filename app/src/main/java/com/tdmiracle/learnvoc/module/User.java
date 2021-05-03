@@ -22,18 +22,46 @@ import org.litepal.crud.LitePalSupport;
 import java.util.Date;
 
 public class User extends LitePalSupport {
-    String uid;
+    int id;//主键
+    String uid;//用户账号
     String nickname;
     String signature;
     String email;
     String phone;
-    Date birthday;
+    String gender;
+    String school;
+    String birthday;
     String distinct;
     int type;
     Date create_time;
     Date update_time;
     Date delete_time;
+    //与LoginInfo表为一对一关联
+    LoginInfo loginInfo;//登录信息
 
+    public String getSchool() {
+        return school;
+    }
+
+    public void setSchool(String school) {
+        this.school = school;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     public String getPhone() {
         return phone;
     }
@@ -49,7 +77,7 @@ public class User extends LitePalSupport {
     public User() {
     }
 
-    public User(String uid, String nickname, String signature, String email, String phone, Date birthday, String distinct, int type, Date create_time, Date update_time, Date delete_time) {
+    public User(String uid, String nickname, String signature, String email, String phone, String birthday, String distinct, int type, Date create_time, Date update_time, Date delete_time) {
         this.uid = uid;
         this.nickname = nickname;
         this.signature = signature;
@@ -91,11 +119,11 @@ public class User extends LitePalSupport {
         this.email = email;
     }
 
-    public Date getBirthday() {
+    public String getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
+    public void setBirthday(String birthday) {
         this.birthday = birthday;
     }
 
@@ -137,5 +165,35 @@ public class User extends LitePalSupport {
 
     public void setDelete_time(Date delete_time) {
         this.delete_time = delete_time;
+    }
+
+
+    public LoginInfo getLoginInfo() {
+        return loginInfo;
+    }
+
+    public void setLoginInfo(LoginInfo loginInfo) {
+        this.loginInfo = loginInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", uid='" + uid + '\'' +
+                ", nickname='" + nickname + '\'' +
+                ", signature='" + signature + '\'' +
+                ", email='" + email + '\'' +
+                ", phone='" + phone + '\'' +
+                ", birthday=" + birthday +
+                ", distinct='" + distinct + '\'' +
+                ", type=" + type +
+                ", create_time=" + create_time +
+                ", update_time=" + update_time +
+                ", delete_time=" + delete_time +
+                ", loginInfo=" + loginInfo +
+                ",gender=" + gender +
+                ",school=" + school +
+                '}';
     }
 }

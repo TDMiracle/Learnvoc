@@ -32,27 +32,24 @@ import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.adapter.ICallback;
 import com.tdmiracle.learnvoc.adapter.NotificaitonContract;
 import com.tdmiracle.learnvoc.adapter.entity.Notification;
+import com.tdmiracle.learnvoc.dao.NotificationDao;
+import com.tdmiracle.learnvoc.dao.daoImpl.NotificationDaoImpl;
 
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * 通知消息获取
+ */
 public class NotificationModel implements NotificaitonContract.Model {
+    //从数据库中获取通知信息
     @Override
     public void getnotificationlist(Context context, boolean isshow,ICallback<List<Notification>> callback) {
-        List<Notification> list = new ArrayList<>();
-        for (int i = 0;i < 5; i ++){
-            Notification data = new Notification();
-            data.setNot_titel("学习周报"+"第"+ (i + 1) +"周");
-            data.setNot_content("每周很重要~快来查收你上周得学习周报O(∩_∩)O");
-            data.setNot_time( (5-i) * 7 + "天前");
-            data.setShow(isshow);
-            data.setId(i);
-            data.setCheck(false);
-            list.add(data);
-        }
+        List<Notification> list;
+        NotificationDao dao = new NotificationDaoImpl();
+        list = dao.findNotificationList();
         callback.onSucceed(list);
-
     }
 
 
@@ -92,7 +89,7 @@ public class NotificationModel implements NotificaitonContract.Model {
         public void onBindViewHolder(@NonNull final NotificationAdapter.Viewholder holder, final int position) {
             final Notification notification = list.get(position);
             holder.text_notcontent_item.setText(notification.getNot_content());
-            holder.text_nottitle_item.setText(notification.getNot_titel());
+            holder.text_nottitle_item.setText(notification.getNot_title());
             holder.text_nottime_item.setText(notification.getNot_time());
             if (notification.isShow()) {
                 holder.check_not_itme.setVisibility(View.VISIBLE);

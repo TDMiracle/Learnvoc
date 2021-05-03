@@ -24,6 +24,7 @@ import android.graphics.ColorSpace;
 
 import androidx.multidex.MultiDex;
 
+import com.tdmiracle.learnvoc.module.User;
 import com.tdmiracle.learnvoc.utils.sdkinit.ANRWatchDogInit;
 import com.tdmiracle.learnvoc.utils.sdkinit.UMengInit;
 import com.tdmiracle.learnvoc.utils.sdkinit.XBasicLibInit;
@@ -38,9 +39,11 @@ import org.litepal.tablemanager.Connector;
  * @author TD.Miracle
  * @version 1.0
  * 文件名称： MyApp.java
- * 类说明：
+ * 类说明：全局类
  */
 public class MyApp extends Application {
+    //内存中缓存user对象
+    User user;
 
     @Override
     protected void attachBaseContext(Context base) {
@@ -85,5 +88,15 @@ public class MyApp extends Application {
         return BuildConfig.DEBUG;
     }
 
+    /**
+     *  获取和设置全局对象
+     *  这些共享数据只在应用程序的生命周期内有效，当该应用程序被杀死，这些数据也会被清空，所以只能存储一些具备 临时性的共享数据
+     * */
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

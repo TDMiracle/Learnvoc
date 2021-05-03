@@ -34,8 +34,6 @@ public class UserDaoImpl implements UserDao {
     public Boolean IncreaseUser(User user, String password) {
         //同时更新loginInfo表
         LoginInfo login = new LoginInfo();
-        login.setPhone(user.getPhone());
-        login.setIdUser(user.getUid());
         login.setPassword(password);
         //事物处理
         try {
@@ -52,12 +50,21 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> findUserByID(String uid) {
-        List<User> login = LitePal.select()
+    public List<User> findUserByUid(String uid) {
+        List<User> user = LitePal.select()
                 .where("uid = ?", uid)
                 .limit(1)
                 .find(User.class);
-        return login;
+        return user;
+    }
+
+    @Override
+    public List<User>   findUserById(String id) {
+        List<User> user = LitePal.select()
+                .where("id = ?", id)
+                .limit(1)
+                .find(User.class);
+        return user;
     }
 
     @Override
@@ -84,28 +91,14 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Boolean updateUserinfo(User user) {
         List<User> userInfos = LitePal.select()
-                .where("iduser = ?", user.getUid())
+                .where("uid = ?", user.getUid())
                 .limit(1)
                 .find(User.class);
         if (userInfos.size() == 0){
-            Log.d(TAG, "updateUserinfo: user not exists");
+            Log.d(TAG, "updateUserInfo: user not exists");
             return  false;
         }
-        User foundUser = userInfos.get(0);
-        if(user.getNickname() != null)
-            foundUser.setNickname(user.getNickname());
-        if(user.getPhone() != null){
-            foundUser.setPhone(user.getPhone());
-            LoginInfo loginInfo = LitePal.select()
-                    .where("iduser = ?", user.getUid())
-                    .limit(1)
-                    .find(LoginInfo.class).get(0);
-            loginInfo.setPhone(user.getPhone());
-            loginInfo.save();
-        }
-        if(user.save()){
-            return true;
-        }
-        return false;
+        user.update(user.getId());
+        return true;
     }
 }

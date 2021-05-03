@@ -46,8 +46,8 @@ import butterknife.OnClick;
 /**
  * 登录页面
  *
- * @author xuexiang
- * @since 2019-11-17 22:15
+ * @author TD.Miracle
+ * @since 2021-3-17 22:15
  */
 @Page(anim = CoreAnim.none)
 public class LoginFragment extends BaseFragment {

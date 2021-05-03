@@ -66,7 +66,7 @@ public class NotificationAdapter extends RecyclerView.Adapter<NotificationAdapte
     public void onBindViewHolder(@NonNull final NotificationAdapter.Viewholder holder, final int position) {
         final Notification notification =  list.get(position);
         holder.text_notcontent_item.setText(notification.getNot_content());
-        holder.text_nottitle_item.setText(notification.getNot_titel());
+        holder.text_nottitle_item.setText(notification.getNot_title());
         holder.text_nottime_item.setText(notification.getNot_time());
         if(notification.isShow()){
             holder.check_not_itme.setVisibility(View.VISIBLE);

@@ -33,6 +33,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.tdmiracle.learnvoc.dao.UserDao;
+import com.tdmiracle.learnvoc.dao.daoImpl.UserDaoImpl;
 import com.tdmiracle.learnvoc.fragment.AboutFragment;
 import com.tdmiracle.learnvoc.fragment.SettingsFragment;
 import com.tdmiracle.learnvoc.R;
@@ -42,6 +44,7 @@ import com.tdmiracle.learnvoc.fragment.news.NewsFragment;
 import com.tdmiracle.learnvoc.fragment.profile.ProfileFragment;
 import com.tdmiracle.learnvoc.fragment.recite.ReciteFragment;
 import com.tdmiracle.learnvoc.fragment.statistic.StatisticFragment;
+import com.tdmiracle.learnvoc.module.User;
 import com.tdmiracle.learnvoc.utils.Utils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
 import com.xuexiang.xaop.annotation.SingleClick;
@@ -78,6 +81,9 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     DrawerLayout drawerLayout;
 
     private String[] mTitles;
+
+    // 当前登录用户
+    User user;
 
     @Override
     protected int getLayoutId() {
@@ -144,11 +150,13 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 ivAvatar.setImageTintList(ResUtils.getColors(R.color.xui_config_color_gray_3));
             }
         }
-
+        //获取当前用户信息
+        UserDao userDao = new UserDaoImpl();
+        user = userDao.findUserById("2").get(0);
 
         ivAvatar.setImageResource(R.drawable.mna);
-        tvAvatar.setText(R.string.app_name);
-        tvSign.setText("这个家伙很懒，什么也没有留下～～");
+        tvAvatar.setText(user.getNickname());
+        tvSign.setText(user.getSignature());
         navHeader.setOnClickListener(this);
     }
 

@@ -54,6 +54,7 @@ public class ConstUtils {
         public static final int tuofu = 5;
         public static final int kaoyan = 6;
         public static final int kaobo = 7;
+        public static final int Unknown = -1;
 
         public static String getWordsType(int code){
             String desc = "未知种类";
@@ -81,6 +82,9 @@ public class ConstUtils {
                     break;
                 case kaobo:
                     desc = "考博";
+                    break;
+                case Unknown:
+                    desc = "未知";
                     break;
 
             }

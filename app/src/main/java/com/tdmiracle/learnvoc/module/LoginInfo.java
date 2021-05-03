@@ -20,35 +20,31 @@ package com.tdmiracle.learnvoc.module;
 import org.litepal.crud.LitePalSupport;
 
 public class LoginInfo extends LitePalSupport {
-    String uid = "";
+    int id;
+
     String password = "";
-    String phone = "";
 
     public LoginInfo() {
     }
 
-    public LoginInfo(String uid, String password, String phone) {
-        this.uid = uid;
+    public LoginInfo( String password) {
         this.password = password;
-        this.phone = phone;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     @Override
     public String toString() {
         return "LoginInfo{" +
-                "idUser='" + uid + '\'' +
                 ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
                 '}';
     }
 
-    public String getIdUser() {
-        return uid;
-    }
-
-    public void setIdUser(String uid) {
-        this.uid = uid;
-    }
 
     public String getPassword() {
         return password;
@@ -58,11 +54,4 @@ public class LoginInfo extends LitePalSupport {
         this.password = password;
     }
 
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
 }

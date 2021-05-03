@@ -19,15 +19,15 @@
 <litepal>
     <dbname value="demo" />
 
-    <version value="4" />
+    <version value="11" />
 
 
     <list>
-        <mapping class="com.tdmiracle.learnvoc.module.NotificationInfo"> </mapping>
         <mapping class="com.tdmiracle.learnvoc.module.User"> </mapping>
         <mapping class="com.tdmiracle.learnvoc.module.LoginInfo"> </mapping>
         <mapping class="com.tdmiracle.learnvoc.module.Word"> </mapping>
         <mapping class="com.tdmiracle.learnvoc.module.Image"> </mapping>
         <mapping class="com.tdmiracle.learnvoc.module.RowWordsBook"> </mapping>
+        <mapping class="com.tdmiracle.learnvoc.adapter.entity.Notification"> </mapping>
     </list>
 </litepal>

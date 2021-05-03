@@ -32,8 +32,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.bigkoo.pickerview.TimePickerView;
+import com.tdmiracle.learnvoc.MyApp;
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.core.BaseActivity;
+import com.tdmiracle.learnvoc.dao.UserDao;
+import com.tdmiracle.learnvoc.dao.daoImpl.UserDaoImpl;
+import com.tdmiracle.learnvoc.module.User;
+import com.tdmiracle.learnvoc.utils.FormatUtils;
+import com.tdmiracle.learnvoc.utils.XToastUtils;
 
 import org.w3c.dom.Text;
 
@@ -61,13 +67,66 @@ public class EditPersonalInfoActivity extends BaseActivity implements View.OnCli
     Button imgChange;
     ImageView headImg;
 
+    Button btn_save;//保存键
     private TimePickerView pvTime; //时间选择器对象
+
+    //全局user
+    User globalUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_personal_info);
         initView();
+        bindData();
+    }
+
+    //修改休息后保存
+    private boolean saveInfo(){
+        UserDao userDao = new UserDaoImpl();
+        globalUser.setNickname(nickname.getText().toString().trim());
+        globalUser.setSignature(userSignature.getText().toString().trim());
+        globalUser.setPhone(phone.getText().toString().trim());
+        globalUser.setEmail(email.getText().toString().trim());
+        globalUser.setGender(userSex.getSelectedItem().toString());
+        globalUser.setBirthday(birthday.getText().toString());
+        globalUser.setDistinct(district.getText().toString().trim());
+        globalUser.setSchool(school.getText().toString().trim());
+        //更新用户信息
+        userDao.updateUserinfo(globalUser);
+        //同步全局变量
+        MyApp app = (MyApp) getApplication();
+        app.setUser(globalUser);
+        return true;
+    }
+
+    //绑定用户信息
+    private void bindData() {
+        MyApp app = (MyApp) getApplication();
+        //获取当前用户
+        globalUser = app.getUser();
+//        Log.d(TAG, "bindData: " + user.toString());
+        if(globalUser != null){
+            userID.setText(globalUser.getUid());
+            nickname.setText(globalUser.getNickname());
+            userSignature.setText(globalUser.getSignature());
+            phone.setText(globalUser.getPhone());
+            email.setText(globalUser.getEmail());
+            birthday.setText(globalUser.getBirthday());
+            school.setText(globalUser.getSchool());
+            joinTime.setText(FormatUtils.getDateTimeString(globalUser.getCreate_time()));
+            String gender = globalUser.getGender();
+            if(gender.equals("男")) {
+                userSex.setSelection(0);
+            }
+            else if(gender.equals("女")){
+                userSex.setSelection(1);
+            }
+            else {
+                userSex.setSelection(2);
+            }
+
+        }
     }
 
     private void initView(){
@@ -88,6 +147,8 @@ public class EditPersonalInfoActivity extends BaseActivity implements View.OnCli
         imgChange.setOnClickListener(this);
         headImg = (ImageView) findViewById(R.id.head_icon);
         headImg.setImageResource(R.drawable.mna);
+        btn_save = (Button) findViewById(R.id.btn_save);
+        btn_save.setOnClickListener(this);
     }
 
     //初始化时间选择器
@@ -136,6 +197,10 @@ public class EditPersonalInfoActivity extends BaseActivity implements View.OnCli
                 //把用户名传递过去
                 //intent.putExtra("idUser",IDuser);
                 startActivity(intent);
+                break;
+            case R.id.btn_save:
+                if(saveInfo())
+                    XToastUtils.toast("保存成功！");
                 break;
         }
     }

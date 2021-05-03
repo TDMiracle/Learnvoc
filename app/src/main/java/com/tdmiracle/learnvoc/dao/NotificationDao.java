@@ -17,54 +17,22 @@
 
 package com.tdmiracle.learnvoc.dao;
 
+import com.tdmiracle.learnvoc.adapter.entity.Notification;
 import com.tdmiracle.learnvoc.module.User;
 
 import java.util.List;
 
-public interface UserDao {
+public interface NotificationDao {
     /**
-     * 添加用户
-     * @param user
-     * @param password
+     * 查询通知列表
      * @return
      */
-    public Boolean IncreaseUser(User user, String password);
-
-
-    /**
-     * 根据用户UID获取用户信息
-     * @param uid
-     * @return
-     */
-    public List<User> findUserByUid(String uid);
+    public List<Notification> findNotificationList();
 
     /**
-     * 根据用户ID获取用户信息
-     * @param id
+     * 添加通知
+     * @param notification
      * @return
      */
-    public List<User> findUserById(String id);
-
-
-    /**
-     * 查询用户列表
-     * @return
-     */
-    public List<User> findUserList();
-
-    /**
-     * 更新密码
-     * @param uid
-     * @param password
-     * @return
-     */
-    public Boolean updatePassword(String uid, String password);
-
-    /**
-     * 更新用户信息
-     * @param user
-     * @return
-     */
-    public Boolean updateUserinfo(User user);
-
+    public Boolean IncreaseNotification(Notification notification);
 }
