@@ -16,27 +16,16 @@
   ~
   -->
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.statistic.StatisticFragment">
+    tools:context=".fragment.statistic.StudyInfoFragment">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/fragment_statistic_tablayout"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:tabGravity="fill"
-        app:tabIndicatorColor="?attr/colorPrimary"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="?attr/colorPrimaryDark"
-        app:tabTextColor="?attr/colorPrimary"
-        />
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/fragment_statistic_vp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:text="@string/hello_blank_fragment" />
 
-</LinearLayout>
+</FrameLayout>
