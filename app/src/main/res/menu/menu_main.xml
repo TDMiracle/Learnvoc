@@ -32,4 +32,11 @@
         android:title="单词搜索"
         app:showAsAction="always" />
 
+    <item
+        android:id="@+id/action_sendNotification"
+        android:icon="@drawable/ic_menu_about_white"
+        android:orderInCategory="100"
+        android:title="发送通知"
+        app:showAsAction="always" />
+
 </menu>

@@ -19,6 +19,14 @@ package com.tdmiracle.learnvoc.module;
 
 import org.litepal.crud.LitePalSupport;
 
+
+/**
+ * 创建日期：2021/5/5 14:51
+ * @author TD.Miracle
+ * @version 1.0
+ * 文件名称： Word.java
+ * 类说明：单词
+ */
 public class Word extends LitePalSupport {
     int id;
     String word;

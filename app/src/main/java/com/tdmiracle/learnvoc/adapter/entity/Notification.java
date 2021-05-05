@@ -33,7 +33,7 @@ public class Notification extends LitePalSupport {
     int id;
     String not_title;
     String not_content;
-    String not_time;//查看间隔时间
+    String not_time;//查看时间
     boolean isShow;
     boolean isCheck;
     Date create_time;//创建时间

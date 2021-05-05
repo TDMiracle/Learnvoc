@@ -19,11 +19,18 @@ package com.tdmiracle.learnvoc.module;
 
 import org.litepal.crud.LitePalSupport;
 
+
+/**
+ * 创建日期：2021/5/5 14:25
+ * @author TD.Miracle
+ * @version 1.0
+ * 文件名称： RowWordsBook.java
+ * 类说明：生词本
+ */
 public class RowWordsBook extends LitePalSupport {
     int id;
-    String uid;
-    int wordtype;
-    int wordId;
+    int user_id;//外键，关联User表
+    int wordtype;//单词类型
     String word;
     String yinbiao;
     String translation;
@@ -32,11 +39,10 @@ public class RowWordsBook extends LitePalSupport {
         
     }
 
-    public RowWordsBook(int id, String uid, int wordtype, int wordId, String word, String yinbiao, String translation) {
+    public RowWordsBook(int id, int uid,  String word,int wordtype, String yinbiao, String translation) {
         this.id = id;
-        this.uid = uid;
+        this.user_id = uid;
         this.wordtype = wordtype;
-        this.wordId = wordId;
         this.word = word;
         this.yinbiao = yinbiao;
         this.translation = translation;
@@ -46,9 +52,8 @@ public class RowWordsBook extends LitePalSupport {
     public String toString() {
         return "RowWordsBook{" +
                 "id=" + id +
-                ", uid='" + uid + '\'' +
+                ", user_id'" + user_id + '\'' +
                 ", wordtype=" + wordtype +
-                ", wordId=" + wordId +
                 ", word='" + word + '\'' +
                 ", yinbiao='" + yinbiao + '\'' +
                 ", translation='" + translation + '\'' +
@@ -63,12 +68,12 @@ public class RowWordsBook extends LitePalSupport {
         this.id = id;
     }
 
-    public String getUid() {
-        return uid;
+    public int getUid() {
+        return user_id;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setUid(int uid) {
+        this.user_id = uid;
     }
 
     public int getWordtype() {
@@ -77,14 +82,6 @@ public class RowWordsBook extends LitePalSupport {
 
     public void setWordtype(int wordtype) {
         this.wordtype = wordtype;
-    }
-
-    public int getWordId() {
-        return wordId;
-    }
-
-    public void setWordId(int wordId) {
-        this.wordId = wordId;
     }
 
     public String getWord() {

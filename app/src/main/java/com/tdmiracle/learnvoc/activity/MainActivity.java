@@ -235,7 +235,8 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.action_search:
                 ActivityUtils.startActivity(SearchVocActivity.class);
                 break;
-            default:
+            case R.id.action_sendNotification:
+                ActivityUtils.startActivity(ApplicationNotificationActivity.class);
                 break;
         }
         return false;

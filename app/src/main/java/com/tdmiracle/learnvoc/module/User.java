@@ -36,6 +36,7 @@ public class User extends LitePalSupport {
     Date create_time;
     Date update_time;
     Date delete_time;
+
     //与LoginInfo表为一对一关联
     LoginInfo loginInfo;//登录信息
 

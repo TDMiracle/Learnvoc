@@ -17,18 +17,39 @@
 
 package com.tdmiracle.learnvoc.module;
 
+import com.tdmiracle.learnvoc.utils.ConstUtils;
+import com.tdmiracle.learnvoc.utils.FormatUtils;
+
 import org.litepal.crud.LitePalSupport;
 
+import java.util.Date;
+
+
+/**
+ * 创建日期：2021/5/5 14:30
+ * @author TD.Miracle
+ * @version 1.0
+ * 文件名称： LoginInfo.java
+ * 类说明：用户登录信息
+ */
 public class LoginInfo extends LitePalSupport {
     int id;
-
     String password = "";
+    Date latest_login;//最近登录时间
 
     public LoginInfo() {
     }
 
     public LoginInfo( String password) {
         this.password = password;
+    }
+
+    public Date getLatest_login() {
+        return latest_login;
+    }
+
+    public void setLatest_login(Date latest_login) {
+        this.latest_login = latest_login;
     }
 
     public int getId() {
@@ -42,6 +63,7 @@ public class LoginInfo extends LitePalSupport {
     public String toString() {
         return "LoginInfo{" +
                 ", password='" + password + '\'' +
+                ",latest_login" + FormatUtils.getDateTimeString(latest_login) +
                 '}';
     }
 
