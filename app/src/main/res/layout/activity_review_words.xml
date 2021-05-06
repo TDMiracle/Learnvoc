@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 TD.Miracle(584290367@qq.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/UI_recite"
+    tools:context=".activity.ReviewWordsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#e3d0a3"
+        android:gravity="center"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_word_search" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/word_review_remainCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="需新学 35"
+                />
+            <TextView
+                android:id="@+id/word_review_reviewCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="需复习 33"
+                />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:paddingTop="50dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="center_horizontal"
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal">
+            <TextView
+                android:id="@+id/word_review_word"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="abandon"
+                android:textSize="@dimen/word_big"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/word_review_yinbiao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="英 [əˈbændən]   美 [əˈbændən] "
+            android:textSize="@dimen/word_middle"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:paddingTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/word_review_tran_A"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@color/UI_recite_heavy"
+            android:layout_margin="@dimen/config_margin_5dp"
+            android:gravity="center"
+            android:textSize="@dimen/word_small"
+            android:text="VERB 离弃；遗弃；抛弃"
+            />
+        <TextView
+            android:id="@+id/word_review_tran_B"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@color/UI_recite_heavy"
+            android:layout_margin="@dimen/config_margin_5dp"
+            android:gravity="center"
+            android:textSize="@dimen/word_small"
+            android:text="VERB 中途放弃，中止（活动、工作等）"
+            />
+        <TextView
+            android:id="@+id/word_review_tran_C"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@color/UI_recite_heavy"
+            android:layout_margin="@dimen/config_margin_5dp"
+            android:gravity="center"
+            android:textSize="@dimen/word_small"
+            android:text="VERB 放纵；使沉湎于"
+            />
+        <TextView
+            android:id="@+id/word_review_tran_D"
+            android:layout_width="350dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center"
+            android:background="@color/UI_recite_heavy"
+            android:layout_marginTop="@dimen/config_margin_5dp"
+            android:gravity="center"
+            android:textSize="@dimen/word_small"
+            android:text="VERB 离弃；遗弃；抛弃"
+            />
+
+        <Button
+            android:id="@+id/word_review_btn_notice"
+            android:layout_width="100dp"
+            android:layout_marginTop="@dimen/config_margin_2dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="@dimen/sp_18"
+            android:layout_height="30dp"
+            android:background="@drawable/buttonstyle"
+            android:textColor="@color/UI_recite_heavy"
+            android:text="提示"
+            />
+
+    </LinearLayout>
+
+</LinearLayout>

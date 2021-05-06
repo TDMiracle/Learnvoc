@@ -16,17 +16,55 @@
   ~
   -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.recite.TestWordsFragment">
-
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="50dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/sp_18"
+        android:text="你的词汇量大约是"
+        />
+    <TextView
+        android:id="@+id/vocabulary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:gravity="center"
-        android:text="单词测试" />
-</FrameLayout>
+        android:text="10088"
+        android:layout_marginTop="@dimen/config_margin_20dp"
+        android:textSize="45sp"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="@dimen/sp_18"
+        android:layout_marginTop="20dp"
+        android:text="只有不超过10%的人拥有这个词汇量......"
+        />
+    <Button
+        android:id="@+id/start_test"
+        android:layout_width="match_parent"
+        android:textSize="@dimen/sp_18"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="@dimen/config_margin_5dp"
+        android:layout_marginLeft="@dimen/config_margin_5dp"
+        android:text="再测一次"
+        />
+    <Button
+        android:id="@+id/word_test_back"
+        android:layout_margin="5dp"
+        android:layout_width="match_parent"
+        android:textSize="@dimen/sp_18"
+        android:layout_height="50dp"
+        android:text="返回"
+        />
+</LinearLayout>

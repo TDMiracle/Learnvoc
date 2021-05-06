@@ -20,58 +20,82 @@ package com.tdmiracle.learnvoc.fragment.recite;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.tdmiracle.learnvoc.R;
+import com.tdmiracle.learnvoc.activity.ReciteWordsActivity;
+import com.tdmiracle.learnvoc.activity.ReviewWordsActivity;
+import com.tdmiracle.learnvoc.adapter.ReviewWordsAdapter;
+import com.tdmiracle.learnvoc.adapter.WordsBookAdapter;
 import com.tdmiracle.learnvoc.core.BaseFragment;
+import com.tdmiracle.learnvoc.module.Word;
+import com.tdmiracle.learnvoc.module.WordsBook;
+import com.xuexiang.xutil.app.ActivityUtils;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
 
 /**
- * A simple {@link Fragment} subclass.
- * Use the {@link ReviewWordsFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * 创建日期：2021/5/6 16:21
+ * @author TD.Miracle
+ * @version 1.0
+ * 文件名称： ReviewWordsFragment.java
+ * 类说明：单词复习碎片
  */
 public class ReviewWordsFragment extends BaseFragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    @BindView(R.id.word_review_recycleView)
+    RecyclerView recyclerView;
+    @BindView(R.id.start_review)
+    Button start_review;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public ReviewWordsFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment ReviewWordsFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static ReviewWordsFragment newInstance(String param1, String param2) {
-        ReviewWordsFragment fragment = new ReviewWordsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    List<WordsBook> wordsBooks = new ArrayList<>();//单词书
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        View rootView =  inflater.inflate(R.layout.fragment_review_words, container, false);
+        ButterKnife.bind(this,rootView);
+        loadData();
+        initViews();
+        return rootView;
+    }
+
+    @Override
+    protected void initViews() {
+        ReviewWordsAdapter adapter = new ReviewWordsAdapter(wordsBooks);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getContext(),2);//GridLlayout样式
+        recyclerView.setLayoutManager(gridLayoutManager);
+        //添加Android自带的分割线
+        recyclerView.addItemDecoration(new DividerItemDecoration(this.getContext(),DividerItemDecoration.VERTICAL));
+        recyclerView.setAdapter(adapter);
+    }
+
+    //加载recyclerView数据
+    private void loadData() {
+        WordsBook wordBook1;
+        for(int i = 0; i < 6; i++){
+            wordBook1 = new WordsBook();
+            wordsBooks.add(wordBook1);
         }
     }
 
@@ -80,15 +104,8 @@ public class ReviewWordsFragment extends BaseFragment {
         return R.layout.fragment_review_words;
     }
 
-    @Override
-    protected void initViews() {
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_review_words, container, false);
+    @OnClick(R.id.start_review)
+    public void onViewClicked() {
+        ActivityUtils.startActivity(ReviewWordsActivity.class);
     }
 }

@@ -19,27 +19,42 @@ package com.tdmiracle.learnvoc.fragment.recite;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ProgressBar;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.tdmiracle.learnvoc.R;
+import com.tdmiracle.learnvoc.activity.ReciteWordsActivity;
 import com.tdmiracle.learnvoc.adapter.entity.EverydaySentence;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.utils.FormatUtils;
 import com.tdmiracle.learnvoc.utils.HttpUtils;
+import com.tdmiracle.learnvoc.utils.XToastUtils;
 import com.tdmiracle.learnvoc.utils.service.JsonSerializationService;
+import com.xuexiang.xutil.app.ActivityUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.Calendar;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 /**
@@ -51,16 +66,38 @@ import java.util.Calendar;
  */
 public class ReciteWordsFragment extends BaseFragment {
 
+    private String[] reciteCount = {"10","20","30","40","50","60","70","80","90","100"};
+
+    @BindView(R.id.spinner_count)
+    Spinner sp;
+    @BindView(R.id.progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.start_recite)
+    Button btn_start;
+    @BindView(R.id.word_recite_book)
+    TextView word_book;
+    @BindView(R.id.word_recite_remainDay)
+    TextView remain_day_count;
+    @BindView(R.id.word_recite_todayRemainWords)
+    TextView remain_today_words;
+    @BindView(R.id.word_recite_totalRemainWords)
+    TextView total_remain_words;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
+    @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recit_words, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_recit_words, container, false);
+        ButterKnife.bind(this,rootView);
+        initSpinner();
+        initViews();
+        return rootView;
     }
 
     @Override
@@ -70,7 +107,45 @@ public class ReciteWordsFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
+        progressBar.setProgress(20);
+        progressBar.setMax(100);
+    }
 
+    //初始化单词数下拉框
+    private void initSpinner(){
+        //声明一个下拉列表的数组适配器
+        ArrayAdapter<String> starAdapter = new ArrayAdapter<String>(this.getActivity(),R.layout.item_selete,reciteCount);
+        //设置数组适配器的布局样式
+        starAdapter.setDropDownViewResource(R.layout.item_dropdown);
+        //从布局文件中获取名叫sp_dialog的下拉框
+//        Spinner sp = (Spinner) findViewById(R.id.spinner_count);
+        //设置下拉框的标题，不设置就没有难看的标题了
+        sp.setPrompt("每日学习量");
+        //设置下拉框的数组适配器
+        sp.setAdapter(starAdapter);
+        //设置下拉框默认的显示第一项
+//        sp.setSelection(0);
+        //给下拉框设置选择监听器，一旦用户选中某一项，就触发监听器的onItemSelected方法
+        sp.setOnItemSelectedListener(new MySelectedListener());
+    }
+
+    //Spinner监听器
+    class MySelectedListener implements AdapterView.OnItemSelectedListener{
+
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+           //XToastUtils.toast("您选择的是："+reciteCount[i],Toast.LENGTH_SHORT);
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
+
+        }
+    }
+
+    @OnClick(R.id.start_recite)
+    public void onViewClicked() {
+        ActivityUtils.startActivity(ReciteWordsActivity.class);
     }
 
 }

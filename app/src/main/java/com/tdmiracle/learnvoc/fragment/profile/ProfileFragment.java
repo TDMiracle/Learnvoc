@@ -27,6 +27,7 @@ import com.tdmiracle.learnvoc.activity.EditPersonalInfoActivity;
 import com.tdmiracle.learnvoc.activity.MainActivity;
 import com.tdmiracle.learnvoc.activity.NotificatonActivity;
 import com.tdmiracle.learnvoc.activity.SplashActivity;
+import com.tdmiracle.learnvoc.activity.WordsBookActivity;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.fragment.AboutFragment;
 import com.tdmiracle.learnvoc.fragment.SettingsFragment;
@@ -45,6 +46,7 @@ import java.util.Date;
 import java.util.Locale;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * @author xuexiang
@@ -62,6 +64,8 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
     TextView textView;
     @BindView(R.id.tv_profile_product_name)
     TextView textView2;
+    @BindView(R.id.profile_danCiBen)
+    SuperTextView danCiBen;
 
     /**
      * @return 返回为 null意为不需要导航栏
@@ -127,6 +131,16 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
                 break;
         }
     }
+
+    @OnClick({R.id.profile_danCiBen})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.profile_danCiBen:
+                ActivityUtils.startActivity(WordsBookActivity.class);
+                break;
+        }
+    }
+
 
 
 }

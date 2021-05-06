@@ -14,5 +14,8 @@
     <dimen name="config_margin_24dp">24dp</dimen>
     <dimen name="sp_18">18sp</dimen>
     <dimen name="config_margin_2dp">2dp</dimen>
+    <dimen name="word_big">36dp</dimen>
+    <dimen name="word_middle">20dp</dimen>
+    <dimen name="word_small">18dp</dimen>
 
 </resources>

@@ -23,7 +23,9 @@
     <color name="app_color_theme_6">#2BBDF3</color> <!-- Aqua -->
     <color name="app_color_theme_7">#5A9AEF</color> <!-- Blue Jeans -->
     <color name="app_color_theme_8">#AC8FEF</color> <!-- Lavender -->
-    <color name="app_color_theme_9">#EE85C1</color> <!-- Pink Rose -->
+    <color name="app_color_theme_9">#EE85C1</color>
+    <color name="UI_recite">#f0ebdf</color> <!-- Pink Rose -->
+    <color name="UI_recite_heavy">#dcd0b6</color> <!-- Pink Rose -->
 
 
 </resources>

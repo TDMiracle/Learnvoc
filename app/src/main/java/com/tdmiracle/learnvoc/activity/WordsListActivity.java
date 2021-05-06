@@ -52,6 +52,14 @@ import org.litepal.tablemanager.Connector;
 import java.util.ArrayList;
 import java.util.List;
 
+
+/**
+ * 创建日期：2021/5/6 12:24
+ * @author TD.Miracle
+ * @version 1.0
+ * 文件名称： WordsListActivity.java
+ * 类说明：首页单词书
+ */
 public class WordsListActivity extends BaseActivity {
 
     private static final String TAG = "word";

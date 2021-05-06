@@ -16,17 +16,27 @@
   ~
   -->
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/UI_recite"
     tools:context=".fragment.recite.ReviewWordsFragment">
+        <Button
+            android:id="@+id/start_review"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:textSize="@dimen/sp_18"
+            android:layout_height="50dp"
+            android:text="开始复习吧"
+            />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/word_review_recycleView"
+            android:layout_marginTop="@dimen/config_margin_5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="单词复习" />
-
-</FrameLayout>
+</LinearLayout>

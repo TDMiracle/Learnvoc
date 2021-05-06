@@ -58,7 +58,7 @@ public class ReciteFragment extends BaseFragment {
 
     private final String TAG = "ReciteFragment";
 
-    private String[] strings = new String[]{"每日一句","单词背诵","单词复习","单词测试"};
+    private String[] strings = new String[]{"每日一句","单词背诵","单词复习","单词量测试"};
     private List<Fragment> fragmentList = new ArrayList<Fragment>();
 
     @BindView(R.id.fragment_recite_tablayout)

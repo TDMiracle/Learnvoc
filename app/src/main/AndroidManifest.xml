@@ -25,7 +25,11 @@
         tools:ignore="LockedOrientationActivity"
         tools:replace="android:icon, android:theme"
         tools:targetApi="n">
-        <activity android:name=".activity.ApplicationNotificationActivity"></activity>
+        <activity android:name=".activity.TestWordsActivity"></activity>
+        <activity android:name=".activity.ReviewWordsActivity" />
+        <activity android:name=".activity.WordsBookActivity" />
+        <activity android:name=".activity.ReciteWordsActivity" />
+        <activity android:name=".activity.ApplicationNotificationActivity" />
         <activity android:name=".activity.WordDetailActivity" />
         <activity android:name=".activity.WordsListActivity" />
         <activity android:name=".activity.CalenderSelectActivity" />
