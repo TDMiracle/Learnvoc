@@ -21,8 +21,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
@@ -33,43 +34,37 @@ import butterknife.ButterKnife;
 
 
 /**
- * 创建日期：2021/5/7 16:21
+ * 创建日期：2021/5/7 16:20
  * @author TD.Miracle
  * @version 1.0
- * 文件名称： TestWordsActivity.java
- * 类说明：英汉互测
+ * 文件名称： TestWordsActivity2.java
+ * 类说明：听音辩义
  */
-public class TestWordsActivity extends AppCompatActivity {
+public class TestWordsActivity2 extends AppCompatActivity {
 
-    @BindView(R.id.word_test_progressBar)
+    @BindView(R.id.word_test2_progressBar)
     ProgressBar progressBar;
-    @BindView(R.id.word_test_testResult)
-    TextView testResult;
-    @BindView(R.id.word_test_showAnswer)
-    Button showAnswer;
-    @BindView(R.id.word_test_word)
-    TextView test_word;
-    @BindView(R.id.word_test_yinbiao)
-    TextView test_yinbiao;
-    @BindView(R.id.test_word_timer)
+    @BindView(R.id.test2_word_timer)
     TimerCircle timer;
-    @BindView(R.id.word_test_answerA)
+    @BindView(R.id.word_test2_knowA)
     Button answerA;
-    @BindView(R.id.word_test_answerB)
+    @BindView(R.id.word_test2_knowB)
     Button answerB;
-    @BindView(R.id.word_test_answerC)
+    @BindView(R.id.word_test2_knowC)
     Button answerC;
-    @BindView(R.id.word_test_answerD)
+    @BindView(R.id.word_test2_knowD)
     Button answerD;
-    @BindView(R.id.word_test_answerNone)
+    @BindView(R.id.word_test2_answerNone)
     Button answerNone;
-    @BindView(R.id.word_test_answerUnknown)
+    @BindView(R.id.word_test2_Unknown)
     Button answerUnknown;
+    @BindView(R.id.word_test2_voice)
+    ImageButton Img_voice;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_words);
+        setContentView(R.layout.activity_test_words2);
         ButterKnife.bind(this);
         init();
     }
@@ -83,7 +78,7 @@ public class TestWordsActivity extends AppCompatActivity {
         timer.setFinishListenter(new TimerCircle.onFinishListener() {
             @Override
             public void onFinish() {
-                XToastUtils.toast("finish");
+
             }
         });
     }

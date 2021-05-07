@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <TextView
-            android:id="@+id/voc_translation"
+            android:id="@+id/word_review_questionCount"
             android:layout_width="50dp"
             android:layout_height="30dp"
             android:layout_marginTop="5dp"
@@ -52,7 +52,7 @@
             >
         </LinearLayout>
         <TextView
-            android:id="@+id/review_type"
+            android:id="@+id/word_review_questionTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
@@ -62,6 +62,7 @@
             android:text="看英选中"
             android:layout_gravity="center"/>
         <TextView
+            android:id="@+id/word_review_questionType"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"

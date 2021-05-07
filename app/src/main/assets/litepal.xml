@@ -19,7 +19,7 @@
 <litepal>
     <dbname value="demo" />
 
-    <version value="12" />
+    <version value="13" />
 
 
     <list>
@@ -35,5 +35,6 @@
         <mapping class="com.tdmiracle.learnvoc.module.UserWordTest"> </mapping>
         <mapping class="com.tdmiracle.learnvoc.module.WordsRecite"> </mapping>
         <mapping class="com.tdmiracle.learnvoc.module.WordsReview"> </mapping>
+        <mapping class="com.tdmiracle.learnvoc.module.UserFeedback"> </mapping>
     </list>
 </litepal>

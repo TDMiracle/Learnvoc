@@ -18,19 +18,23 @@
 package com.tdmiracle.learnvoc.adapter;
 
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.tdmiracle.learnvoc.R;
-import com.tdmiracle.learnvoc.module.Word;
-import com.tdmiracle.learnvoc.module.WordsBook;
+import com.tdmiracle.learnvoc.activity.ReviewWordsActivity;
+import com.tdmiracle.learnvoc.activity.TestWordsActivity2;
+import com.tdmiracle.learnvoc.activity.TestWordsActivity3;
+import com.tdmiracle.learnvoc.adapter.entity.WordReviewQuestionType;
+import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
+import com.xuexiang.xutil.app.ActivityUtils;
 
 import java.util.List;
 
@@ -42,10 +46,10 @@ import java.util.List;
  * 类说明：单词复习：单词书选择适配器
  */
 public class ReviewWordsAdapter extends RecyclerView.Adapter<ReviewWordsAdapter.ViewHolder> {
-    List<WordsBook> wordsBooks;
+    List<WordReviewQuestionType> questionTypes;
 
-    public ReviewWordsAdapter(List<WordsBook> wordsBooks) {
-        this.wordsBooks = wordsBooks;
+    public ReviewWordsAdapter(List<WordReviewQuestionType> questionTypes) {
+        this.questionTypes = questionTypes;
     }
     /*
      * 子布局创建时候对其进行布局绑定和Item的点击事件的设置
@@ -60,11 +64,29 @@ public class ReviewWordsAdapter extends RecyclerView.Adapter<ReviewWordsAdapter.
 //                Intent intent = new Intent(parent.getContext(), WordDetailActivity.class);
 //                intent.putExtra("word",holder.word.getText());
 //                parent.getContext().startActivity(intent);
-                XToastUtils.toast(holder.review_type.getText());
+                Intent intent;
+                int typeNum = holder.questionNum;
+                switch (typeNum){
+                    case ConstUtils.WordReviewType.KanYingXuanZhong:
+                    case ConstUtils.WordReviewType.KanZhongXuanYing:
+                        intent = new Intent(parent.getContext(),ReviewWordsActivity.class);
+                        intent.putExtra("type",typeNum);//传递题型编号
+                        parent.getContext().startActivity(intent);
+                        break;
+                    case ConstUtils.WordReviewType.TingYinBianYi:
+                        ActivityUtils.startActivity(TestWordsActivity2.class);
+                        break;
+                    case ConstUtils.WordReviewType.PinXieTianKong:
+                        ActivityUtils.startActivity(TestWordsActivity3.class);
+                        break;
+                    default:
+                        XToastUtils.toast("敬请期待...");
+                }
             }
         });
         return holder;
     }
+
 
     /*
      * 子布局控件的数据设置
@@ -73,26 +95,34 @@ public class ReviewWordsAdapter extends RecyclerView.Adapter<ReviewWordsAdapter.
     public void onBindViewHolder(ReviewWordsAdapter.ViewHolder holder, int position) {
         //holder.image.setImageResource(R.mipmap.leak_canary_icon);
 //        holder.review_type.setText(wordsBooks.get(position).getCount());
-        holder.review_type.setText("看英选中");
+        holder.word_review_questionTitle.setText(questionTypes.get(position).getTitle());
+        holder.word_review_questionType.setText(questionTypes.get(position).getType());
+        holder.word_review_questionCount.setText(questionTypes.get(position).getQuestionCount() + "+");
+        holder.questionNum = questionTypes.get(position).getId();
     }
 
 
     @Override
     public int getItemCount() {
-        return wordsBooks.size();
+        return questionTypes.size();
     }
 
     /*
      * 子布局控件的初始化
      * */
     static class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView review_type;
+        public TextView word_review_questionCount;
+        public TextView word_review_questionTitle;
+        public TextView word_review_questionType;
         public CardView review_cardView;
+        public int questionNum;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            review_type = (TextView) itemView.findViewById(R.id.review_type);
             review_cardView = (CardView) itemView.findViewById(R.id.review_cardView);
+            word_review_questionCount = (TextView) itemView.findViewById(R.id.word_review_questionCount);
+            word_review_questionTitle = (TextView) itemView.findViewById(R.id.word_review_questionTitle);
+            word_review_questionType = (TextView) itemView.findViewById(R.id.word_review_questionType);
         }
     }
 }

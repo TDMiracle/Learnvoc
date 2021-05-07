@@ -24,14 +24,14 @@
     android:orientation="vertical"
     android:background="@color/UI_recite"
     tools:context=".fragment.recite.ReviewWordsFragment">
-        <Button
-            android:id="@+id/start_review"
-            android:layout_margin="5dp"
-            android:layout_width="match_parent"
-            android:textSize="@dimen/sp_18"
-            android:layout_height="50dp"
-            android:text="开始复习吧"
-            />
+<!--        <Button-->
+<!--            android:id="@+id/start_review"-->
+<!--            android:layout_margin="5dp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:textSize="@dimen/sp_18"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:text="开始复习吧"-->
+<!--            />-->
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/word_review_recycleView"
             android:layout_marginTop="@dimen/config_margin_5dp"

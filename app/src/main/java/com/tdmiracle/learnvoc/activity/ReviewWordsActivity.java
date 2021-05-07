@@ -19,11 +19,13 @@ package com.tdmiracle.learnvoc.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.TextView;
 
 import com.tdmiracle.learnvoc.R;
+import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
 import com.xuexiang.xutil.app.ActivityUtils;
 
@@ -57,6 +59,8 @@ public class ReviewWordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review_words);
         ButterKnife.bind(this);
+        Intent intent = getIntent();
+        XToastUtils.toast(ConstUtils.WordReviewType.getTypeDesc(intent.getIntExtra("type",1)));
     }
 
     @OnClick(R.id.word_review_btn_notice)

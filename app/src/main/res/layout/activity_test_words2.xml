@@ -21,9 +21,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/UI_recite"
-    tools:context=".activity.TestWordsActivity">
+    android:orientation="vertical"
+    tools:context=".activity.TestWordsActivity2">
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -42,39 +42,10 @@
                 android:layout_gravity="center"
                 android:textSize="18sp"
                 android:textStyle="bold"
-                android:text="单词量测试" />
+                android:text="听音辩义" />
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <TextView
-            android:id="@+id/word_test_testResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/word_middle"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="5245~8643" />
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/word_small"
-                android:text="显示答案"
-                />
-            <com.xuexiang.xui.widget.layout.XUIButton
-                android:id="@+id/word_test_showAnswer"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="2dp"
-                android:layout_width="wrap_content"
-                android:background="@color/UI_recite_heavy"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-    </LinearLayout>
+
     <View
         android:layout_width="match_parent"
         android:layout_marginTop="5dp"
@@ -83,38 +54,23 @@
         android:background="#90909090"
         android:layout_height="2dp" />
     <ProgressBar
-        android:id="@+id/word_test_progressBar"
+        android:id="@+id/word_test2_progressBar"
         android:layout_marginTop="5dp"
         android:layout_marginStart="@dimen/config_margin_10dp"
         android:layout_marginEnd="@dimen/config_margin_10dp"
         style="@android:style/Widget.ProgressBar.Horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
-    <LinearLayout
+    <ImageButton
+        android:id="@+id/word_test2_voice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal">
-        <TextView
-            android:id="@+id/word_test_word"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="abandon"
-            android:textSize="@dimen/word_big"
-            />
-    </LinearLayout>
-    <TextView
-        android:id="@+id/word_test_yinbiao"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="英 [əˈbændən]   美 [əˈbændən] "
-        android:textSize="@dimen/word_middle"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/config_margin_10dp"
+        android:background="@drawable/microphone_32px"
         />
-    <!-- 此处可配置计时器-->
     <com.tdmiracle.learnvoc.widget.TimerCircle
-        android:id="@+id/test_word_timer"
+        android:id="@+id/test2_word_timer"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:layout_width="100dp"
@@ -127,30 +83,26 @@
         app:textColor="@color/white"
         app:textSize="15sp" />
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-    </LinearLayout>
-    <LinearLayout
         android:paddingTop="40dp"
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/word_test_answerA"
+            android:id="@+id/word_test2_knowA"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:textSize="@dimen/sp_18"
-            android:text="放弃" />
+            android:text="认识" />
         <Button
-            android:id="@+id/word_test_answerB"
+            android:id="@+id/word_test2_knowB"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:textSize="@dimen/sp_18"
-            android:text="抛弃" />
+            android:text="不认识" />
     </LinearLayout>
     <LinearLayout
         android:paddingTop="5dp"
@@ -159,24 +111,24 @@
         android:layout_marginRight="20dp"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/word_test_answerC"
+            android:id="@+id/word_test2_knowC"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_weight="1"
             android:textSize="@dimen/sp_18"
-            android:text="放弃" />
+            android:text="认识" />
         <Button
-            android:id="@+id/word_test_answerD"
+            android:id="@+id/word_test2_knowD"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
             android:textSize="@dimen/sp_18"
-            android:text="抛弃" />
+            android:text="不认识" />
     </LinearLayout>
 
     <Button
-        android:id="@+id/word_test_answerNone"
+        android:id="@+id/word_test2_answerNone"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="5dp"
@@ -186,7 +138,7 @@
         android:textSize="@dimen/sp_18" />
 
     <Button
-        android:id="@+id/word_test_answerUnknown"
+        android:id="@+id/word_test2_Unknown"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
         android:layout_marginLeft="20dp"

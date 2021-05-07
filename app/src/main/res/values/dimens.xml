@@ -17,5 +17,6 @@
     <dimen name="word_big">36dp</dimen>
     <dimen name="word_middle">20dp</dimen>
     <dimen name="word_small">18dp</dimen>
+    <dimen name="width">18sp</dimen>
 
 </resources>

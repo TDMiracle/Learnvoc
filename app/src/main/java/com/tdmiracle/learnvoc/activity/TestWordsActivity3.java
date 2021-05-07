@@ -33,43 +33,49 @@ import butterknife.ButterKnife;
 
 
 /**
- * 创建日期：2021/5/7 16:21
+ * 创建日期：2021/5/7 16:50
  * @author TD.Miracle
  * @version 1.0
- * 文件名称： TestWordsActivity.java
- * 类说明：英汉互测
+ * 文件名称： TestWordsActivity3.java
+ * 类说明：单词拼写
  */
-public class TestWordsActivity extends AppCompatActivity {
+public class TestWordsActivity3 extends AppCompatActivity {
 
-    @BindView(R.id.word_test_progressBar)
-    ProgressBar progressBar;
-    @BindView(R.id.word_test_testResult)
-    TextView testResult;
-    @BindView(R.id.word_test_showAnswer)
-    Button showAnswer;
-    @BindView(R.id.word_test_word)
-    TextView test_word;
-    @BindView(R.id.word_test_yinbiao)
-    TextView test_yinbiao;
-    @BindView(R.id.test_word_timer)
+    @BindView(R.id.word_test3_1)
+    Button answer1;
+    @BindView(R.id.word_test3_2)
+    Button answer2;
+    @BindView(R.id.word_test3_3)
+    Button answer3;
+    @BindView(R.id.word_test3_4)
+    Button answer4;
+    @BindView(R.id.word_test3_5)
+    Button answer5;
+    @BindView(R.id.word_test3_6)
+    Button answer6;
+    @BindView(R.id.word_test3_7)
+    Button answer7;
+    @BindView(R.id.word_test3_8)
+    Button answer8;
+    @BindView(R.id.word_test3_9)
+    Button answer9;
+    @BindView(R.id.test3_word_timer)
     TimerCircle timer;
-    @BindView(R.id.word_test_answerA)
-    Button answerA;
-    @BindView(R.id.word_test_answerB)
-    Button answerB;
-    @BindView(R.id.word_test_answerC)
-    Button answerC;
-    @BindView(R.id.word_test_answerD)
-    Button answerD;
-    @BindView(R.id.word_test_answerNone)
-    Button answerNone;
-    @BindView(R.id.word_test_answerUnknown)
-    Button answerUnknown;
+    @BindView(R.id.word_test3_word)
+    TextView word;
+    @BindView(R.id.word_test3_translation)
+    TextView translation;
+    @BindView(R.id.word_test3_progressBar)
+    ProgressBar progressBar;
+    @BindView(R.id.word_test3_remainCount)
+    TextView remainCount;
+    @BindView(R.id.word_test3_reviewCount)
+    TextView reviewCount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test_words);
+        setContentView(R.layout.activity_test_words3);
         ButterKnife.bind(this);
         init();
     }
@@ -83,7 +89,7 @@ public class TestWordsActivity extends AppCompatActivity {
         timer.setFinishListenter(new TimerCircle.onFinishListener() {
             @Override
             public void onFinish() {
-                XToastUtils.toast("finish");
+
             }
         });
     }

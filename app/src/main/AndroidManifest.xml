@@ -25,7 +25,9 @@
         tools:ignore="LockedOrientationActivity"
         tools:replace="android:icon, android:theme"
         tools:targetApi="n">
-        <activity android:name=".activity.TestWordsActivity"></activity>
+        <activity android:name=".activity.TestWordsActivity3"></activity>
+        <activity android:name=".activity.TestWordsActivity2" />
+        <activity android:name=".activity.TestWordsActivity" />
         <activity android:name=".activity.ReviewWordsActivity" />
         <activity android:name=".activity.WordsBookActivity" />
         <activity android:name=".activity.ReciteWordsActivity" />

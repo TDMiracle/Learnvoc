@@ -19,10 +19,8 @@ package com.tdmiracle.learnvoc.fragment.recite;
 
 import android.os.Bundle;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -31,13 +29,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.tdmiracle.learnvoc.R;
-import com.tdmiracle.learnvoc.activity.ReciteWordsActivity;
 import com.tdmiracle.learnvoc.activity.ReviewWordsActivity;
 import com.tdmiracle.learnvoc.adapter.ReviewWordsAdapter;
-import com.tdmiracle.learnvoc.adapter.WordsBookAdapter;
+import com.tdmiracle.learnvoc.adapter.entity.WordReviewQuestionType;
 import com.tdmiracle.learnvoc.core.BaseFragment;
-import com.tdmiracle.learnvoc.module.Word;
-import com.tdmiracle.learnvoc.module.WordsBook;
 import com.xuexiang.xutil.app.ActivityUtils;
 
 import java.util.ArrayList;
@@ -59,10 +54,8 @@ public class ReviewWordsFragment extends BaseFragment {
 
     @BindView(R.id.word_review_recycleView)
     RecyclerView recyclerView;
-    @BindView(R.id.start_review)
-    Button start_review;
 
-    List<WordsBook> wordsBooks = new ArrayList<>();//单词书
+    List<WordReviewQuestionType> questionTypes = new ArrayList<>();//单词书
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -82,7 +75,7 @@ public class ReviewWordsFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        ReviewWordsAdapter adapter = new ReviewWordsAdapter(wordsBooks);
+        ReviewWordsAdapter adapter = new ReviewWordsAdapter(questionTypes);
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this.getContext(),2);//GridLlayout样式
         recyclerView.setLayoutManager(gridLayoutManager);
         //添加Android自带的分割线
@@ -92,11 +85,18 @@ public class ReviewWordsFragment extends BaseFragment {
 
     //加载recyclerView数据
     private void loadData() {
-        WordsBook wordBook1;
-        for(int i = 0; i < 6; i++){
-            wordBook1 = new WordsBook();
-            wordsBooks.add(wordBook1);
-        }
+        WordReviewQuestionType questionType1 = new WordReviewQuestionType(1,"看英选中","阅读",99);
+        WordReviewQuestionType questionType2 = new WordReviewQuestionType(2,"看中选英","阅读",99);
+        WordReviewQuestionType questionType3 = new WordReviewQuestionType(3,"听音辩义","听力",99);
+        WordReviewQuestionType questionType4 = new WordReviewQuestionType(4,"拼写填空","拼写",99);
+        WordReviewQuestionType questionType5 = new WordReviewQuestionType(5,"听音速记","听力",99);
+        WordReviewQuestionType questionType6 = new WordReviewQuestionType(6,"全拼练习","拼写",99);
+        questionTypes.add(questionType1);
+        questionTypes.add(questionType2);
+        questionTypes.add(questionType3);
+        questionTypes.add(questionType4);
+        questionTypes.add(questionType5);
+        questionTypes.add(questionType6);
     }
 
     @Override
@@ -104,8 +104,8 @@ public class ReviewWordsFragment extends BaseFragment {
         return R.layout.fragment_review_words;
     }
 
-    @OnClick(R.id.start_review)
-    public void onViewClicked() {
-        ActivityUtils.startActivity(ReviewWordsActivity.class);
-    }
+//    @OnClick(R.id.start_review)
+//    public void onViewClicked() {
+//        ActivityUtils.startActivity(ReviewWordsActivity.class);
+//    }
 }

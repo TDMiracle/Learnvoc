@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 TD.Miracle(584290367@qq.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/UI_recite"
+    android:orientation="vertical"
+    tools:context=".activity.TestWordsActivity3">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/test_word_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/UI_recite_heavy"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/xui_config_color_white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#e3d0a3"
+                android:gravity="center"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                >
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_word_search" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:id="@+id/word_test3_remainCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="需新学 35"
+                        />
+                    <TextView
+                        android:id="@+id/word_test3_reviewCount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="需复习 33"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#90909090"
+        android:layout_height="2dp" />
+    <ProgressBar
+        android:id="@+id/word_test3_progressBar"
+        android:layout_marginTop="5dp"
+        android:layout_marginStart="@dimen/config_margin_10dp"
+        android:layout_marginEnd="@dimen/config_margin_10dp"
+        style="@android:style/Widget.ProgressBar.Horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:id="@+id/word_test3_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="vo_ _ _ulary"
+            android:textSize="@dimen/word_big"
+            />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/word_test3_translation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="@dimen/config_margin_5dp"
+        android:layout_marginRight="5dp"
+        android:text="(某人掌握或使用的)词汇，词汇量;(某一语言的)词汇;(某学科中所使用的)词汇"
+        android:textSize="@dimen/word_middle"
+        />
+    <!-- 此处可配置计时器-->
+    <com.tdmiracle.learnvoc.widget.TimerCircle
+        android:id="@+id/test3_word_timer"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:width="20dp"
+        app:circleColor="@color/white"
+        app:path="@color/xui_btn_blue_select_color"
+        app:maxTime="10000"
+        app:ringColor="@color/xui_btn_blue_normal_color"
+        app:textColor="@color/white"
+        app:textSize="15sp" />
+        <GridLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:columnCount="3"
+            android:rowCount="3"
+            android:orientation="horizontal"
+            >
+            <Button
+                android:id="@+id/word_test3_1"
+                android:layout_gravity="fill"
+                android:background="@color/UI_recite_heavy"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:textSize="@dimen/word_middle"
+                android:text="cab" />
+
+            <Button
+                android:id="@+id/word_test3_2"
+                android:layout_gravity="fill"
+                android:background="@color/UI_recite_heavy"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/word_middle"
+                android:text="cac" />
+
+            <Button
+                android:id="@+id/word_test3_3"
+                android:layout_gravity="fill"
+                android:background="@color/UI_recite_heavy"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/word_middle"
+                android:text="cad" />
+
+            <Button
+                android:id="@+id/word_test3_4"
+                android:layout_gravity="fill"
+                android:background="@color/UI_recite_heavy"
+                android:layout_width="80dp"
+                android:layout_marginTop="5dp"
+                android:layout_height="50dp"
+                android:textSize="@dimen/word_middle"
+                android:text="bac" />
+
+            <Button
+                android:id="@+id/word_test3_5"
+                android:layout_gravity="fill"
+                android:background="@color/UI_recite_heavy"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:textSize="@dimen/word_middle"
+                android:layout_marginTop="5dp"
+                android:text="bdg" />
+
+            <Button
+                android:id="@+id/word_test3_6"
+                android:layout_gravity="fill"
+                android:background="@color/UI_recite_heavy"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/word_middle"
+                android:text="ace" />
+
+            <Button
+                android:id="@+id/word_test3_7"
+                android:layout_gravity="fill"
+                android:background="@color/UI_recite_heavy"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/word_middle"
+                android:text="lim" />
+
+            <Button
+                android:id="@+id/word_test3_8"
+                android:layout_gravity="fill"
+                android:background="@color/UI_recite_heavy"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/word_middle"
+                android:text="pom" />
+            <Button
+                android:id="@+id/word_test3_9"
+                android:layout_gravity="fill"
+                android:background="@color/UI_recite_heavy"
+                android:layout_width="80dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:textSize="@dimen/word_middle"
+                android:text="are" />
+        </GridLayout>
+
+
+</LinearLayout>

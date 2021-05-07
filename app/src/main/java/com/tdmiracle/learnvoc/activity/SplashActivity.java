@@ -109,7 +109,6 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
         //存入全局对象
         MyApp app = (MyApp)getApplication();
         app.setUser(newUser);
-
         /**
          * 通知测试
          */

@@ -30,7 +30,7 @@ public class WordTestQuestion extends LitePalSupport {
     int id;
     String word;
     String yinbiao;
-    int type;//0:看英选中；1：看中选英
+    int type;//ConstUntil.WordReviewType
     String choice_A;
     String choice_B;
     String choice_C;

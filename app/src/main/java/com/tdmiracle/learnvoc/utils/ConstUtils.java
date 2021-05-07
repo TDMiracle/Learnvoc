@@ -17,7 +17,43 @@
 
 package com.tdmiracle.learnvoc.utils;
 
+import com.tdmiracle.learnvoc.adapter.entity.WordReviewQuestionType;
+
 public class ConstUtils {
+    //单词复习提醒
+    public static class WordReviewType{
+        public static final int KanYingXuanZhong = 1;
+        public static final int KanZhongXuanYing = 2;
+        public static final int TingYinBianYi = 3;
+        public static final int PinXieTianKong = 4;
+        public static final int TingLiSuJi = 5;
+        public static final int QuanPinLianXi = 6;
+        public static String getTypeDesc(int code){
+            String desc = "未知种类";
+            switch (code){
+                case KanYingXuanZhong:
+                    desc = "看英选中";
+                    break;
+                case KanZhongXuanYing:
+                    desc = "看中选英";
+                    break;
+                case TingYinBianYi:
+                    desc = "听音辩义";
+                    break;
+                case PinXieTianKong:
+                    desc = "拼写填空";
+                    break;
+                case TingLiSuJi:
+                    desc = "听音速记";
+                    break;
+                case QuanPinLianXi:
+                    desc = "全拼练习";
+                    break;
+            }
+            return desc;
+        }
+    }
+
     //日历选择
     public static class CalenderSelect{
         public static final int CALENDER_SELECT = 1;
