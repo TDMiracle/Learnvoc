@@ -83,7 +83,7 @@ public class TestWordsActivity extends AppCompatActivity {
         timer.setFinishListenter(new TimerCircle.onFinishListener() {
             @Override
             public void onFinish() {
-                XToastUtils.toast("finish");
+
             }
         });
     }
