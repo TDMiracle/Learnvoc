@@ -17,10 +17,10 @@
   -->
 
 <androidx.cardview.widget.CardView
+    android:id="@+id/select_wordBook_cardView"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:id="@+id/review_cardView"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     android:clickable="true"
@@ -31,45 +31,53 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:id="@+id/word_review_questionCount"
-            android:layout_width="50dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="5dp"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:background="@drawable/textview_border"
-            android:text="29词"
-            android:layout_marginRight="5dp"
-            android:textColor="@color/white"
-            android:layout_gravity="right"/>
         <LinearLayout
             android:layout_marginTop="@dimen/config_margin_5dp"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
             android:background="@color/colorAccent"
             android:gravity="center"
             android:layout_gravity="center"
+            android:orientation="vertical"
             >
+            <TextView
+                android:id="@+id/select_wordBook_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:text="四级词汇"
+                android:textSize="@dimen/word_middle"
+                />
+            <TextView
+                android:id="@+id/select_wordBook_wordCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="2dp"
+                android:layout_marginRight="2dp"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:text="3662词"
+                android:textSize="14sp"
+                />
         </LinearLayout>
         <TextView
-            android:id="@+id/word_review_questionTitle"
+            android:id="@+id/select_wordBook_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
-            android:textSize="18sp"
             android:textStyle="bold"
             android:gravity="center"
-            android:text="看英选中"
-            android:layout_gravity="center"/>
-        <TextView
-            android:id="@+id/word_review_questionType"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textSize="16sp"
-            android:gravity="center"
-            android:text="阅读"
+            android:text="易拾英语"
+            android:textSize="12sp"
             android:layout_gravity="center"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

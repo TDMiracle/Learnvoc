@@ -17,6 +17,7 @@
 
 package com.tdmiracle.learnvoc.fragment.recite;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -38,6 +39,7 @@ import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.activity.ReciteWordsActivity;
+import com.tdmiracle.learnvoc.activity.SelectWordsBookActivity;
 import com.tdmiracle.learnvoc.adapter.entity.EverydaySentence;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.utils.FormatUtils;
@@ -61,7 +63,7 @@ import butterknife.OnClick;
  * 创建日期：2021/4/17 14:39
  * @author TD.Miracle
  * @version 1.0
- * 文件名称： RecitWordsFragment.java
+ * 文件名称： ReciteWordsFragment.java
  * 类说明：
  */
 public class ReciteWordsFragment extends BaseFragment {
@@ -80,8 +82,13 @@ public class ReciteWordsFragment extends BaseFragment {
     TextView remain_day_count;
     @BindView(R.id.word_recite_todayRemainWords)
     TextView remain_today_words;
-    @BindView(R.id.word_recite_totalRemainWords)
-    TextView total_remain_words;
+    @BindView(R.id.word_recite_learntCount)
+    TextView word_recite_learntCount;
+    @BindView(R.id.word_recite_remainWords)
+    TextView word_recite_remainWords;
+
+    private Intent intent;
+    private int requestCode;//单词书选择请求码
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,7 +114,7 @@ public class ReciteWordsFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        progressBar.setProgress(20);
+        progressBar.setProgress(0);
         progressBar.setMax(100);
     }
 
@@ -143,9 +150,38 @@ public class ReciteWordsFragment extends BaseFragment {
         }
     }
 
-    @OnClick(R.id.start_recite)
-    public void onViewClicked() {
-        ActivityUtils.startActivity(ReciteWordsActivity.class);
+    @OnClick({R.id.start_recite,R.id.word_recite_book})
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.start_recite:
+                ActivityUtils.startActivity(ReciteWordsActivity.class);
+                break;
+            case R.id.word_recite_book:
+                intent = new Intent(this.getContext(),SelectWordsBookActivity.class);
+                requestCode = 1;
+                startActivityForResult(intent,requestCode);
+                break;
+        }
     }
 
+    //活动回调方法
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        String bookName = data.getStringExtra("bookName");
+        String bookWordsCount = data.getStringExtra("bookWordsCount");
+        // 根据上面发送过去的请求吗来区别
+        switch (requestCode) {
+            case 0:
+                break;
+            case 1:
+            {
+                word_book.setText(bookName + "书");
+                word_recite_learntCount.setText(0+ "");
+                word_recite_remainWords.setText(bookWordsCount);
+                break;
+            }
+            default:
+                break;
+        }
+    }
 }

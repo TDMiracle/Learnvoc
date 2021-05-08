@@ -37,7 +37,13 @@ public class WordsBook extends LitePalSupport {
 
     }
 
-    public WordsBook(int id, int count, String name, String description) {
+    public WordsBook(String name, int count, String description) {
+        this.count = count;
+        this.name = name;
+        this.description = description;
+    }
+
+    public WordsBook(int id, String name, int count, String description) {
         this.id = id;
         this.count = count;
         this.name = name;

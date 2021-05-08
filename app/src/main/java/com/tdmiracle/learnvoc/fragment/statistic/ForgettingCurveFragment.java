@@ -139,7 +139,7 @@ public class ForgettingCurveFragment extends BaseFragment {
         xAxis.setValueFormatter(formatter);
 
         // **************************图表本身一般样式**************************** //
-        mLineChart.setBackgroundColor(Color.WHITE); // 整个图标的背景色
+        mLineChart.setBackgroundColor(getResources().getColor(R.color.white)); // 整个图标的背景色
         mLineChart.setContentDescription("遗忘曲线");   // 右下角的描述文本,测试并不显示
         Description description = new Description();  // 这部分是深度定制描述文本，颜色，字体等
         description.setText("遗忘曲线");

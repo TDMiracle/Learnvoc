@@ -33,7 +33,7 @@
             android:id="@+id/test_word_toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/UI_recite_heavy"
+            android:background="@color/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay"
             app:titleTextColor="@color/xui_config_color_white">
             <TextView

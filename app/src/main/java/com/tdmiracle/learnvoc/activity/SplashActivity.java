@@ -24,21 +24,32 @@ import com.tdmiracle.learnvoc.MyApp;
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.adapter.entity.Notification;
 import com.tdmiracle.learnvoc.dao.NotificationDao;
+import com.tdmiracle.learnvoc.dao.WordDao;
+import com.tdmiracle.learnvoc.dao.WordsBookDao;
 import com.tdmiracle.learnvoc.dao.daoImpl.NotificationDaoImpl;
 import com.tdmiracle.learnvoc.dao.daoImpl.UserDaoImpl;
+import com.tdmiracle.learnvoc.dao.daoImpl.WordDaoImpl;
+import com.tdmiracle.learnvoc.dao.daoImpl.WordsBookDaoImpl;
 import com.tdmiracle.learnvoc.module.LoginInfo;
 import com.tdmiracle.learnvoc.module.User;
+import com.tdmiracle.learnvoc.module.Word;
+import com.tdmiracle.learnvoc.module.WordsBook;
+import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.DBManager;
 import com.tdmiracle.learnvoc.utils.MD5Utils;
+import com.tdmiracle.learnvoc.utils.SQLiteUtils;
 import com.tdmiracle.learnvoc.utils.SettingUtils;
 import com.tdmiracle.learnvoc.utils.TokenUtils;
 import com.tdmiracle.learnvoc.utils.Utils;
+import com.tdmiracle.learnvoc.utils.XToastUtils;
 import com.xuexiang.xui.utils.KeyboardUtils;
 import com.xuexiang.xui.widget.activity.BaseSplashActivity;
 import com.xuexiang.xupdate.utils.Md5Utils;
 import com.xuexiang.xutil.app.ActivityUtils;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import me.jessyan.autosize.internal.CancelAdapt;
 
@@ -107,7 +118,7 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
         User newUser = userDao.findUserById("2").get(0);
 //        Log.d(TAG, "newUser: " + newUser.toString());
         //存入全局对象
-        MyApp app = (MyApp)getApplication();
+        MyApp app = (MyApp) getApplication();
         app.setUser(newUser);
         /**
          * 通知测试
@@ -128,6 +139,88 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
 //        NotificationDao notificationDao = new NotificationDaoImpl();
 //        notificationDao.IncreaseNotification(notification2);
 //        notificationDao.IncreaseNotification(notification3);
+
+        /*单词背诵注释*/
+        //添加单词书
+//        WordsBook book1 = new WordsBook("四级词汇",3662,"易拾单词");
+//        WordsBook book2 = new WordsBook("六级词汇",2087,"易拾单词");
+//        WordsBook book3 = new WordsBook("高中词汇",2032,"易拾单词");
+//        WordsBook book4 = new WordsBook("初中词汇",1133,"易拾单词");
+//        WordsBook book5 = new WordsBook("雅思词汇",1217,"易拾单词");
+//        WordsBook book6 = new WordsBook("托福词汇",5396,"易拾单词");
+//        WordsBook book7 = new WordsBook("考研词汇",3599,"易拾单词");
+//        WordsBookDao dao = new WordsBookDaoImpl();
+//        List<WordsBook> books = new ArrayList<>();
+//        books.add(book1);
+//        books.add(book2);
+//        books.add(book3);
+//        books.add(book4);
+//        books.add(book5);
+//        books.add(book6);
+//        books.add(book1);
+//        dao.IncreaseWordsBook(book1);
+
+//        /*单词数据导入*/
+//        WordDao wordDao = new WordDaoImpl();
+//        SQLiteUtils vocDb = new SQLiteUtils(this);
+//        List<Word> words;
+//        /*******************************************************/
+//        words = vocDb.getData(ConstUtils.WordsStoreType.getWordsStoreType(0),0);
+//        for(Word word:words){
+//            word.setId(0);
+//            word.setWordType(ConstUtils.WordsType.SIJI);
+//        }
+//        //Log.d(TAG, "addTestData: " + words.get(0).toString());
+//        wordDao.IncreaseWords(words);
+//        /*******************************************************/
+//        words = vocDb.getData(ConstUtils.WordsStoreType.getWordsStoreType(1),0);
+//        for(Word word:words){
+//            word.setId(0);
+//            word.setWordType(ConstUtils.WordsType.LIUJI);
+//        }
+//        //Log.d(TAG, "addTestData: " + words.get(0).toString());
+//        wordDao.IncreaseWords(words);
+//        /*******************************************************/
+//        words = vocDb.getData(ConstUtils.WordsStoreType.getWordsStoreType(2),0);
+//        for(Word word:words){
+//            word.setId(0);
+//            word.setWordType(2);
+//        }
+//        //Log.d(TAG, "addTestData: " + words.get(0).toString());
+//        wordDao.IncreaseWords(words);
+//        /*******************************************************/
+//        words = vocDb.getData(ConstUtils.WordsStoreType.getWordsStoreType(3),0);
+//        for(Word word:words){
+//            word.setId(0);
+//            word.setWordType(3);
+//        }
+//        //Log.d(TAG, "addTestData: " + words.get(0).toString());
+//        wordDao.IncreaseWords(words);
+//        /*******************************************************/
+//        words = vocDb.getData(ConstUtils.WordsStoreType.getWordsStoreType(4),0);
+//        for(Word word:words){
+//            word.setId(0);
+//            word.setWordType(4);
+//        }
+//        //Log.d(TAG, "addTestData: " + words.get(0).toString());
+//        wordDao.IncreaseWords(words);
+//        /*******************************************************/
+//        words = vocDb.getData(ConstUtils.WordsStoreType.getWordsStoreType(5),0);
+//        for(Word word:words){
+//            word.setId(0);
+//            word.setWordType(5);
+//        }
+//        //Log.d(TAG, "addTestData: " + words.get(0).toString());
+//        wordDao.IncreaseWords(words);
+//        /*******************************************************/
+//        words = vocDb.getData(ConstUtils.WordsStoreType.getWordsStoreType(6),0);
+//        for(Word word:words){
+//            word.setId(0);
+//            word.setWordType(6);
+//        }
+//        //Log.d(TAG, "addTestData: " + words.get(0).toString());
+//        wordDao.IncreaseWords(words);
+//    }
     }
 
 
