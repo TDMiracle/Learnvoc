@@ -32,6 +32,7 @@ public class WordsBook extends LitePalSupport {
     int count;//总词数
     String name;
     String description;
+    String url;//图片存放位置
 
     public WordsBook(){
 
@@ -41,6 +42,13 @@ public class WordsBook extends LitePalSupport {
         this.count = count;
         this.name = name;
         this.description = description;
+    }
+
+    public WordsBook(String name, int count, String description, String url) {
+        this.count = count;
+        this.name = name;
+        this.description = description;
+        this.url = url;
     }
 
     public WordsBook(int id, String name, int count, String description) {
@@ -57,7 +65,16 @@ public class WordsBook extends LitePalSupport {
                 ", count=" + count +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
+                ", url='" + url + '\'' +
                 '}';
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 
     public int getId() {

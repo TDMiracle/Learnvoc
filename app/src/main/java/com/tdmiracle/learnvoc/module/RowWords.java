@@ -27,7 +27,7 @@ import org.litepal.crud.LitePalSupport;
  * 文件名称： RowWordsBook.java
  * 类说明：生词本
  */
-public class RowWordsBook extends LitePalSupport {
+public class RowWords extends LitePalSupport {
     int id;
     int user_id;//外键，关联User表
     int wordtype;//单词类型
@@ -35,13 +35,11 @@ public class RowWordsBook extends LitePalSupport {
     String yinbiao;
     String translation;
 
-    public RowWordsBook(){
+    public RowWords(){
         
     }
 
-    public RowWordsBook(int id, int uid,  String word,int wordtype, String yinbiao, String translation) {
-        this.id = id;
-        this.user_id = uid;
+    public RowWords(String word, int wordtype, String yinbiao, String translation) {
         this.wordtype = wordtype;
         this.word = word;
         this.yinbiao = yinbiao;
@@ -68,12 +66,12 @@ public class RowWordsBook extends LitePalSupport {
         this.id = id;
     }
 
-    public int getUid() {
+    public int getUser_id() {
         return user_id;
     }
 
-    public void setUid(int uid) {
-        this.user_id = uid;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     public int getWordtype() {

@@ -24,15 +24,21 @@ import com.tdmiracle.learnvoc.MyApp;
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.adapter.entity.Notification;
 import com.tdmiracle.learnvoc.dao.NotificationDao;
+import com.tdmiracle.learnvoc.dao.RowWordsDao;
 import com.tdmiracle.learnvoc.dao.WordDao;
+import com.tdmiracle.learnvoc.dao.WordTestQuestionDao;
 import com.tdmiracle.learnvoc.dao.WordsBookDao;
 import com.tdmiracle.learnvoc.dao.daoImpl.NotificationDaoImpl;
+import com.tdmiracle.learnvoc.dao.daoImpl.RowWordsDaoImpl;
 import com.tdmiracle.learnvoc.dao.daoImpl.UserDaoImpl;
 import com.tdmiracle.learnvoc.dao.daoImpl.WordDaoImpl;
+import com.tdmiracle.learnvoc.dao.daoImpl.WordTestQuestionDaoImpl;
 import com.tdmiracle.learnvoc.dao.daoImpl.WordsBookDaoImpl;
 import com.tdmiracle.learnvoc.module.LoginInfo;
+import com.tdmiracle.learnvoc.module.RowWords;
 import com.tdmiracle.learnvoc.module.User;
 import com.tdmiracle.learnvoc.module.Word;
+import com.tdmiracle.learnvoc.module.WordTestQuestion;
 import com.tdmiracle.learnvoc.module.WordsBook;
 import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.DBManager;
@@ -116,6 +122,8 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
 //        user.setSchool("河北工业大学");
 //        userDao.updateUserinfo(user);
         User newUser = userDao.findUserById("2").get(0);
+//        User newUser = new User();
+        newUser.setId(2);
 //        Log.d(TAG, "newUser: " + newUser.toString());
         //存入全局对象
         MyApp app = (MyApp) getApplication();
@@ -221,6 +229,25 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
 //        //Log.d(TAG, "addTestData: " + words.get(0).toString());
 //        wordDao.IncreaseWords(words);
 //    }
+        /*生词本接口测试*/
+//        RowWordsDao rowWordsDao = new RowWordsDaoImpl();
+//        RowWords rowWord = new RowWords("vocabulary",1," [vəˈkæbjələri]","词汇");
+//        RowWords rowWord1 = new RowWords("vocabularies",1,"  [vəʊˈkæbjʊləriz]","词汇表");
+//        RowWords rowWord2 = new RowWords(" typically",1,"  [ˈtɪpɪkli]","通常;一般;典型地;具有代表性地;不出所料;果然");
+//        rowWordsDao.addRowWordByUser(newUser,rowWord);
+//        rowWordsDao.addRowWordByUser(newUser,rowWord1);
+//        rowWordsDao.addRowWordByUser(newUser,rowWord2);
+//        List<RowWords> foundRowWords = rowWordsDao.findUserAllRowWords(newUser);
+//        String result = "";
+//        for(RowWords word : foundRowWords){
+//            result += word.toString();
+//        }
+//        Log.d(TAG, "addTestData: " + result);
+
+        /*单词测试接口测试*/
+        WordTestQuestionDao wordTestQuestionDao = new WordTestQuestionDaoImpl();
+        List<WordTestQuestion> wordTestQuestions = wordTestQuestionDao.findWordTestQuestionByType(1);
+        Log.d(TAG, "WordTestQuestion: " + wordTestQuestions.get(0).toString());
     }
 
 

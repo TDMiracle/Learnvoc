@@ -31,15 +31,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <LinearLayout
+        <com.xuexiang.xui.widget.imageview.RadiusImageView
+            android:id="@+id/select_wordBook_bookImg"
             android:layout_marginTop="@dimen/config_margin_5dp"
             android:layout_width="100dp"
             android:layout_height="120dp"
-            android:background="@color/colorAccent"
-            android:gravity="center"
+            android:src="@drawable/liuji"
             android:layout_gravity="center"
-            android:orientation="vertical"
-            >
+            />
             <TextView
                 android:id="@+id/select_wordBook_name"
                 android:layout_width="wrap_content"
@@ -48,11 +47,10 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:gravity="center"
-                android:textColor="@color/white"
                 android:ellipsize="end"
                 android:textStyle="bold"
                 android:text="四级词汇"
-                android:textSize="@dimen/word_middle"
+                android:textSize="14sp"
                 />
             <TextView
                 android:id="@+id/select_wordBook_wordCount"
@@ -62,22 +60,19 @@
                 android:layout_marginLeft="2dp"
                 android:layout_marginRight="2dp"
                 android:gravity="center"
-                android:textColor="@color/white"
-                android:ellipsize="end"
                 android:textStyle="bold"
                 android:text="3662词"
                 android:textSize="14sp"
                 />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/select_wordBook_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textStyle="bold"
-            android:gravity="center"
-            android:text="易拾英语"
-            android:textSize="12sp"
-            android:layout_gravity="center"/>
+            <TextView
+                android:id="@+id/select_wordBook_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:text="易拾英语"
+                android:textSize="1sp"
+                android:layout_gravity="center"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.activity.WordDetailActivity;
+import com.tdmiracle.learnvoc.module.RowWords;
 import com.tdmiracle.learnvoc.module.Word;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
 
@@ -49,6 +50,7 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
     public WordsBookAdapter(List<Word> words) {
         this.words = words;
     }
+
     /*
      * 子布局创建时候对其进行布局绑定和Item的点击事件的设置
      * */
@@ -62,10 +64,28 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
 //                Intent intent = new Intent(parent.getContext(), WordDetailActivity.class);
 //                intent.putExtra("word",holder.word.getText());
 //                parent.getContext().startActivity(intent);
-                XToastUtils.toast(holder.word.getText());
+//                XToastUtils.toast(holder.word.getText());
             }
         });
         return holder;
+    }
+
+    public void addData(int position, Word newWord) {
+        words.add(newWord);
+        notifyItemChanged(position);
+//        notifyDataSetChanged();
+    }
+
+    public void removeData(int position) {
+        words.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public void notifyAdapter(List<Word> wordList,boolean isAdd){
+        if (isAdd){
+            words = wordList;
+            notifyDataSetChanged();
+        }
     }
 
     /*
@@ -93,7 +113,6 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
         public TextView yinbiao;
         public TextView translation;
         public LinearLayout layout;
-        public View line_spilt;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -101,7 +120,6 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
             word = (TextView) itemView.findViewById(R.id.word_book_word);
             yinbiao = (TextView) itemView.findViewById(R.id.word_book_yinbiao);
             translation = (TextView) itemView.findViewById(R.id.word_book_translation);
-            line_spilt = (View) itemView.findViewById(R.id.line_spilt);
         }
     }
 }

@@ -33,19 +33,32 @@ public class WordsReview  extends LitePalSupport {
     int user_id;//外键，User
     int word_id;//外键，Word
     int times;//复习遍数
-    Date first_time;//首次背诵时间
+    boolean is_grasp;//复习是否掌握
+    int familiarity;//复习熟悉度
     Date latest_time;//最新背诵时间
+    Date next_reviewTime;//下次背诵时间，由算法算出
 
     public WordsReview() {
     }
 
-    public WordsReview(int id, int user_id, int word_id, int times, Date first_time, Date latest_time) {
+    public WordsReview(int id, int user_id, int word_id, int times, Date next_reviewTime, Date latest_time) {
         this.id = id;
         this.user_id = user_id;
         this.word_id = word_id;
         this.times = times;
-        this.first_time = first_time;
+        this.next_reviewTime = next_reviewTime;
         this.latest_time = latest_time;
+    }
+
+    public WordsReview(int id, int user_id, int word_id, int times, boolean is_grasp, int familiarity, Date latest_time, Date next_reviewTime) {
+        this.id = id;
+        this.user_id = user_id;
+        this.word_id = word_id;
+        this.times = times;
+        this.is_grasp = is_grasp;
+        this.familiarity = familiarity;
+        this.latest_time = latest_time;
+        this.next_reviewTime = next_reviewTime;
     }
 
     @Override
@@ -55,9 +68,35 @@ public class WordsReview  extends LitePalSupport {
                 ", user_id=" + user_id +
                 ", word_id=" + word_id +
                 ", times=" + times +
-                ", first_time=" + first_time +
+                ", is_grasp=" + is_grasp +
+                ", familiarity=" + familiarity +
                 ", latest_time=" + latest_time +
+                ", next_reviewTime=" + next_reviewTime +
                 '}';
+    }
+
+    public boolean isIs_grasp() {
+        return is_grasp;
+    }
+
+    public void setIs_grasp(boolean is_grasp) {
+        this.is_grasp = is_grasp;
+    }
+
+    public int getFamiliarity() {
+        return familiarity;
+    }
+
+    public void setFamiliarity(int familiarity) {
+        this.familiarity = familiarity;
+    }
+
+    public Date getNext_reviewTime() {
+        return next_reviewTime;
+    }
+
+    public void setNext_reviewTime(Date next_reviewTime) {
+        this.next_reviewTime = next_reviewTime;
     }
 
     public int getId() {
@@ -90,14 +129,6 @@ public class WordsReview  extends LitePalSupport {
 
     public void setTimes(int times) {
         this.times = times;
-    }
-
-    public Date getFirst_time() {
-        return first_time;
-    }
-
-    public void setFirst_time(Date first_time) {
-        this.first_time = first_time;
     }
 
     public Date getLatest_time() {

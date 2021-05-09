@@ -63,7 +63,7 @@ public class SelectWordsBookActivity extends AppCompatActivity {
 
     private void initViews() {
         SelectWordBookAdapter adapter = new SelectWordBookAdapter(wordsBooks,this);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,2);//GridLlayout样式
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(this,3);//GridLlayout样式
         recyclerView.setLayoutManager(gridLayoutManager);
         //添加Android自带的分割线
         recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));

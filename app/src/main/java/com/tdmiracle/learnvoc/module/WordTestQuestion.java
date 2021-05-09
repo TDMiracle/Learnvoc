@@ -23,7 +23,7 @@ import org.litepal.crud.LitePalSupport;
  * 创建日期：2021/5/5 14:40
  * @author TD.Miracle
  * @version 1.0
- * 文件名称： WordTestQuestion.java
+ * 文件名称： WordTestQuestionDao.java
  * 类说明：单词测试试题
  */
 public class WordTestQuestion extends LitePalSupport {

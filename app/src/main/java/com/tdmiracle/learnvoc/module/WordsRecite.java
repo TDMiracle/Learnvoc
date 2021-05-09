@@ -33,8 +33,9 @@ public class WordsRecite extends LitePalSupport {
     int id;
     int user_id;//外键，User
     int word_id;//外键，Word
-    int familiarity;//单词熟悉度，越大表示越属，最大为10
+    int familiarity;//单词熟悉度，越大表示越属，最大为5
     int times;//背诵遍数
+    boolean is_grasp;//是否已掌握：默认为0（未掌握）
     Date first_time;//首次背诵时间
     Date latest_time;//最新背诵时间
 
@@ -59,9 +60,18 @@ public class WordsRecite extends LitePalSupport {
                 ", word_id=" + word_id +
                 ", familiarity=" + familiarity +
                 ", times=" + times +
+                ", is_grasp=" + is_grasp +
                 ", first_time=" + first_time +
                 ", latest_time=" + latest_time +
                 '}';
+    }
+
+    public boolean isIs_grasp() {
+        return is_grasp;
+    }
+
+    public void setIs_grasp(boolean is_grasp) {
+        this.is_grasp = is_grasp;
     }
 
     public int getId() {

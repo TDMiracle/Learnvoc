@@ -167,21 +167,23 @@ public class ReciteWordsFragment extends BaseFragment {
     //活动回调方法
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        String bookName = data.getStringExtra("bookName");
-        String bookWordsCount = data.getStringExtra("bookWordsCount");
-        // 根据上面发送过去的请求吗来区别
-        switch (requestCode) {
-            case 0:
-                break;
-            case 1:
-            {
-                word_book.setText(bookName + "书");
-                word_recite_learntCount.setText(0+ "");
-                word_recite_remainWords.setText(bookWordsCount);
-                break;
+        if(data.getStringExtra("bookName") != null && data.getStringExtra("bookWordsCount") != null){
+            String bookName = data.getStringExtra("bookName");
+            String bookWordsCount = data.getStringExtra("bookWordsCount");
+            // 根据上面发送过去的请求吗来区别
+            switch (requestCode) {
+                case 0:
+                    break;
+                case 1:
+                {
+                    word_book.setText(bookName + "书");
+                    word_recite_learntCount.setText(0+ "");
+                    word_recite_remainWords.setText(bookWordsCount);
+                    break;
+                }
+                default:
+                    break;
             }
-            default:
-                break;
         }
     }
 }

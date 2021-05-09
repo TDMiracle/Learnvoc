@@ -20,6 +20,7 @@ package com.tdmiracle.learnvoc.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,6 +37,7 @@ import com.tdmiracle.learnvoc.adapter.entity.WordReviewQuestionType;
 import com.tdmiracle.learnvoc.module.WordsBook;
 import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
+import com.xuexiang.xui.widget.imageview.RadiusImageView;
 import com.xuexiang.xutil.app.ActivityUtils;
 
 import java.util.List;
@@ -70,7 +72,6 @@ public class SelectWordBookAdapter extends RecyclerView.Adapter<SelectWordBookAd
                 /*实现ReciteWordsFragment单词书选择回调*/
                 String wordBookName = holder.select_wordBook_name.getText().toString();
                 String wordBookCount = holder.select_wordBook_wordCount.getText().toString();
-                XToastUtils.toast(wordBookName+wordBookCount);
                 Intent intent = new Intent();
                 intent.putExtra("bookName", wordBookName);
                 intent.putExtra("bookWordsCount",wordBookCount);
@@ -96,6 +97,34 @@ public class SelectWordBookAdapter extends RecyclerView.Adapter<SelectWordBookAd
         holder.select_wordBook_name.setText(wordsBooks.get(position).getName());
         holder.select_wordBook_wordCount.setText(wordsBooks.get(position).getCount()+"");
         holder.select_wordBook_description.setText(wordsBooks.get(position).getDescription());
+        holder.imageView.setCornerRadius(2);
+        switch (wordsBooks.get(position).getId() - 1){
+            case 0:
+                holder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.siji));
+                break;
+            case 1:
+                holder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.liuji));
+                break;
+            case 2:
+                holder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.gaozhong));
+                break;
+            case 3:
+                holder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.chuzhong));
+                break;
+            case 4:
+                holder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.yasi));
+                break;
+            case 5:
+                holder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.tuofu));
+                break;
+            case 6:
+                holder.imageView.setImageDrawable(context.getResources().getDrawable(R.drawable.kaoyan));
+                break;
+            default:
+                holder.imageView.setVisibility(View.GONE);
+                break;
+        }
+
     }
 
 
@@ -112,6 +141,7 @@ public class SelectWordBookAdapter extends RecyclerView.Adapter<SelectWordBookAd
         public TextView select_wordBook_name;
         public TextView select_wordBook_wordCount;
         public TextView select_wordBook_description;
+        public RadiusImageView imageView;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -119,6 +149,7 @@ public class SelectWordBookAdapter extends RecyclerView.Adapter<SelectWordBookAd
             select_wordBook_name = (TextView) itemView.findViewById(R.id.select_wordBook_name);
             select_wordBook_wordCount = (TextView) itemView.findViewById(R.id.select_wordBook_wordCount);
             select_wordBook_description = (TextView) itemView.findViewById(R.id.select_wordBook_description);
+            imageView = (RadiusImageView) itemView.findViewById(R.id.select_wordBook_bookImg);
         }
     }
 }

@@ -72,11 +72,13 @@
                         android:gravity="center"
                         android:textSize="36sp"
                         android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
                         android:text="99"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:textColor="@color/colorPrimary"
                         android:textSize="@dimen/sp_18"
                         android:text="天"/>
                 </LinearLayout>
@@ -93,12 +95,14 @@
                         android:gravity="center"
                         android:textSize="36sp"
                         android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
                         android:text="80"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:textSize="@dimen/sp_18"
+                        android:textColor="@color/colorPrimary"
                         android:text="个"/>
                 </LinearLayout>
             </LinearLayout>
