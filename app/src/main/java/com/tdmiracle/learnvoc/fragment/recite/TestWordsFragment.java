@@ -17,6 +17,7 @@
 
 package com.tdmiracle.learnvoc.fragment.recite;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -29,6 +30,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.tdmiracle.learnvoc.R;
+import com.tdmiracle.learnvoc.activity.GradeActivity;
 import com.tdmiracle.learnvoc.activity.TestWordsActivity;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.xuexiang.xutil.app.ActivityUtils;
@@ -44,8 +46,8 @@ public class TestWordsFragment extends BaseFragment {
 
     @BindView(R.id.start_test)
     Button btn_start_test;
-    @BindView(R.id.word_test_back)
-    Button word_test_back;
+    @BindView(R.id.word_test_showPriorResult)
+    Button word_test_showPriorResult;
     @BindView(R.id.vocabulary)
     TextView vocabulary;
 
@@ -73,13 +75,17 @@ public class TestWordsFragment extends BaseFragment {
         return R.layout.fragment_test_words;
     }
 
-    @OnClick({R.id.start_test,R.id.word_test_back})
+    @OnClick({R.id.start_test,R.id.word_test_showPriorResult})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.start_test:
                 ActivityUtils.startActivity(TestWordsActivity.class);
                 break;
-            case R.id.word_test_back:
+            case R.id.word_test_showPriorResult:
+                //传递数据
+                Intent intent = new Intent(getActivity(), GradeActivity.class);
+                intent.putExtra("testCount",10);
+                startActivity(intent);
                 break;
             default:break;
         }

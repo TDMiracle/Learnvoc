@@ -63,11 +63,11 @@
         android:text="再测一次"
         />
     <Button
-        android:id="@+id/word_test_back"
+        android:id="@+id/word_test_showPriorResult"
         android:layout_margin="5dp"
         android:layout_width="match_parent"
         android:textSize="@dimen/sp_18"
         android:layout_height="50dp"
-        android:text="返回"
+        android:text="查看上次测试结果"
         />
 </LinearLayout>

@@ -17,6 +17,7 @@
 
 package com.tdmiracle.learnvoc.module;
 
+import org.litepal.LitePal;
 import org.litepal.crud.LitePalSupport;
 
 import java.util.Date;
@@ -35,6 +36,9 @@ public class UserWordTest extends LitePalSupport {
     int userChoice;//ABCD:1234//用户选项
     boolean is_right;//是否正确
     Date test_time;//用户测试时间
+    boolean is_show;//是否已展示成绩
+
+    WordTestQuestion wordTestQuestion;
 
     public UserWordTest() {
     }
@@ -42,6 +46,13 @@ public class UserWordTest extends LitePalSupport {
     public UserWordTest(int id, int user_id, int wordTestQuestion_id, int userChoice, boolean is_right, Date test_time) {
         this.id = id;
         this.user_id = user_id;
+        this.wordTestQuestion_id = wordTestQuestion_id;
+        this.userChoice = userChoice;
+        this.is_right = is_right;
+        this.test_time = test_time;
+    }
+
+    public UserWordTest(int wordTestQuestion_id, int userChoice, boolean is_right, Date test_time) {
         this.wordTestQuestion_id = wordTestQuestion_id;
         this.userChoice = userChoice;
         this.is_right = is_right;
@@ -58,6 +69,23 @@ public class UserWordTest extends LitePalSupport {
                 ", is_right=" + is_right +
                 ", test_time=" + test_time +
                 '}';
+    }
+
+    public boolean isIs_show() {
+        return is_show;
+    }
+
+    public void setIs_show(boolean is_show) {
+        this.is_show = is_show;
+    }
+
+    public WordTestQuestion getWordTestQuestion() {
+        //查询数据库
+        return LitePal.where("id = " + String.valueOf(wordTestQuestion_id)).findFirst(WordTestQuestion.class);
+    }
+
+    public void setWordTestQuestion(WordTestQuestion wordTestQuestion) {
+        this.wordTestQuestion = wordTestQuestion;
     }
 
     public int getId() {

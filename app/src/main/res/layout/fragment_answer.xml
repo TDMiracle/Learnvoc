@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (C) 2021 TD.Miracle(584290367@qq.com)
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~       http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  ~
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/UI_recite"
+    tools:context=".fragment.common.AnswerFragment">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal">
+        <TextView
+            android:id="@+id/word_test_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="abandon"
+            android:textSize="@dimen/word_big"
+            />
+    </LinearLayout>
+    <TextView
+        android:id="@+id/word_test_yinbiao"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="英 [əˈbændən]   美 [əˈbændən] "
+        android:textSize="@dimen/word_middle"
+        />
+
+    <RadioGroup
+        android:id="@+id/word_test_answer"
+        android:layout_width="320dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+            <RadioButton
+                android:id="@+id/word_test_answer_A"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/radiobutton_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="是"
+                android:textColor="@drawable/radiobutton_text_color"
+                android:textSize="16sp" />
+            <RadioButton
+                android:id="@+id/word_test_answer_B"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/radiobutton_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="否"
+                android:textColor="@drawable/radiobutton_text_color"
+                android:textSize="16sp" />
+            <RadioButton
+                android:id="@+id/word_test_answer_C"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/radiobutton_selector"
+                android:button="@null"
+                android:gravity="center"
+                android:text="是"
+                android:textColor="@drawable/radiobutton_text_color"
+                android:textSize="16sp" />
+            <RadioButton
+                android:id="@+id/word_test_answer_D"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@drawable/radiobutton_selector"
+                android:button="@null"
+                android:gravity="center"
+
+                android:text="否"
+                android:textColor="@drawable/radiobutton_text_color"
+                android:textSize="16sp" />
+        <RadioButton
+            android:id="@+id/word_test_answer_None"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/radiobutton_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="没有正确答案"
+            android:textColor="@drawable/radiobutton_text_color"
+            android:textSize="16sp" />
+        <RadioButton
+            android:id="@+id/word_test_answer_Unknown"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/radiobutton_selector"
+            android:button="@null"
+            android:gravity="center"
+            android:text="不认识"
+            android:textColor="@drawable/radiobutton_text_color"
+            android:textSize="16sp" />
+    </RadioGroup>
+</LinearLayout>

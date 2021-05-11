@@ -245,9 +245,9 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
 //        Log.d(TAG, "addTestData: " + result);
 
         /*单词测试接口测试*/
-        WordTestQuestionDao wordTestQuestionDao = new WordTestQuestionDaoImpl();
-        List<WordTestQuestion> wordTestQuestions = wordTestQuestionDao.findWordTestQuestionByType(1);
-        Log.d(TAG, "WordTestQuestion: " + wordTestQuestions.get(0).toString());
+//        WordTestQuestionDao wordTestQuestionDao = new WordTestQuestionDaoImpl();
+//        List<WordTestQuestion> wordTestQuestions = wordTestQuestionDao.findWordTestQuestionByType(1);
+//        Log.d(TAG, "WordTestQuestion: " + wordTestQuestions.get(0).toString());
     }
 
 

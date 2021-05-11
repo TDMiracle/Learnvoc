@@ -19,7 +19,7 @@
 <litepal>
     <dbname value="demo" />
 
-    <version value="15" />
+    <version value="19" />
 
 
     <list>
