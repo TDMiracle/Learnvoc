@@ -64,7 +64,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="1."
+                    android:text="A."
                     />
                 <TextView
                     android:id="@+id/tv_item_activty_score_optionA"
@@ -84,7 +84,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="2."
+                    android:text="B."
                     />
                 <TextView
                     android:id="@+id/tv_item_activty_score_optionB"
@@ -104,7 +104,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="3."
+                    android:text="C."
                     />
                 <TextView
                     android:id="@+id/tv_item_activty_score_optionC"
@@ -124,7 +124,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="5dp"
-                    android:text="4."
+                    android:text="D."
                     />
                 <TextView
                     android:id="@+id/tv_item_activty_score_optionD"

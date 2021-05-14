@@ -89,6 +89,9 @@ public class ReciteWordsFragment extends BaseFragment {
 
     private Intent intent;
     private int requestCode;//单词书选择请求码
+    String bookName = "四级";//用户选择单词书
+    String bookWordsCount;//用户单词书数总数
+    int todayWordsCount;//用户选择的每日背诵单词数
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -141,6 +144,7 @@ public class ReciteWordsFragment extends BaseFragment {
 
         @Override
         public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            todayWordsCount = Integer.parseInt(reciteCount[i]);
            //XToastUtils.toast("您选择的是："+reciteCount[i],Toast.LENGTH_SHORT);
         }
 
@@ -154,7 +158,11 @@ public class ReciteWordsFragment extends BaseFragment {
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.start_recite:
-                ActivityUtils.startActivity(ReciteWordsActivity.class);
+                Intent intent1 = new Intent(getActivity(),ReciteWordsActivity.class);
+                intent1.putExtra("bookName",bookName);
+                intent1.putExtra("todayWordsCount",todayWordsCount);
+                startActivity(intent1);
+//                ActivityUtils.startActivity(ReciteWordsActivity.class);
                 break;
             case R.id.word_recite_book:
                 intent = new Intent(this.getContext(),SelectWordsBookActivity.class);
@@ -168,8 +176,8 @@ public class ReciteWordsFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         if(data.getStringExtra("bookName") != null && data.getStringExtra("bookWordsCount") != null){
-            String bookName = data.getStringExtra("bookName");
-            String bookWordsCount = data.getStringExtra("bookWordsCount");
+            bookName = data.getStringExtra("bookName");
+            bookWordsCount = data.getStringExtra("bookWordsCount");
             // 根据上面发送过去的请求吗来区别
             switch (requestCode) {
                 case 0:

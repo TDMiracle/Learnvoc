@@ -18,6 +18,7 @@
 package com.tdmiracle.learnvoc.module;
 
 
+import org.litepal.LitePal;
 import org.litepal.crud.LitePalSupport;
 
 import java.util.Date;
@@ -38,6 +39,7 @@ public class WordsRecite extends LitePalSupport {
     boolean is_grasp;//是否已掌握：默认为0（未掌握）
     Date first_time;//首次背诵时间
     Date latest_time;//最新背诵时间
+    Word word;//单词
 
     public WordsRecite() {
     }
@@ -64,6 +66,15 @@ public class WordsRecite extends LitePalSupport {
                 ", first_time=" + first_time +
                 ", latest_time=" + latest_time +
                 '}';
+    }
+
+    //获取背诵的单词
+    public Word getWord() {
+        return LitePal.where("id=?",word_id+"").findFirst(Word.class);
+    }
+
+    public void setWord(Word word) {
+        this.word = word;
     }
 
     public boolean isIs_grasp() {

@@ -18,11 +18,16 @@
 package com.tdmiracle.learnvoc.dao.daoImpl;
 
 
+import android.database.Cursor;
+import android.util.Log;
+
 import com.tdmiracle.learnvoc.dao.WordDao;
 import com.tdmiracle.learnvoc.module.Word;
+import com.tdmiracle.learnvoc.module.WordsRecite;
 
 import org.litepal.LitePal;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +38,9 @@ import java.util.List;
  * 类说明：单词dao实现类
  */
 public class WordDaoImpl implements WordDao {
+
+    private final String TAG = "WordDaoImpl";
+
     @Override
     public Boolean IncreaseWord(Word word) {
         return word.save();
@@ -42,4 +50,6 @@ public class WordDaoImpl implements WordDao {
     public Boolean IncreaseWords(List<Word> words) {
         return LitePal.saveAll(words);
     }
+
+
 }

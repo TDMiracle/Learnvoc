@@ -19,6 +19,8 @@ package com.tdmiracle.learnvoc.module;
 
 import org.litepal.crud.LitePalSupport;
 
+import java.util.Date;
+
 
 /**
  * 创建日期：2021/5/5 14:51
@@ -34,6 +36,7 @@ public class Word extends LitePalSupport {
     String translation;
     //ConstUtils wordsType
     int wordType;
+//    boolean is_recite = false;//当前用户是否已经添加背诵此单词,默认为未背
 
     public Word(){
 
@@ -54,6 +57,7 @@ public class Word extends LitePalSupport {
         this.wordType = wordType;
     }
 
+
     @Override
     public String toString() {
         return "Word{" +
@@ -62,8 +66,17 @@ public class Word extends LitePalSupport {
                 ", yinbiao='" + yinbiao + '\'' +
                 ", translation='" + translation + '\'' +
                 ", wordType=" + wordType +
+//                ", is_recite=" + is_recite +
                 '}';
     }
+
+//    public boolean isIs_recite() {
+//        return is_recite;
+//    }
+//
+//    public void setIs_recite(boolean is_recite) {
+//        this.is_recite = is_recite;
+//    }
 
     public int getId() {
         return id;

@@ -5,8 +5,8 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="menu_home">首页</string>
-    <string name="menu_recite">背诵</string>
+    <string name="menu_home">资讯</string>
+    <string name="menu_recite">学习</string>
     <string name="menu_statistic">统计</string>
     <string name="menu_profile">我的</string>
 
@@ -85,5 +85,14 @@
     <string name="save">保存</string>
     <string name="yijianfankui">意见反馈</string>
     <string name="connect_keFu">管理员联系微信：Miracle-zjh</string>
+    <string name="title_activity_recite_result">ReciteResultActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
 </resources>

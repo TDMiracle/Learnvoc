@@ -25,7 +25,8 @@
     <color name="app_color_theme_8">#AC8FEF</color> <!-- Lavender -->
     <color name="app_color_theme_9">#EE85C1</color>
     <color name="UI_recite">#f0ebdf</color> <!-- Pink Rose -->
-    <color name="UI_recite_heavy">#dcd0b6</color> <!-- Pink Rose -->
+    <color name="UI_recite_heavy">#dcd0b6</color>
+    <color name="tipOrNotKonw">#ff9900</color> <!-- Pink Rose -->
 
 
 </resources>

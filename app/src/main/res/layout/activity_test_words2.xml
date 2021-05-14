@@ -145,7 +145,7 @@
         android:layout_marginRight="20dp"
         android:textSize="@dimen/sp_18"
         android:layout_height="50dp"
-        android:background="#ff9900"
+        android:background="@color/tipOrNotKonw"
         android:text="不认识"
         />
 

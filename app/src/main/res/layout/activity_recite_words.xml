@@ -31,97 +31,90 @@
         android:gravity="center"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
+        android:orientation="horizontal"
         >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="正在背诵："
+                />
+            <TextView
+                android:id="@+id/word_recite_bookName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="四级"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:text="词汇"
+                />
+        </LinearLayout>
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:background="@drawable/ic_word_search" />
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:text="需背诵："
+                />
             <TextView
                 android:id="@+id/word_recite_remainCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="需新学 35"
-                />
-            <TextView
-                android:id="@+id/word_recite_reviewCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="需复习 33"
+                android:textSize="18sp"
+                android:text="33"
                 />
         </LinearLayout>
     </LinearLayout>
-    <LinearLayout
-        android:paddingTop="100dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_horizontal"
-        >
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
-            <TextView
-                android:id="@+id/word_recite_word"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="abandon"
-                android:textSize="@dimen/word_big"
-                />
-            <ImageView
-                android:id="@+id/word_recite_fav"
-                android:background="@drawable/word_add_fav_normal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
-        </LinearLayout>
-        <TextView
-            android:id="@+id/word_recite_yinbiao"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="英 [əˈbændən]   美 [əˈbændən] "
-            android:textSize="@dimen/word_middle"
-            />
-        <TextView
-            android:id="@+id/word_recite_translation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:text="VERB 离弃；遗弃；抛弃"
-            android:textSize="@dimen/word_middle"
-            />
-    </LinearLayout>
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
+        android:layout_height="400dp">
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/word_recite_fragVp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </ScrollView>
+    <LinearLayout
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:paddingTop="100dp"
-        android:layout_gravity="center_horizontal"
-        android:orientation="vertical"
-        >
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/config_margin_5dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="@dimen/config_margin_20dp"
+        android:layout_marginRight="@dimen/config_margin_20dp">
+        <Button
+            android:id="@+id/word_recite_btn_previous"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:textSize="@dimen/word_middle"
+            android:text="上一词"/>
         <Button
             android:id="@+id/word_recite_btn_next"
-            android:layout_width="300dp"
-            android:layout_gravity="center_horizontal"
-            android:textSize="@dimen/sp_18"
-            android:layout_height="50dp"
-            android:text="我认识"
-            />
-
-        <Button
-            android:id="@+id/word_recite_btn_notice"
-            android:layout_width="300dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"
-            android:text="提示一下"
-            android:textSize="@dimen/sp_18" />
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/config_margin_10dp"
+            android:textSize="@dimen/word_middle"
+            android:text="下一词"/>
     </LinearLayout>
-
 </LinearLayout>

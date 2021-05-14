@@ -20,6 +20,40 @@ package com.tdmiracle.learnvoc.utils;
 import com.tdmiracle.learnvoc.adapter.entity.WordReviewQuestionType;
 
 public class ConstUtils {
+
+    //单词掌握程度
+    public static class WordMaster{
+        public static final int Level_1 = 1;//完全一摸黑*_*
+        public static final int Level_2 = 2;//看到答案,对正确单词有印象
+        public static final int Level_3 = 3;//在提示的情况下,能想起正确的单词
+        public static final int Level_4 = 4;//稍微吃力的回想一下,可以正确回忆出单词
+        public static final int Level_5 = 5;//回想一下,可以正确回忆出单词
+        public static final int Level_6 = 6;//单词记得非常好
+        public static String getTypeDesc(int level){
+            String desc = "未定义熟悉度";
+            switch (level){
+                case Level_1:
+                    desc = "完全一摸黑*_*";
+                    break;
+                case Level_2:
+                    desc = "看到答案,对正确单词有印象";
+                    break;
+                case Level_3:
+                    desc = "在提示的情况下,能想起正确的单词";
+                    break;
+                case Level_4:
+                    desc = "稍微吃力的回想一下,可以正确回忆出单词";
+                    break;
+                case Level_5:
+                    desc = "回想一下,可以正确回忆出单词";
+                    break;
+                case Level_6:
+                    desc = "单词记得非常好";
+                    break;
+            }
+            return desc;
+        }
+    }
     //单词复习提醒
     public static class WordReviewType{
         public static final int KanYingXuanZhong = 1;
@@ -91,6 +125,32 @@ public class ConstUtils {
         public static final int kaoyan = 6;
         public static final int kaobo = 7;
         public static final int Unknown = -1;
+
+        public static int getWordsByName(String name){
+            int wordsId = 0;
+            if(name.equals(getWordsType(0))) {
+                wordsId = 0;
+            }
+            else if(name.equals(getWordsType(1))){
+                wordsId = 1;
+            }
+            else if(name.equals(getWordsType(2))){
+                wordsId = 2;
+            }
+            else if(name.equals(getWordsType(3))){
+                wordsId = 3;
+            }
+            else if(name.equals(getWordsType(4))){
+                wordsId = 4;
+            }
+            else if(name.equals(getWordsType(5))){
+                wordsId = 5;
+            }
+            else if(name.equals(getWordsType(6))){
+                wordsId = 6;
+            }
+            return wordsId;
+        }
 
         public static String getWordsType(int code){
             String desc = "未知种类";

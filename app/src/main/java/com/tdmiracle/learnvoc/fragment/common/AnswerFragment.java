@@ -81,7 +81,7 @@ public class AnswerFragment extends BaseFragment {
     //用户答题数据
     UserWordTest userWordTest;
 
-    int choice = 0;//选择结果,默认为0（未作）
+    String choice = "null";//选择结果,默认为0（未作）
     int count = 1;//计数器，防止多次提交
 
     public AnswerFragment(WordTestQuestion wordTestQuestion) {
@@ -144,22 +144,22 @@ public class AnswerFragment extends BaseFragment {
         public void onCheckedChanged(RadioGroup group, int checkedId) {
             switch (checkedId) {
                 case R.id.word_test_answer_A:
-                    choice = 1;
+                    choice = "A";
                     break;
                 case R.id.word_test_answer_B:
-                    choice = 2;
+                    choice = "B";
                     break;
                 case R.id.word_test_answer_C:
-                    choice = 3;
+                    choice = "C";
                     break;
                 case R.id.word_test_answer_D:
-                    choice = 4;
+                    choice = "D";
                     break;
                 case R.id.word_test_answer_None:
-                    choice = 5;
+                    choice = "None";
                     break;
                 case R.id.word_test_answer_Unknown:
-                    choice = 6;
+                    choice = "Unknow";
                     break;
             }
 //            saveUserWordTest(choice);
@@ -167,14 +167,14 @@ public class AnswerFragment extends BaseFragment {
     };
 
     //保存答题数据
-    private void saveUserWordTest(int choice) {
+    private void saveUserWordTest(String choice) {
         if(count != 0){
             userWordTest.setUser_id(globalUser.getId());
             userWordTest.setTest_time(new Date());
             userWordTest.setWordTestQuestion_id(wordTestQuestion.getId());
             userWordTest.setUserChoice(choice);
             userWordTest.setIs_show(false);
-            if(choice == wordTestQuestion.getRightChoice()){
+            if(choice.equals(wordTestQuestion.getRightChoice())){
                 userWordTest.setIs_right(true);
             }else {
                 userWordTest.setIs_right(false);

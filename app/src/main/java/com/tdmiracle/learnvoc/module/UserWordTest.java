@@ -33,7 +33,7 @@ public class UserWordTest extends LitePalSupport {
     int id;
     int user_id;//外键，User
     int wordTestQuestion_id;//外键，WordTestQuestion
-    int userChoice;//ABCD:1234//用户选项
+    String userChoice;//ABCD户选项
     boolean is_right;//是否正确
     Date test_time;//用户测试时间
     boolean is_show;//是否已展示成绩
@@ -43,7 +43,7 @@ public class UserWordTest extends LitePalSupport {
     public UserWordTest() {
     }
 
-    public UserWordTest(int id, int user_id, int wordTestQuestion_id, int userChoice, boolean is_right, Date test_time) {
+    public UserWordTest(int id, int user_id, int wordTestQuestion_id, String userChoice, boolean is_right, Date test_time) {
         this.id = id;
         this.user_id = user_id;
         this.wordTestQuestion_id = wordTestQuestion_id;
@@ -52,7 +52,7 @@ public class UserWordTest extends LitePalSupport {
         this.test_time = test_time;
     }
 
-    public UserWordTest(int wordTestQuestion_id, int userChoice, boolean is_right, Date test_time) {
+    public UserWordTest(int wordTestQuestion_id, String userChoice, boolean is_right, Date test_time) {
         this.wordTestQuestion_id = wordTestQuestion_id;
         this.userChoice = userChoice;
         this.is_right = is_right;
@@ -112,11 +112,11 @@ public class UserWordTest extends LitePalSupport {
         this.wordTestQuestion_id = wordTestQuestion_id;
     }
 
-    public int getUserChoice() {
+    public String getUserChoice() {
         return userChoice;
     }
 
-    public void setUserChoice(int userChoice) {
+    public void setUserChoice(String userChoice) {
         this.userChoice = userChoice;
     }
 

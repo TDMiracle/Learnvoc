@@ -35,12 +35,12 @@ public class WordTestQuestion extends LitePalSupport {
     String choice_B;
     String choice_C;
     String choice_D;
-    int rightChoice;//ABCD：1234
+    String rightChoice;//ABCD：1234
 
     public WordTestQuestion() {
     }
 
-    public WordTestQuestion(int id, String word, String yinbiao, int type, String choice_A, String choice_B, String choice_C, String choice_D, int rightChoice) {
+    public WordTestQuestion(int id, String word, String yinbiao, int type, String choice_A, String choice_B, String choice_C, String choice_D, String rightChoice) {
         this.id = id;
         this.word = word;
         this.yinbiao = yinbiao;
@@ -131,11 +131,11 @@ public class WordTestQuestion extends LitePalSupport {
         this.choice_D = choice_D;
     }
 
-    public int getRightChoice() {
+    public String getRightChoice() {
         return rightChoice;
     }
 
-    public void setRightChoice(int rightChoice) {
+    public void setRightChoice(String  rightChoice) {
         this.rightChoice = rightChoice;
     }
 }

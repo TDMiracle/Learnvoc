@@ -33,6 +33,7 @@ import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.activity.WordDetailActivity;
 import com.tdmiracle.learnvoc.module.RowWords;
 import com.tdmiracle.learnvoc.module.Word;
+import com.tdmiracle.learnvoc.module.WordsRecite;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
 
 import java.util.List;
@@ -45,10 +46,17 @@ import java.util.List;
  * 类说明：单词本适配器
  */
 public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.ViewHolder>{
-    List<Word> words;
+    List<Word> words;//生词本
+    List<WordsRecite> wordsReciteList;//背诵数据
+    int type;//1:生词本；2：单词本
 
     public WordsBookAdapter(List<Word> words) {
         this.words = words;
+    }
+
+    public WordsBookAdapter(List<WordsRecite> wordsReciteList,int type){
+        this.wordsReciteList = wordsReciteList;
+        this.type=type;
     }
 
     /*
@@ -94,15 +102,23 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
     @Override
     public void onBindViewHolder(WordsBookAdapter.ViewHolder holder, int position) {
         //holder.image.setImageResource(R.mipmap.leak_canary_icon);
-        holder.word.setText(words.get(position).getWord());
-        holder.yinbiao.setText(words.get(position).getYinbiao());
-        holder.translation.setText(words.get(position).getTranslation());
+        if(type!=0){//绑定单词本
+
+        }else {//绑定生词本
+            holder.word.setText(words.get(position).getWord());
+            holder.yinbiao.setText(words.get(position).getYinbiao());
+            holder.translation.setText(words.get(position).getTranslation());
+        }
     }
 
 
     @Override
     public int getItemCount() {
-        return words.size();
+        if(type!=0){
+            return wordsReciteList.size();
+        }else {
+            return words.size();
+        }
     }
 
     /*
