@@ -23,14 +23,58 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".activity.ApplicationNotificationActivity">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay"
+        app:elevation="0dp">
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:titleTextColor="@color/xui_config_color_white">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:text="设置学习提醒" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textSize="@dimen/sp_18"
+            android:text="选择每日学习提醒时间" />
+        <TimePicker
+            android:layout_marginTop="@dimen/config_margin_5dp"
+            android:id="@+id/timepicker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#ffffff"
+            />
+    </LinearLayout>
     <Button
+        android:layout_marginTop="10dp"
         android:id="@+id/send_notification1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="发送通知1"/>
+        android:layout_height="50dp"
+        android:background="@color/colorPrimary"
+        android:text="打卡提醒"/>
     <Button
+        android:layout_marginTop="2dp"
         android:id="@+id/send_notification2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="发送通知2"/>
+        android:background="@color/colorPrimary"
+        android:layout_height="50dp"
+        android:text="复习提醒"/>
 </LinearLayout>

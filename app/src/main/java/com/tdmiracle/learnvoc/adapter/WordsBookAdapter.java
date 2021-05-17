@@ -19,6 +19,7 @@ package com.tdmiracle.learnvoc.adapter;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,6 +35,8 @@ import com.tdmiracle.learnvoc.activity.WordDetailActivity;
 import com.tdmiracle.learnvoc.module.RowWords;
 import com.tdmiracle.learnvoc.module.Word;
 import com.tdmiracle.learnvoc.module.WordsRecite;
+import com.tdmiracle.learnvoc.utils.ConstUtils;
+import com.tdmiracle.learnvoc.utils.FormatUtils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
 
 import java.util.List;
@@ -52,11 +55,6 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
 
     public WordsBookAdapter(List<Word> words) {
         this.words = words;
-    }
-
-    public WordsBookAdapter(List<WordsRecite> wordsReciteList,int type){
-        this.wordsReciteList = wordsReciteList;
-        this.type=type;
     }
 
     /*
@@ -92,8 +90,17 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
     public void notifyAdapter(List<Word> wordList,boolean isAdd){
         if (isAdd){
             words = wordList;
+            wordsReciteList = null;
+            type=0;
             notifyDataSetChanged();
         }
+    }
+
+    public void notifyAdapter2(List<WordsRecite> wordsReciteList,int type){
+            this.wordsReciteList = wordsReciteList;
+            words = null;
+            this.type = type;
+            notifyDataSetChanged();
     }
 
     /*
@@ -103,8 +110,19 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
     public void onBindViewHolder(WordsBookAdapter.ViewHolder holder, int position) {
         //holder.image.setImageResource(R.mipmap.leak_canary_icon);
         if(type!=0){//绑定单词本
-
+            holder.word_reciteInfo.setVisibility(View.VISIBLE);//背诵详情可见
+            holder.word.setText(wordsReciteList.get(position).getWord().getWord());
+            holder.yinbiao.setText(wordsReciteList.get(position).getWord().getYinbiao());
+            holder.translation.setText(wordsReciteList.get(position).getWord().getTranslation());
+            if(!wordsReciteList.get(position).isIs_grasp()){
+                holder.word_grasp.setText("未掌握");
+                holder.word_grasp.setTextColor(Color.rgb(255,153,0));
+            }
+            holder.word_latestTime.setText(FormatUtils.getDateTimeString(wordsReciteList.get(position).getLatest_time()));
+            holder.word_book_fromBook.setText(ConstUtils.WordsType.
+                    getWordsType(wordsReciteList.get(position).getWord().getWordType()));
         }else {//绑定生词本
+            holder.word_reciteInfo.setVisibility(View.GONE);//背诵详情不可见
             holder.word.setText(words.get(position).getWord());
             holder.yinbiao.setText(words.get(position).getYinbiao());
             holder.translation.setText(words.get(position).getTranslation());
@@ -129,6 +147,10 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
         public TextView yinbiao;
         public TextView translation;
         public LinearLayout layout;
+        public LinearLayout word_reciteInfo;
+        public TextView word_grasp;
+        public TextView word_latestTime;
+        public TextView word_book_fromBook;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -136,6 +158,10 @@ public class WordsBookAdapter extends RecyclerView.Adapter<WordsBookAdapter.View
             word = (TextView) itemView.findViewById(R.id.word_book_word);
             yinbiao = (TextView) itemView.findViewById(R.id.word_book_yinbiao);
             translation = (TextView) itemView.findViewById(R.id.word_book_translation);
+            word_reciteInfo = (LinearLayout) itemView.findViewById(R.id.word_book_reciteInfo);
+            word_grasp = (TextView)itemView.findViewById(R.id.word_book_grasp);
+            word_latestTime = (TextView) itemView.findViewById(R.id.word_book_latestTime);
+            word_book_fromBook = (TextView) itemView.findViewById(R.id.word_book_fromBook);
         }
     }
 }

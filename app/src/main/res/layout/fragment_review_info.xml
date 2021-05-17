@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="饼状图" />
+                android:text="单词学习情况饼状图" />
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pieChart"
                 android:layout_width="match_parent"

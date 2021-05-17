@@ -45,9 +45,11 @@ import com.tdmiracle.learnvoc.adapter.WordListAdapter;
 import com.tdmiracle.learnvoc.adapter.WordsBookAdapter;
 import com.tdmiracle.learnvoc.dao.RowWordsDao;
 import com.tdmiracle.learnvoc.dao.daoImpl.RowWordsDaoImpl;
+import com.tdmiracle.learnvoc.dao.daoImpl.WordsReciteDaoImpl;
 import com.tdmiracle.learnvoc.module.RowWords;
 import com.tdmiracle.learnvoc.module.User;
 import com.tdmiracle.learnvoc.module.Word;
+import com.tdmiracle.learnvoc.module.WordsRecite;
 import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
 
@@ -152,14 +154,9 @@ public class WordsBookActivity extends AppCompatActivity {
                 }
                 else {
                     /****************已学单词数据获取************************/
-                    Word word = new Word();
-                    word.setWord("hello");
-                    word.setTranslation("你好");
-                    words.clear();
-                    words = new ArrayList<>();
-                    words.add(word);
-                    adapter.notifyAdapter(words,true);
-                    wordsBookCount.setText(words.size()+" ");
+                    List<WordsRecite> reciteList = new WordsReciteDaoImpl().getWordsReciteList(user.getId());
+                    adapter.notifyAdapter2(reciteList,1);
+                    wordsBookCount.setText(reciteList.size()+" ");
                 }
             }
             @Override

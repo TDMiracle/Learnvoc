@@ -37,11 +37,15 @@ import android.widget.Toast;
 
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
+import com.tdmiracle.learnvoc.MyApp;
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.activity.ReciteWordsActivity;
 import com.tdmiracle.learnvoc.activity.SelectWordsBookActivity;
 import com.tdmiracle.learnvoc.adapter.entity.EverydaySentence;
 import com.tdmiracle.learnvoc.core.BaseFragment;
+import com.tdmiracle.learnvoc.dao.daoImpl.WordsReciteDaoImpl;
+import com.tdmiracle.learnvoc.module.User;
+import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.FormatUtils;
 import com.tdmiracle.learnvoc.utils.HttpUtils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
@@ -80,8 +84,8 @@ public class ReciteWordsFragment extends BaseFragment {
     TextView word_book;
     @BindView(R.id.word_recite_remainDay)
     TextView remain_day_count;
-    @BindView(R.id.word_recite_todayRemainWords)
-    TextView remain_today_words;
+    @BindView(R.id.word_recite_todayWords)
+    TextView today_words;
     @BindView(R.id.word_recite_learntCount)
     TextView word_recite_learntCount;
     @BindView(R.id.word_recite_remainWords)
@@ -92,6 +96,7 @@ public class ReciteWordsFragment extends BaseFragment {
     String bookName = "四级";//用户选择单词书
     String bookWordsCount;//用户单词书数总数
     int todayWordsCount;//用户选择的每日背诵单词数
+    User globalUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -105,6 +110,9 @@ public class ReciteWordsFragment extends BaseFragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_recit_words, container, false);
         ButterKnife.bind(this,rootView);
+        //获取全局变量
+        MyApp app = (MyApp) getActivity().getApplication();
+        globalUser = app.getUser();
         initSpinner();
         initViews();
         return rootView;
@@ -119,6 +127,31 @@ public class ReciteWordsFragment extends BaseFragment {
     protected void initViews() {
         progressBar.setProgress(0);
         progressBar.setMax(100);
+        //更新剩余天数和今日背诵词数
+        updateInfo();
+    }
+
+    //重新打开页面，刷新数据
+    @Override
+    public void onResume() {
+        updateInfo();
+        super.onResume();
+    }
+
+    //更新剩余天数和今日背诵词数
+    private void updateInfo() {
+        WordsReciteDaoImpl dao = new WordsReciteDaoImpl();
+        int todayCount = dao.getUserTodayReciteCount(globalUser.getId());
+        int totalBookReciteCount = dao.getUserBookReciteCount(globalUser.getId(), ConstUtils.WordsType.getWordsByName(bookName));
+        today_words.setText(todayCount+"");//设置今日背诵词数
+        word_recite_learntCount.setText("");//设置全部背诵
+        word_recite_learntCount.setText(totalBookReciteCount+ "");//设置当前单词书已背诵词数
+        int progressBarData;
+        if(bookWordsCount != null){
+            progressBar.setMax(Integer.parseInt(bookWordsCount));
+            progressBar.setProgress(totalBookReciteCount);
+            remain_day_count.setText(Integer.parseInt(bookWordsCount)/todayCount+"");
+        }
     }
 
     //初始化单词数下拉框

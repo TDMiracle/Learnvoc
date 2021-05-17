@@ -97,7 +97,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/tipOrNotKonw"
+            android:background="@drawable/button_selector_orange"
             android:layout_marginTop="@dimen/config_margin_10dp"
             android:text="完全一摸黑"
             android:textSize="@dimen/sp_18" />
@@ -106,7 +106,7 @@
             android:layout_width="300dp"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"
-            android:background="@color/xui_config_color_red"
+            android:background="@drawable/button_selector_red"
             android:layout_marginTop="@dimen/config_margin_10dp"
             android:textSize="@dimen/sp_18"
             android:text="记得非常好" />

@@ -23,6 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.tdmiracle.learnvoc.activity.ApplicationNotificationActivity;
 import com.tdmiracle.learnvoc.activity.EditPersonalInfoActivity;
 import com.tdmiracle.learnvoc.activity.MainActivity;
 import com.tdmiracle.learnvoc.activity.NotificatonActivity;
@@ -66,6 +67,8 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
     TextView textView2;
     @BindView(R.id.profile_danCiBen)
     SuperTextView danCiBen;
+    @BindView(R.id.profile_xueXiSheZhi)
+    SuperTextView xueXiSheZhi;
 
     /**
      * @return 返回为 null意为不需要导航栏
@@ -114,7 +117,13 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
                 ActivityUtils.startActivity(NotificatonActivity.class);
             }
         });
-
+        xueXiSheZhi = (SuperTextView)findViewById(R.id.profile_xueXiSheZhi);
+        xueXiSheZhi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ActivityUtils.startActivity(ApplicationNotificationActivity.class);
+            }
+        });
     }
 
     @SingleClick

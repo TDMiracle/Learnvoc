@@ -17,12 +17,14 @@
 
 package com.tdmiracle.learnvoc.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -72,6 +74,7 @@ public class ReciteWordsActivity extends AppCompatActivity {
     @BindView(R.id.word_recite_bookName)
     TextView tv_bookName;
 
+    private AlertDialog.Builder builder;//对话框建造者
     private List<Fragment> fragmentList;//背诵页
     List<WordsRecite> wordsRecites;//今日背诵单词记录
 
@@ -146,16 +149,34 @@ public class ReciteWordsActivity extends AppCompatActivity {
                 Log.d(TAG, "onClick: " + viewPager.getCurrentItem());
                 //如果是最后一题，则谈吐司提醒，否则下移一道题
                 if (nowPager == fragmentList.size() - 1) {
-                    XToastUtils.toast("单词已背完");
-                    //跳转到背诵详情页
+                    initAlertDialog();
+                    builder.show();
                 } else {
                     viewPager.setCurrentItem( ++nowPager);
                 }
                 //设置剩余单词数目
-                remainCount.setText((wordsRecites.size()-nowPager+1)+"");
+                remainCount.setText((wordsRecites.size()-nowPager)+"");
                 break;
             }
         }
+    }
+
+    private void initAlertDialog() {
+        //新建对话框
+        builder = new AlertDialog.Builder(ReciteWordsActivity.this);
+        builder.setTitle("提示");
+        builder.setMessage("今日单词背完啦~");
+        builder.setPositiveButton("知道了", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                viewPager.setSaveFromParentEnabled(false);
+                ActivityUtils.startActivity(WordsBookActivity.class);
+                finish();
+            }
+
+        });
+//        builder.setNegativeButton("取消", null);
+
     }
 
 }

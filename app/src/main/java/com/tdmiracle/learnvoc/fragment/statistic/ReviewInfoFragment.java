@@ -60,7 +60,7 @@ public class ReviewInfoFragment extends BaseFragment {
     @BindView(R.id.pieChart)
     PieChart mPieChart;
     protected final String[] parties = new String[] {
-            "Party A", "Party B", "Party C", "Party D", "Party E", "Party F", "Party G", "Party H",
+            "四级单词", "六级单词", "考研英语", "初中英语", "高中英语", "雅思英语", "托福英语", "考博英语",
             "Party I", "Party J", "Party K", "Party L", "Party M", "Party N", "Party O", "Party P",
             "Party Q", "Party R", "Party S", "Party T", "Party U", "Party V", "Party W", "Party X",
             "Party Y", "Party Z"
@@ -134,7 +134,7 @@ public class ReviewInfoFragment extends BaseFragment {
     }
 
     private CharSequence generateCenterSpannableText() {
-        SpannableString s = new SpannableString("MPAndroidChart\ndeveloped by TD.Miracle");
+        SpannableString s = new SpannableString("Learning statistic\ndeveloped by TD.Miracle");
         s.setSpan(new RelativeSizeSpan(1.5f), 0, 14, 0);
         s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
         s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);

@@ -89,7 +89,7 @@
                     android:paddingLeft="40dp"
                     >
                     <TextView
-                        android:id="@+id/word_recite_todayRemainWords"
+                        android:id="@+id/word_recite_todayWords"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
@@ -121,7 +121,7 @@
                     android:paddingLeft="30dp"
                     android:clickable="true"
                     android:textStyle="bold|italic"
-                    android:text="考研词汇" />
+                    android:text="四级词汇" />
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -178,7 +178,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/sp_18"
                         android:layout_gravity="center"
-                        android:text="166"
+                        android:text="0"
                         />
                     <TextView
                         android:layout_width="wrap_content"
@@ -193,7 +193,7 @@
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/sp_18"
                         android:layout_gravity="center"
-                        android:text="2253"
+                        android:text="3599"
                         />
 
                 </LinearLayout>

@@ -44,6 +44,7 @@
         <activity android:name=".activity.testRetrofitActivity" />
         <activity android:name=".activity.EditPersonalInfoActivity" />
         <activity android:name=".activity.ForceOfflineActivity" />
+
         <activity
             android:name=".activity.SplashActivity"
             android:configChanges="screenSize|keyboardHidden|orientation|keyboard"

@@ -21,10 +21,13 @@ import android.database.Cursor;
 import android.util.Log;
 
 import com.tdmiracle.learnvoc.module.WordsRecite;
+import com.tdmiracle.learnvoc.utils.ConstUtils;
+import com.tdmiracle.learnvoc.utils.FormatUtils;
 
 import org.litepal.LitePal;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class WordsReciteDaoImpl {
@@ -52,7 +55,48 @@ public class WordsReciteDaoImpl {
         return list;
     }
 
+    /**
+     * 获取用户全部单词列表
+     * @param userId
+     * @return
+     */
     public List<WordsRecite> getWordsReciteList(int userId){
-        return LitePal.where("user_id=?",userId+"").order("latest_time dec").find(WordsRecite.class);
+        return LitePal.where("user_id=?",userId+"").order("latest_time desc").find(WordsRecite.class);
+    }
+
+    /**
+     * 获取用户全部背诵词数
+     * @param userId
+     * @return
+     */
+    public int getUserTotalReciteCount(int userId){
+        return LitePal.where("user_id = ?",userId+"").count(WordsRecite.class);
+    }
+
+    /**
+     * 获取用户今日背诵词数
+     * @param userId
+     * @return
+     */
+    public int getUserTodayReciteCount(int userId) {
+        int count = 0;
+        List<WordsRecite> list = LitePal.where("user_id = ?",userId+"").find(WordsRecite.class);
+        for(WordsRecite wordsRecite : list){
+            if(FormatUtils.isSameDate(new Date(),wordsRecite.getLatest_time())){
+                count ++;
+            }
+        }
+        return count;
+    }
+
+    public int getUserBookReciteCount(int userId, int bookId){
+        int count = 0;
+        List<WordsRecite> list = LitePal.where("user_id = ?",userId+"").find(WordsRecite.class);
+        for(WordsRecite wordsRecite : list){
+            if(wordsRecite.getWord().getWordType() == bookId){
+                count++;
+            }
+        }
+        return count;
     }
 }

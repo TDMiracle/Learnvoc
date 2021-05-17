@@ -32,9 +32,11 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TimePicker;
 
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.core.BaseActivity;
+import com.tdmiracle.learnvoc.utils.XToastUtils;
 
 
 /**
@@ -48,6 +50,8 @@ public class ApplicationNotificationActivity extends BaseActivity implements Vie
 
     Button button1;
     Button button2;
+    TimePicker mTimepicker;
+    Intent remindIntent;
 
     private NotificationManager manager;
 
@@ -59,6 +63,7 @@ public class ApplicationNotificationActivity extends BaseActivity implements Vie
         init();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     private void init(){
         button1 = (Button)findViewById(R.id.send_notification1);
         button2 = (Button)findViewById(R.id.send_notification2);
@@ -66,21 +71,34 @@ public class ApplicationNotificationActivity extends BaseActivity implements Vie
         button2.setOnClickListener(this);
         manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            String channelId = "chat";
-            String channelName = "聊天消息";
+            String channelId = "notification_1";
+            String channelName = "打卡提醒消息";
+            String description = "易拾单词每日打卡提醒";
             int importance = NotificationManager.IMPORTANCE_HIGH;
-            createNotificationChannel(channelId, channelName, importance);
-            channelId = "subscribe";
-            channelName = "订阅消息";
+            createNotificationChannel(channelId, channelName, importance,description);
+            channelId = "notification_2";
+            channelName = "复习提醒消息";
+            description = "易拾单词每日复习提醒";
             importance = NotificationManager.IMPORTANCE_DEFAULT;
-            createNotificationChannel(channelId, channelName, importance);
+            createNotificationChannel(channelId, channelName, importance,description);
 
         }
+        //初始化timepicker
+        mTimepicker = (TimePicker)findViewById(R.id.timepicker);
+        mTimepicker.setDescendantFocusability(TimePicker.FOCUS_BLOCK_DESCENDANTS);  //设置点击事件不弹键盘
+        mTimepicker.setIs24HourView(true);   //设置时间显示为24小时
+        mTimepicker.setOnTimeChangedListener(new TimePicker.OnTimeChangedListener() {  //获取当前选择的时间
+            @Override
+            public void onTimeChanged(TimePicker view, int hourOfDay, int minute) {
+                XToastUtils.toast("易拾单词将于"+view.getHour()+"点"+view.getMinute()+"分提醒",3000);
+            }
+        });
     }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
-    private void createNotificationChannel(String channelId, String channelName, int importance) {
+    private void createNotificationChannel(String channelId, String channelName, int importance, String description) {
         NotificationChannel channel = new NotificationChannel(channelId, channelName, importance);
+        channel.setDescription(description);
         NotificationManager notificationManager = (NotificationManager) getSystemService(
                 NOTIFICATION_SERVICE);
         notificationManager.createNotificationChannel(channel);
@@ -93,12 +111,17 @@ public class ApplicationNotificationActivity extends BaseActivity implements Vie
                 Intent intent = new Intent(this, LoginActivity.class);
                 //点击后跳转
                 PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
-                Notification notification = new NotificationCompat.Builder(this, "chat")
+                Notification notification = new NotificationCompat.Builder(this, "notification_1")
                         .setAutoCancel(true)
                         .setContentTitle("今天你背单词了吗？")
                         .setContentText("快来单词打卡吧~")
+                        .setStyle(new NotificationCompat.InboxStyle()
+                                .addLine("每日一句")
+                                .addLine("We're all in the gutter, but some of us are looking at the star.")
+                                .addLine("译文:身在井隅，心向璀璨。"))
                         .setWhen(System.currentTimeMillis())
                         .setSmallIcon(R.mipmap.logo_name_round)
+                        .setShowWhen(true)
                         //设置红色
                         .setColor(Color.parseColor("#F00606"))
                         .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.logo_name85))
@@ -107,18 +130,28 @@ public class ApplicationNotificationActivity extends BaseActivity implements Vie
                 manager.notify(1, notification);
                 break;
             case R.id.send_notification2:
-                Notification notificationGet = new NotificationCompat.Builder(this, "subscribe")
+                Intent intent2 = new Intent(this, MainActivity.class);
+                //点击后跳转
+                PendingIntent pendingIntent2 = PendingIntent.getActivity(this, 0, intent2, 0);
+                Notification notificationGet = new NotificationCompat.Builder(this, "notification_1")
                         .setAutoCancel(true)
                         .setContentTitle("单词复习通知")
                         .setContentText("快来完成今日单词复习任务吧~")
                         .setWhen(System.currentTimeMillis())
                         .setSmallIcon(R.mipmap.logo_name_round)
                         .setLargeIcon(BitmapFactory.decodeResource(getResources(), R.mipmap.logo_name85))
+                        .setContentIntent(pendingIntent2)
                         .build();
                 manager.notify(2, notificationGet);
                 break;
             default:
                 break;
         }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        stopService(remindIntent);
     }
 }
