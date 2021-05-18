@@ -20,7 +20,7 @@ package com.tdmiracle.learnvoc.adapter.entity;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
 public class RadarChartFormatter extends ValueFormatter {
-    private final String[] mActivities = new String[]{"Abandon", "Vocabulary", "Miracle", "Implement", "Bit"};
+    private final String[] mActivities = new String[]{"单词背诵", "单词复习", "单词测试", "每日一句", "生词本"};
     @Override
     public String getFormattedValue(float value) {
         return mActivities[(int) value % mActivities.length];

@@ -134,7 +134,7 @@ public class ReviewInfoFragment extends BaseFragment {
     }
 
     private CharSequence generateCenterSpannableText() {
-        SpannableString s = new SpannableString("Learning statistic\ndeveloped by TD.Miracle");
+        SpannableString s = new SpannableString("LearnStatistic\ncreated by TD.Miracle");
         s.setSpan(new RelativeSizeSpan(1.5f), 0, 14, 0);
         s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
         s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);

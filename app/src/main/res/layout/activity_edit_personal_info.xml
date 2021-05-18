@@ -118,7 +118,7 @@
                     android:background="@null"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="Miracle"
+                    android:text=""
                     android:textSize="17sp"/>
             </LinearLayout>
             <LinearLayout
@@ -145,7 +145,7 @@
                     android:background="@null"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="百尺竿头更进一步！"
+                    android:text=""
                     android:textSize="17sp"/>
             </LinearLayout>
             <View
@@ -184,7 +184,7 @@
                     android:gravity="center_vertical"
                     android:inputType="textEmailAddress"
                     android:paddingLeft="10dp"
-                    android:text="1888888****"
+                    android:text=""
                     android:textSize="17sp"/>
 
 
@@ -218,7 +218,7 @@
                     android:background="@null"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="584****@qq.com"
+                    android:text=""
                     android:textSize="17sp"/>
 
 
@@ -288,7 +288,7 @@
                     android:background="@null"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="1999-1-1"
+                    android:text=""
                     android:textSize="17sp"/>
 
             </LinearLayout>
@@ -319,7 +319,7 @@
                     android:background="@null"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="中国天津"
+                    android:text=""
                     android:textSize="17sp"/>
 
 
@@ -351,7 +351,7 @@
                     android:background="@null"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="河北工业大学"
+                    android:text=""
                     android:textSize="17sp"/>
 
 
@@ -391,7 +391,7 @@
                     android:background="@null"
                     android:gravity="center_vertical"
                     android:paddingLeft="10dp"
-                    android:text="2021.3.19"
+                    android:text=""
                     android:textSize="17sp"/>
 
 
@@ -418,7 +418,7 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="已打卡："
+                    android:text="连续登录："
                     android:textSize="16sp"
                     />
 
@@ -436,7 +436,7 @@
                         android:background="@null"
                         android:paddingLeft="10dp"
                         android:gravity="center_vertical"
-                        android:text="12"
+                        android:text="1"
                         android:textSize="17sp"/>
                     <TextView
                         android:layout_width="wrap_content"
@@ -465,13 +465,13 @@
                     android:layout_weight="1"
                     android:gravity="center_vertical"
                     android:paddingLeft="20dp"
-                    android:text="今日打卡："
+                    android:text="今日活跃度："
                     android:textSize="14sp"/>
 
 
                 <TextView
                     android:textColor="@color/black"
-                    android:text="未打卡"
+                    android:text="99+"
                     android:id="@+id/isPunch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

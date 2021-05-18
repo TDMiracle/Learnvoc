@@ -36,6 +36,7 @@ public class LoginInfo extends LitePalSupport {
     int id;
     String password = "";
     Date latest_login;//最近登录时间
+    int user_id;
 
     public LoginInfo() {
     }
@@ -59,14 +60,24 @@ public class LoginInfo extends LitePalSupport {
     public void setId(int id) {
         this.id = id;
     }
+
     @Override
     public String toString() {
         return "LoginInfo{" +
+                "id=" + id +
                 ", password='" + password + '\'' +
-                ",latest_login" + FormatUtils.getDateTimeString(latest_login) +
+                ", latest_login=" + latest_login +
+                ", user_id=" + user_id +
                 '}';
     }
 
+    public int getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
+    }
 
     public String getPassword() {
         return password;

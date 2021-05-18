@@ -27,6 +27,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -73,11 +74,15 @@ public class TestInfoFragment extends BaseFragment {
 
     private void initLineChart() {
         lineChart.setViewPortOffsets(0, 0, 0, 0);
-        lineChart.setBackgroundColor(Color.rgb(0, 0, 175));
+        lineChart.setBackgroundColor(Color.rgb(0,191,255));
 
         // no description text
-        lineChart.getDescription().setEnabled(false);
-
+        lineChart.getDescription().setEnabled(true);
+        Description description = new Description();  // 这部分是深度定制描述文本，颜色，字体等
+        description.setText("单词测试得分");
+        description.setTextSize(12);
+        description.setTextColor(R.color.white);
+        lineChart.setDescription(description);
         // enable touch gestures
         lineChart.setTouchEnabled(true);
 
@@ -92,7 +97,16 @@ public class TestInfoFragment extends BaseFragment {
         lineChart.setMaxHighlightDistance(300);
 
         XAxis x = lineChart.getXAxis();
-        x.setEnabled(false);
+        x.setEnabled(true);
+        x.setEnabled(true); // 轴线是否可编辑,默认true
+        x.setDrawLabels(true);  // 是否绘制标签,默认true
+        x.setDrawAxisLine(true);    // 是否绘制坐标轴,默认true
+        x.setDrawGridLines(false);   // 是否绘制网格线，默认true
+        x.setAxisMaximum(10); // 此轴能显示的最大值；
+        x.resetAxisMaximum();   // 撤销最大值；
+        x.setAxisMinimum(1);    // 此轴显示的最小值；
+        x.resetAxisMinimum();   // 撤销最小值；
+        x.setTextSize(12);    // 标签字体大小，dp，6-24之间，默认为10dp
 
         YAxis y = lineChart.getAxisLeft();
 //        y.setTypeface(tfLight);
@@ -122,7 +136,7 @@ public class TestInfoFragment extends BaseFragment {
         ArrayList<Entry> values = new ArrayList<>();
 
         for (int i = 0; i < 40; i++) {
-            float val = (float) (Math.random() * (30 + 1)) + 20;
+            float val = (float) (Math.random() * (30 + 1)) + 50;
             values.add(new Entry(i, val));
         }
         LineDataSet set1;

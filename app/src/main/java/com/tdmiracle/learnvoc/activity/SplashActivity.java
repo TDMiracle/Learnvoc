@@ -114,20 +114,22 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
 //        user.setUid("hebuter_001");
 //        dao.updateUserinfo(user);
 //        Log.d(TAG, "addTestData: " + user.toString());
-        UserDaoImpl userDao = new UserDaoImpl();
 //        User user = userDao.findUserById("2").get(0);
 //        user.setCreate_time(new Date());
 //        user.setUpdate_time(new Date());
 //        user.setGender("男");
 //        user.setSchool("河北工业大学");
 //        userDao.updateUserinfo(user);
-        User newUser = userDao.findUserById("2").get(0);
+        /**模拟登录**/
+//        UserDaoImpl userDao = new UserDaoImpl();
+//        User newUser = userDao.findUserById("2").get(0);
+//        newUser.setId(2);
+//        //存入全局对象
+//        MyApp app = (MyApp) getApplication();
+//        app.setUser(newUser);
+
 //        User newUser = new User();
-        newUser.setId(2);
 //        Log.d(TAG, "newUser: " + newUser.toString());
-        //存入全局对象
-        MyApp app = (MyApp) getApplication();
-        app.setUser(newUser);
         /**
          * 通知测试
          */
@@ -267,12 +269,16 @@ public class SplashActivity extends BaseSplashActivity implements CancelAdapt {
         }
     }
 
+//    private void loginOrGoMainPage() {
+//        if (TokenUtils.hasToken()) {
+//            ActivityUtils.startActivity(MainActivity.class);
+//        } else {
+//            ActivityUtils.startActivity(LoginActivity.class);
+//        }
+//        finish();
+//    }
     private void loginOrGoMainPage() {
-        if (TokenUtils.hasToken()) {
-            ActivityUtils.startActivity(MainActivity.class);
-        } else {
-            ActivityUtils.startActivity(LoginActivity.class);
-        }
+        ActivityUtils.startActivity(LoginActivity.class);
         finish();
     }
 

@@ -25,6 +25,7 @@ import com.tdmiracle.learnvoc.module.User;
 
 import org.litepal.LitePal;
 
+import java.util.Date;
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
@@ -35,10 +36,16 @@ public class UserDaoImpl implements UserDao {
         //同时更新loginInfo表
         LoginInfo login = new LoginInfo();
         login.setPassword(password);
+        login.setLatest_login(new Date());
         //事物处理
         try {
             LitePal.beginTransaction();
             if (user.save() && login.save()) {
+                //重新获取user设置user_id
+                User savedUser = findUserByPhone(user.getPhone());
+                Log.d(TAG, "IncreaseUser: " + savedUser.toString());
+                login.setUser_id(savedUser.getId());
+                login.save();
                 LitePal.setTransactionSuccessful();
                 return true;
             }
@@ -74,9 +81,9 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public Boolean updatePassword(String uid, String password) {
+    public Boolean updatePassword(User user, String password) {
         List<LoginInfo> loginInfos = LitePal.select()
-                .where("iduser = ?", uid)
+                .where("user_id = ?", user.getId()+"")
                 .limit(1)
                 .find(LoginInfo.class);
         LoginInfo login = loginInfos.get(0);
@@ -91,7 +98,7 @@ public class UserDaoImpl implements UserDao {
     @Override
     public Boolean updateUserinfo(User user) {
         List<User> userInfos = LitePal.select()
-                .where("uid = ?", user.getUid())
+                .where("user_id = ?", user.getUid())//根据用户账号更改密码
                 .limit(1)
                 .find(User.class);
         if (userInfos.size() == 0){
@@ -100,5 +107,10 @@ public class UserDaoImpl implements UserDao {
         }
         user.update(user.getId());
         return true;
+    }
+
+    @Override
+    public User findUserByPhone(String phone) {
+        return LitePal.where("phone=?",phone).findLast(User.class);
     }
 }

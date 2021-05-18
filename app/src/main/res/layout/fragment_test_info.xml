@@ -20,7 +20,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/UI_recite"
+    android:background="#00BFFF"
     tools:context=".fragment.statistic.TestInfoFragment">
     <LinearLayout
         android:layout_width="match_parent"
@@ -35,12 +35,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="折线图" />
+                android:textSize="@dimen/sp_18"
+                android:textColor="@color/white"
+                android:text="单词测试分数图" />
 
             <com.github.mikephil.charting.charts.LineChart
                 android:id="@+id/mlineChart"
                 android:layout_width="match_parent"
-                android:layout_height="350dp"
+                android:layout_height="370dp"
                 android:layout_centerVertical="true" />
         </LinearLayout>
     </LinearLayout>

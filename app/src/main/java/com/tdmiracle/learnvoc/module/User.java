@@ -17,6 +17,7 @@
 
 package com.tdmiracle.learnvoc.module;
 
+import org.litepal.LitePal;
 import org.litepal.crud.LitePalSupport;
 
 import java.util.Date;
@@ -168,9 +169,12 @@ public class User extends LitePalSupport {
         this.delete_time = delete_time;
     }
 
-
+    /**
+     * 获取用户登录信息
+     * @return
+     */
     public LoginInfo getLoginInfo() {
-        return loginInfo;
+        return LitePal.where("user_id=?",id+"").findFirst(LoginInfo.class);
     }
 
     public void setLoginInfo(LoginInfo loginInfo) {

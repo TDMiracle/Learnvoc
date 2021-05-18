@@ -87,7 +87,7 @@ public class StudyInfoFragment extends BaseFragment {
     private void initBarChart() {
         //柱状图
         yearBarChart.getDescription().setEnabled(false);
-
+        yearBarChart.setBackgroundColor(Color.rgb(0,191,255));
         //设置最大值条目，超出之后不会有值
         yearBarChart.setMaxVisibleValueCount(60);
         //分别在x轴和y轴上进行缩放
@@ -145,14 +145,14 @@ public class StudyInfoFragment extends BaseFragment {
     //获取柱状图数据
     private void getYearBarData() {
         ArrayList<BarEntry> values = new ArrayList<>();
-        BarEntry barEntry = new BarEntry(Float.valueOf("2016"), Float.valueOf("290"));
-        BarEntry barEntry1 = new BarEntry(Float.valueOf("2017"), Float.valueOf("210"));
-        BarEntry barEntry2 = new BarEntry(Float.valueOf("2018"), Float.valueOf("300"));
-        BarEntry barEntry3 = new BarEntry(Float.valueOf("2019"), Float.valueOf("450"));
-        BarEntry barEntry4 = new BarEntry(Float.valueOf("2020"), Float.valueOf("300"));
-        BarEntry barEntry5 = new BarEntry(Float.valueOf("2021"), Float.valueOf("650"));
-        BarEntry barEntry6 = new BarEntry(Float.valueOf("2022"), Float.valueOf("740"));
-        BarEntry barEntry7 = new BarEntry(Float.valueOf("2023"), Float.valueOf("240"));
+        BarEntry barEntry = new BarEntry(Float.valueOf("1"), Float.valueOf("290"));
+        BarEntry barEntry1 = new BarEntry(Float.valueOf("2"), Float.valueOf("210"));
+        BarEntry barEntry2 = new BarEntry(Float.valueOf("3"), Float.valueOf("400"));
+        BarEntry barEntry3 = new BarEntry(Float.valueOf("4"), Float.valueOf("450"));
+        BarEntry barEntry4 = new BarEntry(Float.valueOf("5"), Float.valueOf("500"));
+        BarEntry barEntry5 = new BarEntry(Float.valueOf("6"), Float.valueOf("650"));
+//        BarEntry barEntry6 = new BarEntry(Float.valueOf(""), Float.valueOf("740"));
+//        BarEntry barEntry7 = new BarEntry(Float.valueOf("2023"), Float.valueOf("240"));
 
         values.add(barEntry);
         values.add(barEntry1);
@@ -160,8 +160,8 @@ public class StudyInfoFragment extends BaseFragment {
         values.add(barEntry3);
         values.add(barEntry4);
         values.add(barEntry5);
-        values.add(barEntry6);
-        values.add(barEntry7);
+//        values.add(barEntry6);
+//        values.add(barEntry7);
 
         BarDataSet set1;
 
@@ -172,7 +172,7 @@ public class StudyInfoFragment extends BaseFragment {
             yearBarChart.getData().notifyDataChanged();
             yearBarChart.notifyDataSetChanged();
         } else {
-            set1 = new BarDataSet(values, "点折水");
+            set1 = new BarDataSet(values, "单词量");
             set1.setColors(ColorTemplate.VORDIPLOM_COLORS);
             set1.setDrawValues(false);
             ArrayList<IBarDataSet> dataSets = new ArrayList<>();
@@ -181,13 +181,12 @@ public class StudyInfoFragment extends BaseFragment {
             yearBarChart.setData(data);
             yearBarChart.setFitBars(true);
         }
-
         //绘制图表
         yearBarChart.invalidate();
     }
 
     private void initRadarChart() {
-        radarChart.setBackgroundColor(Color.rgb(60, 65, 82));
+        radarChart.setBackgroundColor(Color.rgb(123,104,238));
         radarChart.getDescription().setEnabled(false);
 
         radarChart.setWebLineWidth(1f);
@@ -208,7 +207,7 @@ public class StudyInfoFragment extends BaseFragment {
 
         XAxis xAxis = radarChart.getXAxis();
 //        xAxis.setTypeface(tfLight);
-        xAxis.setTextSize(9f);
+        xAxis.setTextSize(12f);
         xAxis.setYOffset(0f);
         xAxis.setXOffset(0f);
         xAxis.setValueFormatter(new RadarChartFormatter());
@@ -251,7 +250,7 @@ public class StudyInfoFragment extends BaseFragment {
             float val2 = (float) (Math.random() * mul) + min;
             entries2.add(new RadarEntry(val2));
         }
-        RadarDataSet set1 = new RadarDataSet(entries1, "Last Week");
+        RadarDataSet set1 = new RadarDataSet(entries1, "上周");
         set1.setColor(Color.rgb(103, 110, 129));
         set1.setFillColor(Color.rgb(103, 110, 129));
         set1.setDrawFilled(true);
@@ -259,7 +258,7 @@ public class StudyInfoFragment extends BaseFragment {
         set1.setLineWidth(2f);
         set1.setDrawHighlightCircleEnabled(true);
         set1.setDrawHighlightIndicators(false);
-        RadarDataSet set2 = new RadarDataSet(entries2, "This Week");
+        RadarDataSet set2 = new RadarDataSet(entries2, "本周");
         set2.setColor(Color.rgb(121, 162, 175));
         set2.setFillColor(Color.rgb(121, 162, 175));
         set2.setDrawFilled(true);
@@ -273,7 +272,7 @@ public class StudyInfoFragment extends BaseFragment {
 
         RadarData data = new RadarData(sets);
 //        data.setValueTypeface(tfLight);
-        data.setValueTextSize(8f);
+        data.setValueTextSize(10f);
         data.setDrawValues(false);
         data.setValueTextColor(Color.WHITE);
 

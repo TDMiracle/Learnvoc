@@ -108,24 +108,35 @@ public class EditPersonalInfoActivity extends BaseActivity implements View.OnCli
 //        Log.d(TAG, "bindData: " + user.toString());
         if(globalUser != null){
             userID.setText(globalUser.getUid());
-            nickname.setText(globalUser.getNickname());
-            userSignature.setText(globalUser.getSignature());
             phone.setText(globalUser.getPhone());
-            email.setText(globalUser.getEmail());
-            birthday.setText(globalUser.getBirthday());
-            school.setText(globalUser.getSchool());
             joinTime.setText(FormatUtils.getDateTimeString(globalUser.getCreate_time()));
-            String gender = globalUser.getGender();
-            if(gender.equals("男")) {
-                userSex.setSelection(0);
+            if(globalUser.getNickname()!=null){
+                nickname.setText(globalUser.getNickname());
             }
-            else if(gender.equals("女")){
-                userSex.setSelection(1);
+            if(globalUser.getSignature()!=null){
+                userSignature.setText(globalUser.getSignature());
             }
-            else {
-                userSex.setSelection(2);
+            if(globalUser.getPhone()!=null){
+                email.setText(globalUser.getEmail());
             }
-
+            if(globalUser.getBirthday()!=null){
+                birthday.setText(globalUser.getBirthday());
+            }
+            if(globalUser.getSchool()!=null){
+                school.setText(globalUser.getSchool());
+            }
+            if(globalUser.getGender()!=null){
+                String gender = globalUser.getGender();
+                if(gender.equals("男")) {
+                    userSex.setSelection(0);
+                }
+                else if(gender.equals("女")){
+                    userSex.setSelection(1);
+                }
+                else {
+                    userSex.setSelection(2);
+                }
+            }
         }
     }
 

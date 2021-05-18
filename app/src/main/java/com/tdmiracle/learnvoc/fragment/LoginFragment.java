@@ -17,12 +17,24 @@
 
 package com.tdmiracle.learnvoc.fragment;
 
+import android.content.DialogInterface;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.View;
 
+import androidx.appcompat.app.AlertDialog;
+
+import com.tdmiracle.learnvoc.MyApp;
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.activity.MainActivity;
+import com.tdmiracle.learnvoc.activity.ReciteWordsActivity;
+import com.tdmiracle.learnvoc.activity.WordsBookActivity;
 import com.tdmiracle.learnvoc.core.BaseFragment;
+import com.tdmiracle.learnvoc.dao.UserDao;
+import com.tdmiracle.learnvoc.dao.daoImpl.UserDaoImpl;
+import com.tdmiracle.learnvoc.module.LoginInfo;
+import com.tdmiracle.learnvoc.module.User;
+import com.tdmiracle.learnvoc.utils.MD5Utils;
 import com.tdmiracle.learnvoc.utils.RandomUtils;
 import com.tdmiracle.learnvoc.utils.SettingUtils;
 import com.tdmiracle.learnvoc.utils.TokenUtils;
@@ -52,14 +64,17 @@ import butterknife.OnClick;
 @Page(anim = CoreAnim.none)
 public class LoginFragment extends BaseFragment {
 
+    private final String TAG = "LoginFragment";
+
     @BindView(R.id.et_phone_number)
     MaterialEditText etPhoneNumber;
-    @BindView(R.id.et_verify_code)
-    MaterialEditText etVerifyCode;
+    @BindView(R.id.et_password)
+    MaterialEditText etPassword;
     @BindView(R.id.btn_get_verify_code)
     RoundButton btnGetVerifyCode;
 
     private CountDownButtonHelper mCountDownHelper;
+    private AlertDialog.Builder builder;//对话框建造者
 
     @Override
     protected int getLayoutId() {
@@ -77,7 +92,8 @@ public class LoginFragment extends BaseFragment {
         titleBar.addAction(new TitleBar.TextAction(R.string.title_jump_login) {
             @Override
             public void performAction(View view) {
-                onLoginSuccess();
+                /**Debug模式运行**/
+                onLoginForTest();
             }
         });
         return titleBar;
@@ -107,8 +123,8 @@ public class LoginFragment extends BaseFragment {
                 break;
             case R.id.btn_login:
                 if (etPhoneNumber.validate()) {
-                    if (etVerifyCode.validate()) {
-                        loginByVerifyCode(etPhoneNumber.getEditValue(), etVerifyCode.getEditValue());
+                    if (etPassword.validate()) {
+                        loginOrRegister(etPhoneNumber.getEditValue(), etPassword.getEditValue());
                     }
                 }
                 break;
@@ -150,6 +166,59 @@ public class LoginFragment extends BaseFragment {
     }
 
     /**
+     * 根据手机好密码注册
+     * @param phoneNumber
+     * @param password
+     */
+    private void loginOrRegister(String phoneNumber, String password){
+        UserDao userDao = new UserDaoImpl();
+        User oldUser = userDao.findUserByPhone(phoneNumber);
+        if(oldUser != null){//查询到对应手机的用户，则登录
+            if(oldUser.getLoginInfo().getPassword().equals(MD5Utils.md5(password))){//密码正确登录成功
+                Log.d(TAG, "loginOrRegister: 登录成功" + oldUser.toString());
+                //存入全局对象
+                MyApp app = (MyApp) getActivity().getApplication();
+                app.setUser(oldUser);
+                onLoginSuccess();//跳转主页面
+            }
+            else {//密码错误，登录失败
+                XToastUtils.toast("密码错误，请检查密码",2000);
+                etPassword.setText("");//情况密码框
+            }
+        }else {//没有查询到对应手机的用户，则注册新账号
+            User newUser = new User();
+            newUser.setPhone(phoneNumber);
+            newUser.setUid(RandomUtils.getRandomNumbersAndLetters(10));//分配10位新账号
+            Log.d(TAG, "loginOrRegister: 注册新账号");
+            if(userDao.IncreaseUser(newUser,MD5Utils.md5(password))){//注册新用户
+                //注册成功
+                //存入全局对象
+                MyApp app = (MyApp) getActivity().getApplication();
+                app.setUser(newUser);
+                initAlertDialog();
+                builder.show();
+            }else {
+                XToastUtils.toast("注册失败",2000);
+                //注册失败
+                Log.d(TAG, "loginOrRegister: 注册失败");
+            }
+        }
+    }
+
+    private void initAlertDialog() {
+        //新建对话框
+        builder = new AlertDialog.Builder(this.getActivity());
+        builder.setTitle("提示");
+        builder.setMessage("检测到当前手机号为首次登录，已为您注册成为易拾单词新用户");
+        builder.setPositiveButton("知道啦", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                onLoginSuccess();
+            }
+        });
+    }
+
+    /**
      * 登录成功的处理
      */
     private void onLoginSuccess() {
@@ -158,6 +227,42 @@ public class LoginFragment extends BaseFragment {
             popToBack();
             ActivityUtils.startActivity(MainActivity.class);
         }
+    }
+
+    /**
+     * 以debug模式调试系统，仅供模拟器调试使用
+     */
+    private void onLoginForTest(){
+        UserDaoImpl userDao = new UserDaoImpl();
+        User newUser = userDao.findUserById("2").get(0);
+        if(newUser!=null){
+            //存入全局对象
+            MyApp app = (MyApp) this.getActivity().getApplication();
+            app.setUser(newUser);
+            Log.d(TAG, "onLoginForTest: " + newUser.toString());
+            //新建对话框
+            builder = new AlertDialog.Builder(this.getActivity());
+            builder.setTitle("Debug");
+            builder.setMessage("即将以Debug模式运行");
+            builder.setPositiveButton("Go", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    onLoginSuccess();
+                }
+            });
+        }
+        else{
+            //新建对话框
+            builder = new AlertDialog.Builder(this.getActivity());
+            builder.setTitle("Error");
+            builder.setMessage("当前模式不可调试");
+            builder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                }
+            });
+        }
+            builder.show();
     }
 
     @Override

@@ -20,7 +20,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/UI_recite"
+    android:background="#00BFFF"
     tools:context=".fragment.statistic.ReviewInfoFragment">
         <LinearLayout
             android:layout_marginTop="10dp"
@@ -31,7 +31,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="单词学习情况饼状图" />
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18"
+                android:text="单词书学习情况图" />
             <com.github.mikephil.charting.charts.PieChart
                 android:id="@+id/pieChart"
                 android:layout_width="match_parent"

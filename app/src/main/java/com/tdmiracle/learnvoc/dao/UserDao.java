@@ -54,11 +54,11 @@ public interface UserDao {
 
     /**
      * 更新密码
-     * @param uid
+     * @param user
      * @param password
      * @return
      */
-    public Boolean updatePassword(String uid, String password);
+    public Boolean updatePassword(User user, String password);
 
     /**
      * 更新用户信息
@@ -66,5 +66,12 @@ public interface UserDao {
      * @return
      */
     public Boolean updateUserinfo(User user);
+
+    /**
+     * 根据手机查找用户
+     * @param phone
+     * @return
+     */
+    public User findUserByPhone(String phone);
 
 }

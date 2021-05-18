@@ -33,6 +33,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+import com.tdmiracle.learnvoc.MyApp;
 import com.tdmiracle.learnvoc.dao.UserDao;
 import com.tdmiracle.learnvoc.dao.daoImpl.UserDaoImpl;
 import com.tdmiracle.learnvoc.fragment.AboutFragment;
@@ -56,7 +57,10 @@ import com.xuexiang.xutil.XUtil;
 import com.xuexiang.xutil.app.ActivityUtils;
 import com.xuexiang.xutil.common.ClickUtils;
 import com.xuexiang.xutil.common.CollectionUtils;
+import com.xuexiang.xutil.common.StringUtils;
 import com.xuexiang.xutil.display.Colors;
+
+import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
 
@@ -97,6 +101,10 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         initViews();
 
         initListeners();
+
+        //获取全局变量
+        MyApp app = (MyApp) getApplication();
+        user = app.getUser();
     }
 
     @Override
@@ -129,6 +137,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
     }
 
+    @NotNull
     private void initHeader() {
         navView.setItemIconTintList(null);
         View headerView = navView.getHeaderView(0);
@@ -150,13 +159,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
                 ivAvatar.setImageTintList(ResUtils.getColors(R.color.xui_config_color_gray_3));
             }
         }
-        //获取当前用户信息
-        UserDao userDao = new UserDaoImpl();
-        user = userDao.findUserById("2").get(0);
-
-        ivAvatar.setImageResource(R.drawable.mna);
-        tvAvatar.setText(user.getNickname());
-        tvSign.setText(user.getSignature());
+        //填充侧边栏用户信息
+        ivAvatar.setImageResource(R.drawable.ic_logo);
+        tvAvatar.setText("易小拾");
+        tvSign.setText("千里之行,始于足下");
+//        if(StringUtils.isEmpty(user.getNickname())){
+//            tvAvatar.setText(user.getNickname());
+//            tvSign.setText(user.getSignature());
+//        }
         navHeader.setOnClickListener(this);
     }
 
