@@ -18,6 +18,8 @@
 package com.tdmiracle.learnvoc.fragment.common;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +30,8 @@ import android.widget.TextView;
 
 import com.tdmiracle.learnvoc.MyApp;
 import com.tdmiracle.learnvoc.R;
+import com.tdmiracle.learnvoc.activity.WordDetailActivity;
+import com.tdmiracle.learnvoc.adapter.entity.EverydaySentenceEntity;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.module.RowWords;
 import com.tdmiracle.learnvoc.module.User;
@@ -39,6 +43,7 @@ import com.tdmiracle.learnvoc.utils.XToastUtils;
 
 import org.litepal.LitePal;
 
+import java.io.IOException;
 import java.util.Date;
 
 import butterknife.BindView;
@@ -114,13 +119,16 @@ public class ReciteWordFragment extends BaseFragment {
 
     @SuppressLint("NonConstantResourceId")
     @OnClick({R.id.word_recite_frag_fav,R.id.word_recite_frag_btn_know,R.id.word_recite_frag_btn_notice,
-            R.id.word_recite_frag_btn_master,R.id.word_recite_frag_tip})
+            R.id.word_recite_frag_btn_master,R.id.word_recite_frag_tip,R.id.word_mediaPlayer})
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.word_recite_frag_tip:
-                //翻译、音标可见
-                recite_translation.setVisibility(View.VISIBLE);
-                recite_yinbiao.setVisibility(View.VISIBLE);
+            {
+                //打开单词详情词典
+                Intent intent = new Intent(getActivity(), WordDetailActivity.class);
+                intent.putExtra("word",wordsRecite.getWord().getWord());
+                startActivity(intent);
+            }
                 break;
             case R.id.word_recite_frag_fav:
                 if(!is_added){
@@ -139,6 +147,8 @@ public class ReciteWordFragment extends BaseFragment {
             case R.id.word_recite_frag_btn_master://记得非常好6
                 wordsRecite.setFamiliarity(6);
                 break;
+            case R.id.word_mediaPlayer:
+                onPlayer(wordsRecite.getWord().getWord());
         }
     }
 
@@ -146,6 +156,21 @@ public class ReciteWordFragment extends BaseFragment {
     public void onDestroy() {
         saveReciteWordInfo();
         super.onDestroy();
+    }
+
+    //播放单词声音
+    private void onPlayer(String word) {
+        String playUrl = "https://dict.youdao.com/dictvoice?audio="+word;
+        if (word != null) {
+            try {
+                MediaPlayer mediaPlayer = new MediaPlayer();
+                mediaPlayer.setDataSource(playUrl);
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     //碎片结束时保存背诵信息

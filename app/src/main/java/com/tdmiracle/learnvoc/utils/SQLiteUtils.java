@@ -25,6 +25,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
 import com.tdmiracle.learnvoc.module.Word;
+import com.tdmiracle.learnvoc.module.WordDetail;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,7 @@ public class SQLiteUtils extends SQLiteOpenHelper {
      */
     private SQLiteDatabase db;
     public static final String DB_NAME = "voc.db";
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 3;
 
     private static final String TAG = "SQLiteUtils";
 
@@ -71,6 +72,32 @@ public class SQLiteUtils extends SQLiteOpenHelper {
 
     }
 
+    /**
+     * 获取单词详情数据
+     * @return
+     */
+    public WordDetail getWordDetailByWord(String word){
+        Cursor cursor = db.rawQuery("select * from vocabulary where word = '"+word+"'",null);
+        WordDetail wordDetail = null;
+        while (cursor.moveToNext()) {
+            wordDetail = new WordDetail();
+            wordDetail.setWord(word);
+            wordDetail.setHans(cursor.getString(cursor.getColumnIndex("hans")));
+            wordDetail.setTongyis(cursor.getString(cursor.getColumnIndex("tongyis")));
+            wordDetail.setMeans(cursor.getString(cursor.getColumnIndex("means")));
+            wordDetail.setLijus(cursor.getString(cursor.getColumnIndex("lijus")));
+            wordDetail.setEnglishMeans(cursor.getString(cursor.getColumnIndex("english_means")));
+        }
+        cursor.close();
+        return wordDetail;
+    }
+
+    /**
+     * 根据表明获取单词书数据
+     * @param tableName
+     * @param count
+     * @return
+     */
     public ArrayList<Word> getData(String tableName ,int count){
         ArrayList<Word> list = new ArrayList<Word>();
         Cursor cursor = db.query(tableName,null,null,null,null,null,"id DESC");
@@ -98,7 +125,7 @@ public class SQLiteUtils extends SQLiteOpenHelper {
                 list.add(new Word(id, word, yinbiao, translation, 0));
             }
         }
-        Log.d(TAG, "getAllData: " + list.get(0).toString());
+//        Log.d(TAG, "getAllData: " + list.get(0).toString());
         cursor.close();
         return list;
     }

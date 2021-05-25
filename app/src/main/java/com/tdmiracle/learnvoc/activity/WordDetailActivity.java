@@ -35,8 +35,10 @@ import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.adapter.entity.EverydaySentenceEntity;
 import com.tdmiracle.learnvoc.adapter.entity.Wordtranslation;
 import com.tdmiracle.learnvoc.core.BaseActivity;
+import com.tdmiracle.learnvoc.module.WordDetail;
 import com.tdmiracle.learnvoc.utils.FormatUtils;
 import com.tdmiracle.learnvoc.utils.HttpUtils;
+import com.tdmiracle.learnvoc.utils.SQLiteUtils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
 import com.tdmiracle.learnvoc.utils.service.JsonSerializationService;
 
@@ -47,28 +49,43 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Calendar;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * 单词详情
  */
-public class WordDetailActivity extends BaseActivity {
+public class WordDetailActivity extends AppCompatActivity {
+
     private static final String TAG = "WordDetailActivity";
+
+    @BindView(R.id.word_detail_hans)
+    TextView word_hans;
+    @BindView(R.id.word_detail_tongyi)
+    TextView word_tongyi;
+    @BindView(R.id.word_detail_means)
+    TextView word_means;
+    @BindView(R.id.word_detail_lijus)
+    TextView word_lijus;
+    @BindView(R.id.word_detail_english_means)
+    TextView word_english_means;
     TextView textView;
     ImageView imageView;
     String tittleWord;
     String detailInfo;
 
     CollapsingToolbarLayout collapsingToolbarLayout;
-    //单词联网词典查询结果
-    Wordtranslation wordtranslation;
+    //词典查询结果
+    WordDetail wordDetail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_detail);
+        ButterKnife.bind(this);
         Toolbar bar = (Toolbar) findViewById(R.id.toolbar);
         collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsongbar);
         imageView = (ImageView) findViewById(R.id.image_voc);
-        textView = (TextView) findViewById(R.id.word_textview);
         setSupportActionBar(bar);//设置默认标题栏
         ActionBar actionBar = getSupportActionBar();
         if(actionBar!=null){
@@ -85,58 +102,58 @@ public class WordDetailActivity extends BaseActivity {
         //获取传入词汇
         Intent intent = getIntent();
         tittleWord = intent.getStringExtra("word");
-        //联网查词
-        getHttpData(tittleWord);
+        //词库查词
+        SQLiteUtils vocDb = new SQLiteUtils(this);
+        wordDetail = vocDb.getWordDetailByWord(tittleWord);
+        Log.d(TAG, "loadData: " + wordDetail.toString());
+        //绑定数据
+        word_hans.setText(wordDetail.getHans());
+        word_tongyi.setText(wordDetail.getTongyis());
+        word_means.setText("\t" + wordDetail.getMeans());
+        word_lijus.setText(wordDetail.getLijus());
+        word_english_means.setText(wordDetail.getEnglishMeans());
     }
 
-    //绑定词意
-    private void setWordContent(Wordtranslation wordtranslation){
-        if (wordtranslation.getContent() != null){
-            detailInfo = "网络词意：\n"+wordtranslation.getContent();
-            textView.setText(detailInfo);//文本信息
-        }
 
-    }
-
-    /**
-     * 调用天行词典接口获取单词对象
-     * @param word
-     */
-    private void getHttpData(String word) {
-        try {
-            StringCallback callback = new StringCallback() {
-                @Override
-                public void onSuccess(com.lzy.okgo.model.Response<String> response) {
-                    try {
-                        String json = response.body().toString();
-                        //Log.d(TAG,json);
-                        JSONObject jsonObject = new JSONObject(json);
-                        int code = jsonObject.getInt("code");
-                        //请求接口,获取词典实体
-                        if (code == 200) {
-                            JSONArray jsonArray = jsonObject.getJSONArray("newslist");
-                            JSONObject jsonNewsList = jsonArray.getJSONObject(0);
-                            //Log.d(TAG, "newslist: " + jsonNewsList.toString());
-                            JsonSerializationService jsonSerializationService = new JsonSerializationService();
-                            wordtranslation = jsonSerializationService.parseObject(jsonNewsList.toString(), Wordtranslation.class);
-                            Log.d(TAG, "onSuccess: "+ wordtranslation.toString());
-                            setWordContent(wordtranslation);
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                }
-
-                @Override
-                public void onError(Response<String> response) {
-                    super.onError(response);
-                }
-            };
-            HttpUtils.getEnglishWord(this, word, callback);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
+//    /**
+//     * 调用天行词典接口获取单词对象
+//     * @param word
+//     */
+//    private void getHttpData(String word) {
+//        try {
+//            StringCallback callback = new StringCallback() {
+//                @Override
+//                public void onSuccess(com.lzy.okgo.model.Response<String> response) {
+//                    try {
+//                        String json = response.body().toString();
+//                        //Log.d(TAG,json);
+//                        JSONObject jsonObject = new JSONObject(json);
+//                        int code = jsonObject.getInt("code");
+//                        //请求接口,获取词典实体
+//                        if (code == 200) {
+//                            JSONArray jsonArray = jsonObject.getJSONArray("newslist");
+//                            JSONObject jsonNewsList = jsonArray.getJSONObject(0);
+//                            //Log.d(TAG, "newslist: " + jsonNewsList.toString());
+//                            JsonSerializationService jsonSerializationService = new JsonSerializationService();
+//                            wordtranslation = jsonSerializationService.parseObject(jsonNewsList.toString(), Wordtranslation.class);
+//                            Log.d(TAG, "onSuccess: "+ wordtranslation.toString());
+//                            setWordContent(wordtranslation);
+//                        }
+//                    } catch (JSONException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//
+//                @Override
+//                public void onError(Response<String> response) {
+//                    super.onError(response);
+//                }
+//            };
+//            HttpUtils.getEnglishWord(this, word, callback);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
