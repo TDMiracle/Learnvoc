@@ -43,8 +43,10 @@ import com.tdmiracle.learnvoc.activity.ReciteWordsActivity;
 import com.tdmiracle.learnvoc.activity.SelectWordsBookActivity;
 import com.tdmiracle.learnvoc.adapter.entity.EverydaySentence;
 import com.tdmiracle.learnvoc.core.BaseFragment;
+import com.tdmiracle.learnvoc.dao.daoImpl.WordsBookDaoImpl;
 import com.tdmiracle.learnvoc.dao.daoImpl.WordsReciteDaoImpl;
 import com.tdmiracle.learnvoc.module.User;
+import com.tdmiracle.learnvoc.module.WordsBook;
 import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.FormatUtils;
 import com.tdmiracle.learnvoc.utils.HttpUtils;
@@ -54,6 +56,7 @@ import com.xuexiang.xutil.app.ActivityUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.litepal.LitePal;
 
 import java.io.IOException;
 import java.util.Calendar;
@@ -125,8 +128,8 @@ public class ReciteWordsFragment extends BaseFragment {
 
     @Override
     protected void initViews() {
-        progressBar.setProgress(0);
-        progressBar.setMax(100);
+        WordsBook wordsBook = LitePal.where("name=?",ConstUtils.WordsType.getWordsType(0)).findFirst(WordsBook.class);
+        bookWordsCount = wordsBook.getCount()+"";
         //更新剩余天数和今日背诵词数
         updateInfo();
     }
@@ -150,7 +153,8 @@ public class ReciteWordsFragment extends BaseFragment {
         if(bookWordsCount != null){
             progressBar.setMax(Integer.parseInt(bookWordsCount));
             progressBar.setProgress(totalBookReciteCount);
-            remain_day_count.setText(Integer.parseInt(bookWordsCount)/todayCount+"");
+            if(Integer.parseInt(bookWordsCount) != 0 && todayCount != 0)
+                remain_day_count.setText(Integer.parseInt(bookWordsCount)/todayCount+"");
         }
     }
 

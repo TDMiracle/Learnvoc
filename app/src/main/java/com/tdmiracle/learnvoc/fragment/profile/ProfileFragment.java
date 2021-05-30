@@ -28,6 +28,7 @@ import com.tdmiracle.learnvoc.activity.EditPersonalInfoActivity;
 import com.tdmiracle.learnvoc.activity.MainActivity;
 import com.tdmiracle.learnvoc.activity.NotificatonActivity;
 import com.tdmiracle.learnvoc.activity.SplashActivity;
+import com.tdmiracle.learnvoc.activity.StudyStatisticActivity;
 import com.tdmiracle.learnvoc.activity.WordsBookActivity;
 import com.tdmiracle.learnvoc.core.BaseFragment;
 import com.tdmiracle.learnvoc.fragment.AboutFragment;
@@ -69,6 +70,8 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
     SuperTextView danCiBen;
     @BindView(R.id.profile_xueXiSheZhi)
     SuperTextView xueXiSheZhi;
+    @BindView(R.id.profile_xueXiShuJu)
+    SuperTextView XueXiShuJu;
 
     /**
      * @return 返回为 null意为不需要导航栏
@@ -141,11 +144,15 @@ public class ProfileFragment extends BaseFragment implements SuperTextView.OnSup
         }
     }
 
-    @OnClick({R.id.profile_danCiBen})
+    @OnClick({R.id.profile_danCiBen,R.id.profile_xueXiShuJu})
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.profile_danCiBen:
                 ActivityUtils.startActivity(WordsBookActivity.class);
+                break;
+            case R.id.profile_xueXiShuJu:
+                ActivityUtils.startActivity(StudyStatisticActivity.class);
+//                XToastUtils.toast("学习数据");
                 break;
         }
     }

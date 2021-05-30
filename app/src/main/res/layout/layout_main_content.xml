@@ -43,7 +43,25 @@
         android:layout_height="match_parent"
         android:layout_marginTop="?actionBarSize"
         android:layout_marginBottom="?actionBarSize"
-        android:overScrollMode="never" />
+        android:overScrollMode="never" >
+    </androidx.viewpager.widget.ViewPager>
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/main_search_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="60dp"
+        app:srcCompat="@drawable/ic_word_search"
+        app:borderWidth="0.0dip"
+        app:fabSize="normal"
+        app:backgroundTint="@color/colorPrimary"
+        android:clickable="true"
+        app:layout_anchor="@id/view_pager"
+        app:layout_anchorGravity="bottom|right"
+        android:layout_gravity="bottom|right"
+        android:scaleType="center"
+        android:visibility="invisible"
+        />
 
     <!--  底部导航栏  -->
     <com.google.android.material.bottomnavigation.BottomNavigationView

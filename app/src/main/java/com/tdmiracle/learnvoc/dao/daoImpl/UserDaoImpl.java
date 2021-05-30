@@ -66,7 +66,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User>   findUserById(String id) {
+    public List<User>  findUserById(String id) {
         List<User> user = LitePal.select()
                 .where("id = ?", id)
                 .limit(1)

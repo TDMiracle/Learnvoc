@@ -109,6 +109,18 @@ public class ReciteWordFragment extends BaseFragment {
         recite_yinbiao.setText(wordsRecite.getWord().getYinbiao());
         recite_translation.setText(wordsRecite.getWord().getTranslation());
         recite_word.setText(wordsRecite.getWord().getWord());
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                onPlayer(wordsRecite.getWord().getWord());
+            }
+        }).start();
     }
 
     @Override

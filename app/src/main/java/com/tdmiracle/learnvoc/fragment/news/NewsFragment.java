@@ -27,6 +27,7 @@ import com.alibaba.android.vlayout.DelegateAdapter;
 import com.alibaba.android.vlayout.VirtualLayoutManager;
 import com.alibaba.android.vlayout.layout.GridLayoutHelper;
 import com.alibaba.android.vlayout.layout.LinearLayoutHelper;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.tdmiracle.learnvoc.activity.WordsListActivity;
 import com.tdmiracle.learnvoc.adapter.base.broccoli.BroccoliSimpleDelegateAdapter;

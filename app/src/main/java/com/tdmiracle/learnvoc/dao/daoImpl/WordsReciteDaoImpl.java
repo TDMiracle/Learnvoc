@@ -91,7 +91,7 @@ public class WordsReciteDaoImpl {
 
     public int getUserBookReciteCount(int userId, int bookId){
         int count = 0;
-        List<WordsRecite> list = LitePal.where("user_id = ?",userId+"").find(WordsRecite.class);
+        List<WordsRecite> list = LitePal.where("user_id = ? and is_grasp = 1",userId+"").find(WordsRecite.class);
         for(WordsRecite wordsRecite : list){
             if(wordsRecite.getWord().getWordType() == bookId){
                 count++;

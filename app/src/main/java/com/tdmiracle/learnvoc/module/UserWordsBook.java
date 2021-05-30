@@ -17,6 +17,7 @@
 
 package com.tdmiracle.learnvoc.module;
 
+import org.litepal.LitePal;
 import org.litepal.crud.LitePalSupport;
 
 import java.util.Date;
@@ -58,6 +59,10 @@ public class UserWordsBook extends LitePalSupport {
                 ", finish_time=" + finish_time +
                 ", studiedCount=" + studiedCount +
                 '}';
+    }
+
+    public WordsBook getWordsBook(){
+        return LitePal.where("id=?",wordsBook_id+"").findFirst(WordsBook.class);
     }
 
     public int getId() {

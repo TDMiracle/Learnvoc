@@ -21,6 +21,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,11 +30,14 @@ import android.widget.TextView;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.tdmiracle.learnvoc.MyApp;
 import com.tdmiracle.learnvoc.R;
 import com.tdmiracle.learnvoc.activity.ReviewWordsActivity;
 import com.tdmiracle.learnvoc.activity.TestWordsActivity2;
 import com.tdmiracle.learnvoc.activity.TestWordsActivity3;
 import com.tdmiracle.learnvoc.adapter.entity.WordReviewQuestionType;
+import com.tdmiracle.learnvoc.dao.daoImpl.UserWordBookDaoImpl;
+import com.tdmiracle.learnvoc.module.User;
 import com.tdmiracle.learnvoc.module.WordsBook;
 import com.tdmiracle.learnvoc.utils.ConstUtils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
@@ -51,8 +55,12 @@ import java.util.List;
  * 类说明：背诵模块【单词书选择】适配器
  */
 public class SelectWordBookAdapter extends RecyclerView.Adapter<SelectWordBookAdapter.ViewHolder>{
+
+    private final String TAG = "SelectWordBookAdapter";
+
     List<WordsBook> wordsBooks;
     Context context;
+    User globalUser;
 
     public SelectWordBookAdapter(List<WordsBook> wordsBooks ,Context context) {
         this.wordsBooks = wordsBooks;
@@ -69,6 +77,14 @@ public class SelectWordBookAdapter extends RecyclerView.Adapter<SelectWordBookAd
         holder.select_wordBook_cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // 获取全局变量
+                MyApp app = (MyApp) ((Activity) context).getApplication();
+                globalUser = app.getUser();
+                Log.d(TAG, "onClick: "+ globalUser.toString());
+                // 添加单词书
+                UserWordBookDaoImpl userWordBookDao = new UserWordBookDaoImpl();
+                userWordBookDao.addUserWordsBook(globalUser,(ConstUtils.WordsType.getWordsByName(holder.select_wordBook_name.getText().toString().trim()) + 1));
+
                 /*实现ReciteWordsFragment单词书选择回调*/
                 String wordBookName = holder.select_wordBook_name.getText().toString();
                 String wordBookCount = holder.select_wordBook_wordCount.getText().toString();

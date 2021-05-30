@@ -17,21 +17,29 @@
 
 package com.tdmiracle.learnvoc.activity;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.VisibleForTesting;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.tdmiracle.learnvoc.MyApp;
 import com.tdmiracle.learnvoc.dao.UserDao;
@@ -46,6 +54,7 @@ import com.tdmiracle.learnvoc.fragment.profile.ProfileFragment;
 import com.tdmiracle.learnvoc.fragment.recite.ReciteFragment;
 import com.tdmiracle.learnvoc.fragment.statistic.StatisticFragment;
 import com.tdmiracle.learnvoc.module.User;
+import com.tdmiracle.learnvoc.module.WordDetail;
 import com.tdmiracle.learnvoc.utils.Utils;
 import com.tdmiracle.learnvoc.utils.XToastUtils;
 import com.xuexiang.xaop.annotation.SingleClick;
@@ -63,6 +72,7 @@ import com.xuexiang.xutil.display.Colors;
 import org.jetbrains.annotations.NotNull;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 
 public class MainActivity extends BaseActivity implements View.OnClickListener, BottomNavigationView.OnNavigationItemSelectedListener, ClickUtils.OnClick2ExitListener, Toolbar.OnMenuItemClickListener {
@@ -83,8 +93,14 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
     NavigationView navView;
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
+    /**
+     * 悬浮搜索栏
+     */
+    @BindView(R.id.main_search_fab)
+    FloatingActionButton search_fab;
 
     private String[] mTitles;
+    private AlertDialog.Builder builder;//对话框建造者
 
     // 当前登录用户
     User user;
@@ -130,11 +146,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
         FragmentAdapter<BaseFragment> adapter = new FragmentAdapter<>(getSupportFragmentManager(), fragments);
         viewPager.setOffscreenPageLimit(mTitles.length - 1);
         viewPager.setAdapter(adapter);
-
-        /**
-         * 测试
-         */
-
+        search_fab.setOnClickListener(this);
     }
 
     @NotNull
@@ -256,6 +268,27 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
             case R.id.nav_header:
                 XToastUtils.toast("点击头部！");
                 break;
+            case R.id.main_search_fab://查询生词
+                View view = getLayoutInflater().inflate(R.layout.dialog_search,null);
+                SearchView searchView = (SearchView)findViewById(R.id.searchView);
+                //新建对话框
+                builder = new AlertDialog.Builder(MainActivity.this);
+                builder.setTitle("单词查询");
+                builder.setView(view);
+                builder.setPositiveButton("搜索", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //打开单词详情词典
+//                        Intent intent = new Intent(MainActivity.this, WordDetailActivity.class);
+//                        intent.putExtra("word","miracle");
+                        XToastUtils.toast(searchView.getQuery().toString().trim());
+//                        startActivity(intent);
+//                        intent.putExtra("word",searchView.getQuery().toString().trim());
+                    }
+
+                });
+                builder.setNegativeButton("取消",null);
+                builder.show();
             default:
                 break;
         }
@@ -278,6 +311,12 @@ public class MainActivity extends BaseActivity implements View.OnClickListener, 
 
             updateSideNavStatus(menuItem);
             return true;
+        }
+        if(index == 0){
+            search_fab.bringToFront();
+        }
+        else {
+            search_fab.setVisibility(View.INVISIBLE);
         }
         return false;
     }
